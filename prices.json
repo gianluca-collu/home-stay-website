@@ -1,0 +1,88 @@
+{
+  "prices": [
+    {
+      "propertyId": "Villa Karla",
+      "seasonalPrices": [
+        {
+          "season": "Bassa stagione (Gennaio-Marzo)",
+          "startDate": "2025-01-01",
+          "endDate": "2025-03-31",
+          "pricePerNight": 1500
+        },
+        {
+          "season": "Media stagione (Aprile-Maggio)",
+          "startDate": "2025-04-01",
+          "endDate": "2025-05-31",
+          "pricePerNight": 2000
+        },
+        {
+          "season": "Alta stagione (Giugno-Settembre)",
+          "startDate": "2025-06-01",
+          "endDate": "2025-09-30",
+          "pricePerNight": 3000
+        },
+        {
+          "season": "Media stagione (Ottobre-Novembre)",
+          "startDate": "2025-10-01",
+          "endDate": "2025-11-30",
+          "pricePerNight": 2000
+        },
+        {
+          "season": "Bassa stagione (Dicembre 1-20)",
+          "startDate": "2025-12-01",
+          "endDate": "2025-12-20",
+          "pricePerNight": 1500
+        },
+        {
+          "season": "Natale/Capodanno (21 Dic - 5 Gen)",
+          "startDate": "2025-12-21",
+          "endDate": "2026-01-05",
+          "pricePerNight": 4000
+        }
+      ]
+    },
+    {
+      "propertyId": "casa_amalfitana",
+      "seasonalPrices": [
+        {
+          "season": "Bassa stagione (Gennaio-Marzo)",
+          "startDate": "2025-01-01",
+          "endDate": "2025-03-31",
+          "pricePerNight": 900
+        },
+        {
+          "season": "Media stagione (Aprile-Maggio)",
+          "startDate": "2025-04-01",
+          "endDate": "2025-05-31",
+          "pricePerNight": 1200
+        },
+        {
+          "season": "Alta stagione (Giugno-Settembre)",
+          "startDate": "2025-06-01",
+          "endDate": "2025-09-30",
+          "pricePerNight": 1800
+        },
+        {
+          "season": "Media stagione (Ottobre-Novembre)",
+          "startDate": "2025-10-01",
+          "endDate": "2025-11-30",
+          "pricePerNight": 1200
+        },
+        {
+          "season": "Bassa stagione (Dicembre 1-20)",
+          "startDate": "2025-12-01",
+          "endDate": "2025-12-20",
+          "pricePerNight": 900
+        },
+        {
+          "season": "Natale/Capodanno (21 Dic - 5 Gen)",
+          "startDate": "2025-12-21",
+          "endDate": "2026-01-05",
+          "pricePerNight": 2500
+        }
+      ]
+    }
+  ]
+}
+
+

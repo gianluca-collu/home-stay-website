@@ -1,0 +1,216 @@
+{
+  "properties": [
+    {
+      "id": "Villa Karla",
+      "title": "Villa Karla ",
+      "badge": "Esclusiva",
+      "description": "Villa Karla numero 1",
+      "location": "Porto Sa Ruxi",
+      "region":"Villasimius",
+      "locationInfo": "Situata a porto sa ruxi.",
+      "coordinates": "43.1400,-11.9500",
+      "price": 2500,
+      "bedrooms": 4,
+      "guests": 8,
+      "bathrooms": 3,
+      "image": "fotos/villa karla/_MG_7854.jpg",
+      "features": [
+        {
+          "icon": "fas fa-swimming-pool",
+          "title": "Piscina Privata",
+          "value": "12x6 m"
+        },
+        {
+          "icon": "fas fa-wifi",
+          "title": "Wi-Fi Veloce",
+          "value": "Fibra ottica"
+        },
+        {
+          "icon": "fas fa-utensils",
+          "title": "Cucina Attrezzata",
+          "value": "Completa"
+        },
+        {
+          "icon": "fas fa-car",
+          "title": "Parcheggio",
+          "value": "Privato"
+        },
+        {
+          "icon": "fas fa-sun",
+          "title": "Terrazza",
+          "value": "Panoramica"
+        },
+        {
+          "icon": "fas fa-wind",
+          "title": "Aria Condizionata",
+          "value": "In tutte le camere"
+        }
+      ],
+      "gallery": [
+        "fotos/villa karla/015A9095 - Copia.jpg",
+        "fotos/villa karla/015A9126 - Copia.jpg",
+        "fotos/villa karla/DJI_20260615151040_0095_D-Modifica.jpg",
+        "fotos/villa karla/DJI_20260615151457_0111_D-Modifica.jpg",
+        "fotos/villa karla/_MG_7854.jpg",
+        "fotos/villa karla/_MG_7860.jpg",
+        "fotos/villa karla/_MG_7903.jpg",
+        "fotos/villa karla/_MG_7930.jpg",
+        "fotos/villa karla/_MG_7939.jpg",
+        "fotos/villa karla/_MG_7945.jpg",
+        "fotos/villa karla/_MG_9196.jpg",
+        "fotos/villa karla/_MG_9225.jpg",
+        "fotos/villa karla/_MG_9231.jpg",
+        "fotos/villa karla/_MG_9238.jpg",
+        "fotos/villa karla/_MG_9266.jpg",
+        "fotos/villa karla/_MG_9278-Modifica - Copia.jpg",
+        "fotos/villa karla/_MG_9286-Modifica - Copia.jpg",
+        "fotos/villa karla/_MG_9289-Modifica - Copia.jpg",
+        "fotos/villa karla/_MG_9294-Modifica - Copia.jpg",
+        "fotos/villa karla/_MG_9316-Modifica - Copia.jpg",
+        "fotos/villa karla/_MG_9318-Modifica - Copia.jpg",
+        "fotos/villa karla/_MG_9334 - Copia.jpg",
+        "fotos/villa karla/_MG_9335 - Copia.jpg",
+        "fotos/villa karla/_MG_9336-Modifica - Copia.jpg",
+        "fotos/villa karla/_MG_9379-Modifica - Copia.jpg"
+      ],
+      "minimumStay": 3,
+      "availability": "available",
+      "availablePeriods": [
+        {"startDate": "2025-01-01", "endDate": "2025-03-31"},
+        {"startDate": "2025-06-01", "endDate": "2025-09-30"}
+      ]
+    },
+    {
+      "id": "Cagliari",
+      "title": "Oltre Mare",
+      "badge": "Vista Mare",
+      "description": "Suggestiva casa con terrazza con vista mozzafiato sul mare della Costiera Amalfitana. Accesso privato alla spiaggia, architettura tipica della costa con dettagli in stile mediterraneo. Perfetto per chi desidera una vacanza romantica con il suono delle onde come sottofondo e tramonti indimenticabili.",
+      "location": "Cagliari",
+      "region": "Sud Sardegna",
+      "locationInfo": "Situata sulla celebre Cagliari, la casa è a pochi passi da Positano e Amalfi. Accesso diretto a una spiaggia privata. Nelle vicinanze troverai ristoranti di pesce fresco, boutique locali e i borghi più romantici della costa campana.",
+      "coordinates": "40.6297,14.6034",
+      "price": 1800,
+      "bedrooms": 3,
+      "guests": 6,
+      "bathrooms": 2,
+      "image": "fotos/oltreMare/_45A3513-Migliorato-NR-Modifica.jpg",
+      "features": [
+        {
+          "icon": "fas fa-water",
+          "title": "Vista Mare",
+          "value": "Panoramica"
+        },
+        {
+          "icon": "fas fa-umbrella-beach",
+          "title": "Spiaggia Privata",
+          "value": "Accesso diretto"
+        },
+        {
+          "icon": "fas fa-sun",
+          "title": "Terrazza",
+          "value": "30 mq"
+        },
+        {
+          "icon": "fas fa-wine-glass-alt",
+          "title": "Mini Bar",
+          "value": "Fornito"
+        },
+        {
+          "icon": "fas fa-bath",
+          "title": "Jacuzzi",
+          "value": "Su terrazza"
+        },
+        {
+          "icon": "fas fa-binoculars",
+          "title": "Telescopio",
+          "value": "Per osservare le stelle"
+        }
+      ],
+      "gallery": [
+        "fotos/oltreMare/_45A3513-Migliorato-NR-Modifica.jpg",
+        "fotos/oltreMare/015A3051-Migliorato-NR.jpg",
+        "fotos/oltreMare/015A3064-Migliorato-NR.jpg",
+        "fotos/oltreMare/015A3686-Migliorato-NR.jpg",
+        "fotos/oltreMare/01645A3412-Migliorato-NR-Modifica.jpg",
+        "fotos/oltreMare/0165A3426-Migliorato-NR-Modifica.jpg",
+        "fotos/oltreMare/41bfb14a-55c4-44ba-8ca3-a99f974557d3.webp",
+        "fotos/oltreMare/6afeaa8c-1ac5-43e2-bcae-1ef87a95ec92.avif",
+        "fotos/oltreMare/_45A3516-Migliorato-NR-Modifica.jpg",
+        "fotos/oltreMare/_45A3522-Migliorato-NR-Modifica.jpg",
+        "fotos/oltreMare/_45A3529-Migliorato-NR-Modifica.jpg",
+        "fotos/oltreMare/_45A3552-Migliorato-NR-Modifica-Modifica-Modifica.jpg",
+        "fotos/oltreMare/_45A3558-Migliorato-NR-Modifica-Modifica.jpg",
+        "fotos/oltreMare/_45A3570-Migliorato-NR-Modifica.jpg",
+        "fotos/oltreMare/_45A3573-Migliorato-NR-Modifica.jpg",
+        "fotos/oltreMare/_45A3612-Migliorato-NR.jpg",
+        "fotos/oltreMare/_45A3615-Migliorato-NR.jpg",
+        "fotos/oltreMare/_45A3625-Migliorato-NR-Modifica.jpg"
+      ],
+      "minimumStay": 4,
+      "availability": "available",
+      "availablePeriods": [
+        {"startDate": "2025-05-01", "endDate": "2025-10-31"}
+      ]
+    },
+    {
+      "id": "casale_umbro",
+      "title": "Casale Umbro",
+      "badge": "Romantica",
+      "description": "Incantevole casale ristrutturato con cura, immerso nella campagna umbra caratterizzata da colline morbide e boschi. Ideale per coppie e piccoli gruppi in cerca di intimità e contatto con la natura. Gli interni mantengono lo stile rustico toscano con arredi d'epoca e comfort moderni.",
+      "location": "Umbria",
+      "region": "umbria",
+      "locationInfo": "Il Casale è situato nel cuore verde dell'Umbria, circondata da boschi di lecci e querce. Perfetto per escursioni a piedi e in mountain bike. Nelle vicinanze: Perugia, Assisi, e i bellissimi laghi umbri. Un luogo ideale per rigenerarsi.",
+      "coordinates": "43.1083,12.3883",
+      "price": 1200,
+      "bedrooms": 2,
+      "guests": 4,
+      "bathrooms": 1,
+      "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&h=400&fit=crop",
+      "features": [
+        {
+          "icon": "fas fa-tree",
+          "title": "Giardino",
+          "value": "1500 mq"
+        },
+        {
+          "icon": "fas fa-fire",
+          "title": "Camino",
+          "value": "Funzionante"
+        },
+        {
+          "icon": "fas fa-book",
+          "title": "Libreria",
+          "value": "Con libri"
+        },
+        {
+          "icon": "fas fa-binoculars",
+          "title": "Osservazione Natura",
+          "value": "Perfetta"
+        },
+        {
+          "icon": "fas fa-dumbbell",
+          "title": "Zona Relax",
+          "value": "Esterna"
+        },
+        {
+          "icon": "fas fa-bicycle",
+          "title": "Biciclette",
+          "value": "Fornite"
+        }
+      ],
+      "gallery": [
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1570129477492-45c003cedd20?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+      ],
+      "minimumStay": 2,
+      "availability": "available",
+      "availablePeriods": [
+        {"startDate": "2025-01-01", "endDate": "2025-12-31"}
+      ]
+    }
+  ]
+}
+
+

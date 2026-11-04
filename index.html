@@ -1,0 +1,2887 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- EmailJS - File locale (non CDN) -->
+    <script src="emailjs.min.js"></script>
+    
+    <script>
+        // Inizializzazione EmailJS - semplice e diretta
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init('L2r4GhyRqoDYST8bA');
+            console.log('✅ EmailJS inizializzato con successo');
+        } else {
+            console.error('❌ EmailJS non caricato - verifica che emailjs.min.js esista');
+        }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #1a1a1a !important;
+            letter-spacing: 2px;
+        }
+        
+        .navbar-brand span {
+            color: #c9a961;
+        }
+        
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-left: 2rem;
+            color: #333 !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #c9a961;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%), 
+                        url('fotos/website/015A9095 - Copia.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: -70px;
+            padding-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            letter-spacing: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+        
+        .btn-discover {
+            background: #c9a961;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .btn-discover:hover {
+            background: #b8954a;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        /* ===== CASE SECTION ===== */
+        .case-section {
+            padding: 6rem 0;
+            background: #fafafa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .section-title h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #c9a961;
+        }
+        
+        .property-card {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .property-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background: #eee;
+        }
+        
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .property-card:hover .property-image img {
+            transform: scale(1.08);
+        }
+        
+        .property-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #c9a961;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .property-info {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .property-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        
+        .property-location {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .property-desc {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .property-features {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: #c9a961;
+            margin-bottom: 0.3rem;
+        }
+        
+        .feature-value {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+        }
+        
+        .property-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #c9a961;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-view {
+            background: transparent;
+            color: #c9a961;
+            border: 2px solid #c9a961;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        .btn-view:hover {
+            background: #c9a961;
+            color: white;
+        }
+        
+        /* ===== FILTERS SECTION ===== */
+        .filter-button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            gap: 2rem;
+        }
+
+        .btn-filters-toggle {
+            background: white;
+            border: 2px solid #c9a961;
+            color: #c9a961;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            box-shadow: 0 2px 8px rgba(201, 169, 97, 0.1);
+        }
+
+        .btn-filters-toggle:hover {
+            background: #c9a961;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
+        }
+
+        .results-info-top {
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        .results-info-top span {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* Filters Modal */
+        .filters-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2500;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .filters-modal-overlay.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 2rem;
+            overflow-y: auto;
+        }
+
+        .filters-modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 700px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.4s ease-out;
+            position: relative;
+        }
+
+        .filters-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .filters-modal-header h2 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .filters-modal-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #999;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .filters-modal-close:hover {
+            color: #c9a961;
+            transform: rotate(90deg);
+        }
+
+        .filters-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .filter-group label i {
+            color: #c9a961;
+            font-size: 1.1rem;
+            width: 18px;
+            text-align: center;
+        }
+
+        .filter-group select,
+        .filter-group input[type="range"] {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .filter-group select:hover,
+        .filter-group select:focus {
+            border-color: #c9a961;
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+            outline: none;
+        }
+
+        .filter-group select {
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .filter-group input[type="range"] {
+            padding: 0;
+            cursor: pointer;
+            height: 6px;
+        }
+
+        .filter-group input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #c9a961;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .filter-group input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #c9a961;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .price-display {
+            margin-top: 0.7rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #c9a961;
+        }
+
+        .filters-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-filter,
+        .btn-filter-reset {
+            padding: 0.9rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-filter {
+            background: #c9a961;
+            color: white;
+        }
+
+        .btn-filter:hover {
+            background: #b8954a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
+        }
+
+        .btn-filter-reset {
+            background: transparent;
+            color: #999;
+            border: 1px solid #ddd;
+        }
+
+        .btn-filter-reset:hover {
+            background: #fafafa;
+            border-color: #c9a961;
+            color: #c9a961;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .filter-button-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-filters-toggle {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .filters-modal-content {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .filters-body {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .filters-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== TERRITORY SECTION ===== */
+        .territory-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .territory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .territory-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            height: 500px;
+        }
+        
+        .territory-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .territory-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+        
+        .territory-content p {
+            font-size: 1.05rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .territory-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .highlight-item {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .highlight-icon {
+            font-size: 2rem;
+            color: #c9a961;
+            flex-shrink: 0;
+        }
+        
+        .highlight-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        
+        .highlight-text p {
+            font-size: 0.95rem;
+            color: #999;
+            margin: 0;
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            padding: 6rem 0;
+            background: #fafafa;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            height: 500px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .about-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+        
+        .about-content p {
+            font-size: 1.05rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .about-welcome { margin-top: 2rem; color: #1a1a1a !important; font-weight: 700; }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.8) 100%),
+                        url('fotos/website/_45A3516-Migliorato-NR-Modifica.jpg') center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: #ddd;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-method {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #c9a961;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-method h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .contact-method p {
+            font-size: 1rem;
+            color: #bbb;
+            margin: 0;
+        }
+        
+        .btn-contact {
+            background: #c9a961;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            border: none;
+            margin-top: 2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        .btn-contact:hover {
+            background: #b8954a;
+            transform: translateY(-3px);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a1a;
+            color: #bbb;
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        /* ===== MODAL DETTAGLI CASA ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease-out;
+            overflow-y: auto;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.4s ease-out;
+            position: relative;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+        }
+        
+        .modal-header h2 {
+            font-size: 2rem;
+            margin: 0;
+            color: #1a1a1a;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            color: #c9a961;
+            transform: scale(1.1);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        /* Gallery */
+        .gallery-section {
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-main {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: #eee;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: fadeIn 0.4s ease-out;
+            cursor: zoom-in;
+        }
+
+        .gallery-fullscreen-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 1;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            background: rgba(0, 0, 0, 0.65);
+            color: white;
+            cursor: pointer;
+        }
+
+        .gallery-fullscreen-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .image-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.96);
+            color: white;
+        }
+
+        .image-lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-image {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 92vw;
+            max-height: 88vh;
+            object-fit: contain;
+        }
+
+        .lightbox-control {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 56px;
+            border: 0;
+            background: rgba(255, 255, 255, 0.14);
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .lightbox-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-close {
+            top: 18px;
+            right: 18px;
+        }
+
+        .lightbox-previous {
+            left: 18px;
+        }
+
+        .lightbox-next {
+            right: 18px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.95rem;
+        }
+        
+        .gallery-thumbs {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        
+        .gallery-thumb {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #eee;
+        }
+        
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-thumb:hover {
+            border-color: #c9a961;
+            transform: scale(1.05);
+        }
+        
+        .gallery-thumb.active {
+            border-color: #c9a961;
+        }
+        
+        .gallery-thumb img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Description Section */
+        .description-section {
+            margin-bottom: 3rem;
+        }
+        
+        .description-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .description-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        /* Full Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #fafafa;
+            border-radius: 4px;
+        }
+        
+        .feature-item {
+            text-align: center;
+        }
+        
+        .feature-item-icon {
+            font-size: 2.5rem;
+            color: #c9a961;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-item-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.3rem;
+        }
+        
+        .feature-item-value {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Map Section */
+        .map-section {
+            margin: 3rem 0;
+        }
+        
+        .map-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #eee;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Pricing & CTA */
+        .modal-pricing {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+            border-radius: 0 0 8px 8px;
+            gap: 2rem;
+        }
+        
+        .price-info h4 {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #c9a961;
+        }
+        
+        .price-amount span {
+            font-size: 0.6em;
+            font-weight: 400;
+        }
+        
+        .btn-booking {
+            background: #c9a961;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+        
+        .btn-booking:hover {
+            background: #b8954a;
+            transform: translateY(-2px);
+        }
+
+        /* ===== BOOKING FORM STYLES ===== */
+        .booking-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-form-group label {
+            display: block;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .booking-form-group input,
+        .booking-form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .booking-form-group input:focus,
+        .booking-form-group textarea:focus {
+            outline: none;
+            border-color: #c9a961;
+            box-shadow: 0 0 5px rgba(201, 169, 97, 0.3);
+        }
+
+        .booking-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .booking-summary {
+            background: #f9f7f4;
+            padding: 1.5rem;
+            border-left: 4px solid #c9a961;
+            border-radius: 4px;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .booking-summary h4 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-size: 1.1rem;
+        }
+
+        .booking-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .booking-summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0.8rem;
+            border-top: 1px solid #ddd;
+            font-weight: 700;
+            color: #c9a961;
+            font-size: 1.2rem;
+        }
+
+        .btn-booking-submit {
+            width: 100%;
+            background: #c9a961;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-booking-submit:hover {
+            background: #b8954a;
+        }
+
+        /* ===== AVAILABILITY CALENDAR ===== */
+        .availability-section {
+            padding: 2.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .availability-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .calendar-container {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #c9a961;
+        }
+
+        .calendar-header h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .calendar-nav-btn {
+            background: #c9a961;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-nav-btn:hover {
+            background: #b8954a;
+            transform: scale(1.1);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            color: #666;
+            padding: 0.8rem 0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            border: 1px solid #f0f0f0;
+            cursor: default;
+            position: relative;
+            background: white;
+        }
+
+        .calendar-day.empty {
+            background: #fafafa;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.available {
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .calendar-day.available::after {
+            content: '✓';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            color: #c9a961;
+            font-size: 0.7rem;
+        }
+
+        .calendar-day.booked {
+            background: #efefef;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .availability-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #666;
+        }
+
+        .info-item span:last-child {
+            color: #c9a961;
+            font-weight: 700;
+        }
+
+        .calendar-legend {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .legend-color.available {
+            background: #e8f5e9;
+            border-color: #2e7d32;
+        }
+
+        .legend-color.booked {
+            background: #efefef;
+            border-color: #999;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .territory-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .territory-image,
+            .about-image {
+                height: 300px;
+            }
+            
+            .territory-content h3,
+            .about-content h3 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-link {
+                margin-left: 1rem;
+            }
+            
+            .modal-header {
+                padding: 1.5rem;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-main {
+                height: 300px;
+            }
+            
+            .modal-pricing {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn-booking {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#home">Dimore Collu</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto" id="navbarMenu">
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1></h1>
+            <p></p>
+            <a href="#case" class="btn btn-discover"></a>
+        </div>
+    </section>
+
+    <!-- CASE SECTION -->
+    <section class="case-section" id="case">
+        <div class="container">
+            <div class="section-title">
+                <h2></h2>
+                <p></p>
+            </div>
+
+            <!-- Filter Button -->
+            <div class="filter-button-container">
+                <button class="btn-filters-toggle" onclick="openFiltersModal()">
+                    <i class="fas fa-sliders-h"></i>
+                    <span></span>
+                </button>
+                <div class="results-info-top">
+                    <p>Mostrando <span id="resultsCount">3</span> proprietà</p>
+                </div>
+            </div>
+
+            <div class="row" id="propertiesGrid">
+                <!-- Properties inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TERRITORIO SECTION -->
+    <section class="territory-section" id="territorio">
+        <div class="container">
+            <div class="section-title">
+                <h2></h2>
+                <p></p>
+            </div>
+
+            <div class="territory-grid">
+                <div class="territory-image">
+                    <img src="" alt="">
+                </div>
+                <div class="territory-content">
+                    <h3></h3>
+                    <p></p>
+                    <div class="territory-highlights"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2></h2>
+                <p></p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3></h3>
+                    <div class="about-paragraphs"></div>
+                    <p class="about-welcome"></p>
+                </div>
+                <div class="about-image">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contatti">
+        <div class="container">
+            <div class="contact-content">
+                <h2></h2>
+                <p></p>
+                <div class="contact-methods"></div>
+                <a class="btn btn-contact" href="#case"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTERS MODAL -->
+    <div class="filters-modal-overlay" id="filtersModal">
+        <div class="filters-modal-content">
+            <div class="filters-modal-header">
+                <h2></h2>
+                <button class="filters-modal-close" onclick="closeFiltersModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="filters-body">
+                <div class="filter-group">
+                    <label for="filterLocation"><i class="fas fa-map-marker-alt"></i> Zona</label>
+                    <select id="filterLocation"></select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterGuests"><i class="fas fa-users"></i> Ospiti</label>
+                    <select id="filterGuests"></select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterPrice"><i class="fas fa-euro-sign"></i> Prezzo a notte</label>
+                    <input type="range" id="filterPrice">
+                    <div class="price-display">
+                        <span>€</span><span id="priceValue"></span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterBedrooms"><i class="fas fa-bed"></i> Camere</label>
+                    <select id="filterBedrooms"></select>
+                        <option value="3">3 camere</option>
+                        <option value="4">4+ camere</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filters-actions">
+                <button class="btn-filter" onclick="applyFilters()">
+                    <i class="fas fa-search"></i> Cerca
+                </button>
+                <button class="btn-filter-reset" onclick="resetFilters()">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROPERTY DETAILS MODAL -->
+    <div class="modal-overlay" id="propertyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Titolo Casa</h2>
+                <button class="modal-close" onclick="closePropertyModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Gallery -->
+                <div class="gallery-section">
+                    <div class="gallery-main">
+                        <img id="mainImage" src="" alt="Property main image" decoding="async" onclick="openImageViewer()">
+                        <button class="gallery-fullscreen-btn" type="button" aria-label="Apri la foto a schermo intero" title="Apri a schermo intero" onclick="openImageViewer()">
+                            <i class="fas fa-expand" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="gallery-thumbs" id="galleryThumbs">
+                        <!-- Thumbnails inserted here by JS -->
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <div class="description-section">
+                    <h3>Descrizione</h3>
+                    <p id="modalDescription"></p>
+                </div>
+                
+                <!-- Features -->
+                <div class="features-grid" id="modalFeatures">
+                    <!-- Features inserted here by JS -->
+                </div>
+                
+                <!-- Location Info -->
+                <div class="description-section">
+                    <h3>Informazioni sulla Posizione</h3>
+                    <p id="modalLocationInfo"></p>
+                </div>
+                
+                <!-- Map -->
+                <div class="map-section">
+                    <h3>Localizzazione</h3>
+                    <div class="map-container">
+                        <iframe id="modalMap" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <!-- Availability Calendar -->
+                <div class="availability-section">
+                    <h3><i class="fas fa-calendar-alt"></i> Disponibilità</h3>
+                    <p id="calendarDataStatus" class="availability-info" role="status" aria-live="polite"></p>
+                    
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button onclick="prevMonth()" class="calendar-nav-btn">&larr;</button>
+                            <h4 id="calendarMonth">Gennaio 2025</h4>
+                            <button onclick="nextMonth()" class="calendar-nav-btn">&rarr;</button>
+                        </div>
+                        
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Calendar inserted by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="availability-info">
+                        <div class="info-item">
+                            <span class="info-label">Soggiorno minimo:</span>
+                            <span id="minimumStayInfo">3 notti</span>
+                        </div>
+                        <div class="calendar-legend">
+                            <div class="legend-item">
+                                <span class="legend-color available"></span>
+                                <span>Disponibile</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color booked"></span>
+                                <span>Occupato</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pricing & CTA -->
+            <div class="modal-pricing">
+                <div class="price-info">
+                    <h4>Prezzo per notte</h4>
+                    <div class="price-amount">€<span id="modalPrice">0</span></div>
+                </div>
+                <button class="btn-booking" onclick="bookingAction()">Prenota Ora</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Visualizzatore foto" tabindex="-1">
+        <button class="lightbox-control lightbox-close" type="button" aria-label="Chiudi foto" onclick="closeImageViewer()">
+            <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        <button class="lightbox-control lightbox-previous" type="button" aria-label="Foto precedente" onclick="navigateImageViewer(-1)">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <img class="lightbox-image" id="lightboxImage" src="" alt="">
+        <button class="lightbox-control lightbox-next" type="button" aria-label="Foto successiva" onclick="navigateImageViewer(1)">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </button>
+        <span class="lightbox-counter" id="lightboxCounter" aria-live="polite"></span>
+    </div>
+
+    <!-- BOOKING MODAL -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Prenota <span id="bookingPropertyName"></span></h2>
+                <button class="modal-close" onclick="closeBookingModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="bookingForm" onsubmit="submitBooking(event)">
+                    <!-- Guest Info -->
+                    <div class="booking-form-group">
+                        <label for="guestName">Nome e Cognome *</label>
+                        <input type="text" id="guestName" name="guestName" required placeholder="Es. Marco Rossi">
+                    </div>
+
+                    <div class="booking-form-row">
+                        <div class="booking-form-group">
+                            <label for="guestEmail">Email *</label>
+                            <input type="email" id="guestEmail" name="guestEmail" required placeholder="email@example.com">
+                        </div>
+                        <div class="booking-form-group">
+                            <label for="guestPhone">Telefono *</label>
+                            <input type="tel" id="guestPhone" name="guestPhone" required placeholder="+39 123 456 7890">
+                        </div>
+                    </div>
+
+                    <!-- Dates & Guests -->
+                    <div class="booking-form-row">
+                        <div class="booking-form-group">
+                            <label for="checkInDate">Data Arrivo *</label>
+                            <input type="date" id="checkInDate" name="checkInDate" required onchange="updateBookingSummary()">
+                        </div>
+                        <div class="booking-form-group">
+                            <label for="checkOutDate">Data Partenza *</label>
+                            <input type="date" id="checkOutDate" name="checkOutDate" required onchange="updateBookingSummary()">
+                        </div>
+                    </div>
+
+                    <div class="booking-form-group">
+                        <label for="guestCount">Numero Ospiti *</label>
+                        <input type="number" id="guestCount" name="guestCount" min="1" required placeholder="Es. 4">
+                    </div>
+
+                    <div class="booking-form-group">
+                        <label for="guestMessage">Messaggio Speciale (Opzionale)</label>
+                        <textarea id="guestMessage" name="guestMessage" placeholder="Raccontaci dei tuoi desideri per il soggiorno..." rows="3"></textarea>
+                    </div>
+
+                    <!-- Booking Summary -->
+                    <div class="booking-summary">
+                        <h4>Riepilogo Prenotazione</h4>
+                        <div class="booking-summary-item">
+                            <span>Proprietà:</span>
+                            <strong id="summaryProperty">-</strong>
+                        </div>
+                        <div class="booking-summary-item">
+                            <span>Check-in:</span>
+                            <strong id="summaryCheckIn">-</strong>
+                        </div>
+                        <div class="booking-summary-item">
+                            <span>Check-out:</span>
+                            <strong id="summaryCheckOut">-</strong>
+                        </div>
+                        <div class="booking-summary-item">
+                            <span>Notti:</span>
+                            <strong id="summaryNights">-</strong>
+                        </div>
+                        <div class="booking-summary-item">
+                            <span>Prezzo medio/notte:</span>
+                            <strong>€<span id="summaryPricePerNight">0</span></strong>
+                        </div>
+                        <div class="booking-summary-total">
+                            <span>Totale:</span>
+                            <span>€<span id="summaryTotal">0</span></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-booking-submit">
+                        <i class="fas fa-check"></i> Invia Richiesta
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p id="footerCopyright"></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-public.js"></script>
+    
+    <script>
+        // FILTERS MODAL FUNCTIONS
+        function openFiltersModal() {
+            const modal = document.getElementById('filtersModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFiltersModal() {
+            const modal = document.getElementById('filtersModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Chiudi modal cliccando sul overlay
+        document.getElementById('filtersModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFiltersModal();
+            }
+        });
+
+        // Update prezzo display in tempo reale
+        document.getElementById('filterPrice')?.addEventListener('input', function() {
+            document.getElementById('priceValue').textContent = this.value;
+        });
+
+        // Carica le proprietà dal file JSON
+        let allProperties = [];
+        let allPrices = [];
+        let liveBookingData = null;
+        let currentGalleryImages = [];
+        let currentGalleryIndex = 0;
+        
+        // Carica il contenuto statico (Chi siamo, Territorio, etc)
+        fetch('content.json')
+            .then(response => response.json())
+            .then(data => {
+                populatePageTitle(data.pageTitle);
+                populateNavigation(data.header);
+                populateHeader(data.header);
+                populateHero(data.hero);
+                populateCasesSection(data.casesSection);
+                populateTerritorySection(data.territory);
+                populateAboutSection(data.about);
+                populateContactSection(data.contact);
+                populateFilters(data.filters);
+                populateFooter(data.footer);
+            })
+            .catch(error => console.error('Errore nel caricamento del contenuto:', error));
+
+        fetch('properties.json')
+            .then(response => response.json())
+            .then(async data => {
+                allProperties = data.properties;
+                liveBookingData = await window.loadSupabaseBookingData();
+                if (liveBookingData.properties) {
+                    allProperties = allProperties.map(property => {
+                        const bookingProperty = liveBookingData.properties.find(item => item.id === property.id);
+                        return bookingProperty ? {
+                            ...property,
+                            price: bookingProperty.base_nightly_price,
+                            minimumStay: bookingProperty.minimum_stay,
+                            maximumStay: bookingProperty.maximum_stay
+                        } : property;
+                    });
+                }
+                renderProperties(allProperties);
+            })
+            .catch(error => {
+                console.error('Errore nel caricamento delle proprietà:', error);
+                // Fallback ai dati hardcoded se il JSON non carica
+                allProperties = [
+            {
+                id: 'villa_toscana',
+                title: "Villa Toscana",
+                badge: "Esclusiva",
+                description: "Affascinante villa con piscina privata, circondata da vigneti e colline toscane. Una struttura esclusiva immersa nella tranquillità della campagna, perfetta per famiglie e coppie in cerca di lusso e tranquillità. La villa dispone di ampi spazi comuni, una cucina completamente attrezzata, e terrazza panoramica con vista sui vigneti.",
+                location: "Val d'Orcia, Toscana",
+                region: "toscana",
+                locationInfo: "La Villa Toscana è situata nel cuore di Val d'Orcia, uno dei paesaggi più affascinanti d'Italia. Circondato da vigneti storici e fattorie biologiche, il luogo offre un'esperienza autentica della Toscana. A pochi km troverai borghi medievali, cantine di vini rinomati e ristoranti stellati.",
+                coordinates: "43.1400,-11.9500",
+                price: 2500,
+                bedrooms: 4,
+                guests: 8,
+                bathrooms: 3,
+                image: "https://images.unsplash.com/photo-1570129477492-45c003cedd20?w=500&h=400&fit=crop",
+                features: [
+                    { icon: "fas fa-swimming-pool", title: "Piscina Privata", value: "12x6 m" },
+                    { icon: "fas fa-wifi", title: "Wi-Fi Veloce", value: "Fibra ottica" },
+                    { icon: "fas fa-utensils", title: "Cucina Attrezzata", value: "Completa" },
+                    { icon: "fas fa-car", title: "Parcheggio", value: "Privato" },
+                    { icon: "fas fa-sun", title: "Terrazza", value: "Panoramica" },
+                    { icon: "fas fa-wind", title: "Aria Condizionata", value: "In tutte le camere" }
+                ],
+                gallery: [
+                    "https://images.unsplash.com/photo-1570129477492-45c003cedd20?w=800&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1512217736312-44ca42025862?w=800&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop"
+                ]
+            },
+            {
+                id: 'casa_amalfitana',
+                title: "Oltre Mare",
+                badge: "Vista Mare",
+                description: "Suggestiva casa con terrazza con vista mozzafiato sul mare della Costiera Amalfitana. Accesso privato alla spiaggia, architettura tipica della costa con dettagli in stile mediterraneo. Perfetto per chi desidera una vacanza romantica con il suono delle onde come sottofondo e tramonti indimenticabili.",
+                location: "Costiera Amalfitana",
+                region: "campania",
+                locationInfo: "Situata sulla celebre Costiera Amalfitana, la casa è a pochi passi da Positano e Amalfi. Accesso diretto a una spiaggia privata. Nelle vicinanze troverai ristoranti di pesce fresco, boutique locali e i borghi più romantici della costa campana.",
+                coordinates: "40.6297,14.6034",
+                price: 1800,
+                bedrooms: 3,
+                guests: 6,
+                bathrooms: 2,
+                image: "fotos/oltreMare/_45A3513-Migliorato-NR-Modifica.jpg",
+                features: [
+                    { icon: "fas fa-water", title: "Vista Mare", value: "Panoramica" },
+                    { icon: "fas fa-umbrella-beach", title: "Spiaggia Privata", value: "Accesso diretto" },
+                    { icon: "fas fa-sun", title: "Terrazza", value: "30 mq" },
+                    { icon: "fas fa-wine-glass-alt", title: "Mini Bar", value: "Fornito" },
+                    { icon: "fas fa-bath", title: "Jacuzzi", value: "Su terrazza" },
+                    { icon: "fas fa-binoculars", title: "Telescopio", value: "Per osservare le stelle" }
+                ],
+                gallery: [
+                    "fotos/oltreMare/_45A3513-Migliorato-NR-Modifica.jpg",
+                    "fotos/oltreMare/015A3051-Migliorato-NR.jpg",
+                    "fotos/oltreMare/015A3064-Migliorato-NR.jpg",
+                    "fotos/oltreMare/015A3686-Migliorato-NR.jpg",
+                    "fotos/oltreMare/01645A3412-Migliorato-NR-Modifica.jpg",
+                    "fotos/oltreMare/0165A3426-Migliorato-NR-Modifica.jpg",
+                    "fotos/oltreMare/41bfb14a-55c4-44ba-8ca3-a99f974557d3.webp",
+                    "fotos/oltreMare/6afeaa8c-1ac5-43e2-bcae-1ef87a95ec92.avif",
+                    "fotos/oltreMare/_45A3516-Migliorato-NR-Modifica.jpg",
+                    "fotos/oltreMare/_45A3522-Migliorato-NR-Modifica.jpg",
+                    "fotos/oltreMare/_45A3529-Migliorato-NR-Modifica.jpg",
+                    "fotos/oltreMare/_45A3552-Migliorato-NR-Modifica-Modifica-Modifica.jpg",
+                    "fotos/oltreMare/_45A3558-Migliorato-NR-Modifica-Modifica.jpg",
+                    "fotos/oltreMare/_45A3570-Migliorato-NR-Modifica.jpg",
+                    "fotos/oltreMare/_45A3573-Migliorato-NR-Modifica.jpg",
+                    "fotos/oltreMare/_45A3612-Migliorato-NR.jpg",
+                    "fotos/oltreMare/_45A3615-Migliorato-NR.jpg",
+                    "fotos/oltreMare/_45A3625-Migliorato-NR-Modifica.jpg"
+                ]
+            },
+            {
+                id: 'casale_umbro',
+                title: "Casale Umbro",
+                badge: "Romantica",
+                description: "Incantevole casale ristrutturato con cura, immerso nella campagna umbra caratterizzata da colline morbide e boschi. Ideale per coppie e piccoli gruppi in cerca di intimità e contatto con la natura. Gli interni mantengono lo stile rustico toscano con arredi d'epoca e comfort moderni.",
+                location: "Umbria",
+                region: "umbria",
+                locationInfo: "Il Casale è situato nel cuore verde dell'Umbria, circondata da boschi di lecci e querce. Perfetto per escursioni a piedi e in mountain bike. Nelle vicinanze: Perugia, Assisi, e i bellissimi laghi umbri. Un luogo ideale per rigenerarsi.",
+                coordinates: "43.1083,12.3883",
+                price: 1200,
+                bedrooms: 2,
+                guests: 4,
+                bathrooms: 1,
+                image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&h=400&fit=crop",
+                features: [
+                    { icon: "fas fa-tree", title: "Giardino", value: "1500 mq" },
+                    { icon: "fas fa-fire", title: "Camino", value: "Funzionante" },
+                    { icon: "fas fa-book", title: "Libreria", value: "Con libri" },
+                    { icon: "fas fa-binoculars", title: "Osservazione Natura", value: "Perfetta" },
+                    { icon: "fas fa-dumbbell", title: "Zona Relax", value: "Esterna" },
+                    { icon: "fas fa-bicycle", title: "Biciclette", value: "Fornite" }
+                ],
+                gallery: [
+                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1570129477492-45c003cedd20?w=800&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+                ]
+            }
+        ];
+                renderProperties(allProperties);
+            }
+        );
+
+        // Carica i prezzi stagionali
+        fetch('prices.json')
+            .then(response => response.json())
+            .then(data => {
+                allPrices = data.prices;
+            })
+            .catch(error => console.error('Errore nel caricamento dei prezzi:', error));
+
+        // Funzione per ottenere il prezzo per una data specifica
+        function getPriceForDate(propertyId, date) {
+            if (liveBookingData?.configured) {
+                if (!liveBookingData.properties) {
+                    const property = allProperties.find(item => item.id === propertyId);
+                    return property ? property.price : 0;
+                }
+                const dateString = typeof date === 'string' ? date : date.toISOString().slice(0, 10);
+                const nightlyPrice = liveBookingData.dailyPrices.find(item =>
+                    item.property_id === propertyId &&
+                    item.night_date === dateString
+                );
+                if (nightlyPrice) return nightlyPrice.nightly_price;
+                const property = allProperties.find(item => item.id === propertyId);
+                return property ? property.price : 0;
+            }
+
+            const priceData = allPrices.find(p => p.propertyId === propertyId);
+            if (!priceData) {
+                // Fallback al prezzo di base dalla proprietà
+                const property = allProperties.find(p => p.id === propertyId);
+                return property ? property.price : 0;
+            }
+
+            const dateObj = new Date(date);
+            const seasonalPrice = priceData.seasonalPrices.find(season => {
+                const startDate = new Date(season.startDate);
+                const endDate = new Date(season.endDate);
+                return dateObj >= startDate && dateObj <= endDate;
+            });
+
+            return seasonalPrice ? seasonalPrice.pricePerNight : priceData.seasonalPrices[0].pricePerNight;
+        }
+
+        // Funzione per renderizzare le proprietà
+        function getThumbnailSource(imageSrc) {
+            const lastSlash = imageSrc.lastIndexOf('/');
+            const directory = imageSrc.slice(0, lastSlash);
+            if (directory.startsWith('fotos/') && /\.jpe?g$/i.test(imageSrc)) {
+                return `${directory}/thumbnails/${imageSrc.slice(lastSlash + 1)}`;
+            }
+            return imageSrc;
+        }
+
+        function renderProperties(properties) {
+            const grid = document.getElementById('propertiesGrid');
+            const resultCount = document.getElementById('resultsCount');
+            
+            if (properties.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                        <div class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <h3>Nessuna proprietà trovata</h3>
+                            <p>Prova a modificare i filtri per trovare la casa perfetta per te</p>
+                        </div>
+                    </div>
+                `;
+                resultCount.textContent = '0';
+                return;
+            }
+            
+            grid.innerHTML = properties.map(prop => `
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card" onclick="openPropertyModal('${prop.id}')">
+                        <div class="property-image">
+                            <img src="${getThumbnailSource(prop.image)}" alt="${prop.title}" loading="lazy" decoding="async">
+                            <span class="property-badge">${prop.badge}</span>
+                        </div>
+                        <div class="property-info">
+                            <h3 class="property-name">${prop.title}</h3>
+                            <div class="property-location">
+                                <i class="fas fa-map-marker-alt"></i> ${prop.location}
+                            </div>
+                            <p class="property-desc">${prop.description}</p>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <div class="feature-icon"><i class="fas fa-bed"></i></div>
+                                    <div class="feature-value">${prop.bedrooms} Camere</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                                    <div class="feature-value">${prop.guests} Ospiti</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon"><i class="fas fa-bath"></i></div>
+                                    <div class="feature-value">${prop.bathrooms} Bagni</div>
+                                </div>
+                            </div>
+                            <div class="property-price">€${prop.price.toLocaleString('it-IT')}<span style="font-size: 0.6em; font-weight: 400;">/notte</span></div>
+                            <button class="btn btn-view" onclick="openModalWithoutPropagation(event, '${prop.id}')">Scopri Dettagli</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            resultCount.textContent = properties.length;
+        }
+
+        // Funzione di filtraggio
+        function applyFilters() {
+            const location = document.getElementById('filterLocation').value;
+            const guests = parseInt(document.getElementById('filterGuests').value) || 0;
+            const maxPrice = parseInt(document.getElementById('filterPrice').value);
+            const bedrooms = parseInt(document.getElementById('filterBedrooms').value) || 0;
+
+            const filtered = allProperties.filter(prop => {
+                const locationMatch = !location || prop.region === location;
+                const guestsMatch = guests === 0 || prop.guests >= guests;
+                const priceMatch = prop.price <= maxPrice;
+                const bedroomsMatch = bedrooms === 0 || prop.bedrooms >= bedrooms;
+
+                return locationMatch && guestsMatch && priceMatch && bedroomsMatch;
+            });
+
+            renderProperties(filtered);
+        }
+
+        // Reset filtri
+        function resetFilters() {
+            document.getElementById('filterLocation').value = '';
+            document.getElementById('filterGuests').value = '';
+            document.getElementById('filterPrice').value = '3000';
+            document.getElementById('filterBedrooms').value = '';
+            document.getElementById('priceValue').textContent = '3000';
+            renderProperties(allProperties);
+        }
+
+        // Update prezzo display in tempo reale
+        document.getElementById('filterPrice')?.addEventListener('input', function() {
+            document.getElementById('priceValue').textContent = this.value;
+        });
+
+        // Apri modal con i dettagli della casa
+        function openPropertyModal(propertyId) {
+            const property = allProperties.find(p => p.id === propertyId);
+            if (!property) return;
+            
+            const modal = document.getElementById('propertyModal');
+            
+            // Header
+            document.getElementById('modalTitle').textContent = property.title;
+            
+            // Gallery
+            currentGalleryImages = property.gallery || [property.image];
+            currentGalleryIndex = 0;
+            document.getElementById('mainImage').src = currentGalleryImages[0];
+            const thumbsContainer = document.getElementById('galleryThumbs');
+            thumbsContainer.innerHTML = '';
+            currentGalleryImages.forEach((img, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = `gallery-thumb ${index === 0 ? 'active' : ''}`;
+                thumb.innerHTML = `<img src="${getThumbnailSource(img)}" alt="Foto ${index + 1}" loading="lazy" decoding="async">`;
+                thumb.onclick = () => changeImage(img, index);
+                thumbsContainer.appendChild(thumb);
+            });
+            
+            // Description
+            document.getElementById('modalDescription').textContent = property.description;
+            
+            // Location Info
+            document.getElementById('modalLocationInfo').textContent = property.locationInfo;
+            
+            // Features Grid
+            const featuresContainer = document.getElementById('modalFeatures');
+            featuresContainer.innerHTML = '';
+            property.features.forEach(feature => {
+                const featureDiv = document.createElement('div');
+                featureDiv.className = 'feature-item';
+                featureDiv.innerHTML = `
+                    <div class="feature-item-icon"><i class="${feature.icon}"></i></div>
+                    <div class="feature-item-title">${feature.title}</div>
+                    <div class="feature-item-value">${feature.value}</div>
+                `;
+                featuresContainer.appendChild(featureDiv);
+            });
+            
+            // Map
+            const mapIframe = document.getElementById('modalMap');
+            const coords = property.coordinates.split(',');
+            mapIframe.src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d${coords[1]}!3d${coords[0]}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2z${coords[0]},${coords[1]}!5e0!3m2!1sit!2sit!4v`;
+            
+            // Price
+            document.getElementById('modalPrice').textContent = property.price.toLocaleString('it-IT');
+            
+            // Minimum Stay
+            document.getElementById('minimumStayInfo').textContent = (property.minimumStay || 3) + ' notti';
+            
+            // Calendar
+            currentPropertyCalendar = property;
+            currentCalendarMonth = new Date();
+            updateCalendarDataStatus();
+            renderCalendar();
+            
+            // Mostra modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // CALENDAR VARIABLES & FUNCTIONS
+        let currentPropertyCalendar = null;
+        let currentCalendarMonth = new Date();
+        function isDateInAvailablePeriods(date, availablePeriods) {
+            if (!availablePeriods) return false;
+            return availablePeriods.some(period => {
+                const startDate = new Date(period.startDate);
+                const endDate = new Date(period.endDate);
+                return date >= startDate && date <= endDate;
+            });
+        }
+
+        function formatLocalDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        function isDateAvailableFromSupabase(dateString, propertyId) {
+            const isUnavailable = (liveBookingData?.unavailable || []).some(period =>
+                period.property_id === propertyId &&
+                dateString >= period.start_date &&
+                dateString < period.end_date
+            );
+            return !isUnavailable;
+        }
+
+        function updateCalendarDataStatus() {
+            const status = document.getElementById('calendarDataStatus');
+            if (!liveBookingData?.configured) {
+                status.textContent = '';
+                return;
+            }
+
+            if (liveBookingData.stale) {
+                const cachedAt = liveBookingData.updatedAt
+                    ? new Date(liveBookingData.updatedAt).toLocaleString('it-IT')
+                    : null;
+                status.textContent = cachedAt
+                    ? `Connessione al calendario non disponibile. Mostriamo l'ultima copia salvata (${cachedAt}); verifica la disponibilità prima di confermare.`
+                    : 'Connessione al calendario non disponibile. Le date mostrate non sono aggiornate: verifica manualmente la disponibilità.';
+                return;
+            }
+
+            status.textContent = `Disponibilità e tariffe aggiornate: ${new Date(liveBookingData.updatedAt).toLocaleString('it-IT')}.`;
+        }
+
+        function renderCalendar() {
+            if (!currentPropertyCalendar) return;
+
+            const year = currentCalendarMonth.getFullYear();
+            const month = currentCalendarMonth.getMonth();
+            
+            // Update header
+            const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
+                              'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+            document.getElementById('calendarMonth').textContent = `${monthNames[month]} ${year}`;
+            
+            // Get first day and number of days in month
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            // Render calendar grid
+            const calendarGrid = document.getElementById('calendarGrid');
+            calendarGrid.innerHTML = '';
+            
+            // Day headers
+            const dayHeaders = ['L', 'M', 'M', 'G', 'V', 'S', 'D'];
+            dayHeaders.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.textContent = day;
+                calendarGrid.appendChild(header);
+            });
+            
+            // Empty cells for days before month starts
+            const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1; // Adjust for Monday start
+            for (let i = 0; i < adjustedFirstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day empty';
+                calendarGrid.appendChild(emptyDay);
+            }
+            
+            // Days of month
+            const availablePeriods = currentPropertyCalendar.availablePeriods || [];
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'calendar-day';
+                dayCell.textContent = day;
+                
+                const currentDate = new Date(year, month, day);
+                const dateString = formatLocalDate(currentDate);
+                const isAvailable = liveBookingData?.configured
+                    ? isDateAvailableFromSupabase(dateString, currentPropertyCalendar.id)
+                    : isDateInAvailablePeriods(currentDate, availablePeriods);
+
+                if (isAvailable) {
+                    dayCell.classList.add('available');
+                } else {
+                    dayCell.classList.add('booked');
+                }
+                
+                calendarGrid.appendChild(dayCell);
+            }
+        }
+
+        function prevMonth() {
+            currentCalendarMonth.setMonth(currentCalendarMonth.getMonth() - 1);
+            renderCalendar();
+        }
+
+        function nextMonth() {
+            currentCalendarMonth.setMonth(currentCalendarMonth.getMonth() + 1);
+            renderCalendar();
+        }
+
+        // Cambia immagine nella gallery
+        function changeImage(imageSrc, index) {
+            currentGalleryIndex = index;
+            document.getElementById('mainImage').src = imageSrc;
+            
+            // Aggiorna active thumbnail
+            const thumbs = document.querySelectorAll('.gallery-thumb');
+            thumbs.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        function showLightboxImage(index) {
+            if (!currentGalleryImages.length) return;
+            currentGalleryIndex = (index + currentGalleryImages.length) % currentGalleryImages.length;
+            const image = document.getElementById('lightboxImage');
+            image.src = currentGalleryImages[currentGalleryIndex];
+            image.alt = `${document.getElementById('modalTitle').textContent} - Foto ${currentGalleryIndex + 1}`;
+            document.getElementById('lightboxCounter').textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+            changeImage(currentGalleryImages[currentGalleryIndex], currentGalleryIndex);
+        }
+
+        function openImageViewer(index = currentGalleryIndex) {
+            if (!currentGalleryImages.length) return;
+            showLightboxImage(index);
+            const lightbox = document.getElementById('imageLightbox');
+            lightbox.classList.add('active');
+            lightbox.focus();
+        }
+
+        function navigateImageViewer(direction) {
+            showLightboxImage(currentGalleryIndex + direction);
+        }
+
+        function closeImageViewer() {
+            document.getElementById('imageLightbox').classList.remove('active');
+        }
+
+        document.getElementById('imageLightbox')?.addEventListener('click', function(event) {
+            if (event.target === this) closeImageViewer();
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (!document.getElementById('imageLightbox').classList.contains('active')) return;
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                navigateImageViewer(-1);
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                navigateImageViewer(1);
+            } else if (event.key === 'Escape') {
+                closeImageViewer();
+            }
+        });
+
+        // Apri modal senza propagare il click
+        function openModalWithoutPropagation(e, propId) {
+            e.stopPropagation();
+            openPropertyModal(propId);
+        }
+
+        // Chiudi modal
+        function closePropertyModal() {
+            const modal = document.getElementById('propertyModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Chiudi modal cliccando su overlay
+        document.getElementById('propertyModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePropertyModal();
+            }
+        });
+
+        // Booking action
+        let currentBookingProperty = null;
+
+        function bookingAction() {
+            const modalTitle = document.getElementById('modalTitle').textContent;
+            const property = allProperties.find(p => p.title === modalTitle);
+            
+            if (property) {
+                openBookingModal(property);
+            }
+        }
+
+        function openBookingModal(property) {
+            currentBookingProperty = property;
+            
+            // Popola il nome della proprietà
+            document.getElementById('bookingPropertyName').textContent = property.title;
+            document.getElementById('summaryProperty').textContent = property.title;
+            
+            // Imposta il minimo di date (oggi)
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkInDate').min = today;
+            document.getElementById('checkOutDate').min = today;
+            
+            // Reset form
+            document.getElementById('bookingForm').reset();
+            document.getElementById('summaryNights').textContent = '-';
+            document.getElementById('summaryPricePerNight').textContent = '0';
+            document.getElementById('summaryTotal').textContent = '0';
+            document.getElementById('summaryCheckIn').textContent = '-';
+            document.getElementById('summaryCheckOut').textContent = '-';
+            
+            // Mostra il modal
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentBookingProperty = null;
+        }
+
+        // Chiudi modal cliccando su overlay
+        document.getElementById('bookingModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
+            }
+        });
+
+        function updateBookingSummary() {
+            if (!currentBookingProperty) return;
+
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            
+            document.getElementById('summaryCheckIn').textContent = checkInDate || '-';
+            document.getElementById('summaryCheckOut').textContent = checkOutDate || '-';
+
+            if (!checkInDate || !checkOutDate) {
+                document.getElementById('summaryNights').textContent = '-';
+                document.getElementById('summaryPricePerNight').textContent = '0';
+                document.getElementById('summaryTotal').textContent = '0';
+                return;
+            }
+
+            const checkIn = new Date(checkInDate);
+            const checkOut = new Date(checkOutDate);
+
+            if (checkOut <= checkIn) {
+                document.getElementById('summaryNights').textContent = '-';
+                document.getElementById('summaryPricePerNight').textContent = '0';
+                document.getElementById('summaryTotal').textContent = '0';
+                return;
+            }
+
+            // Calcola le notti
+            const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+            
+            // Calcola il prezzo medio per notte considerando le variazioni stagionali
+            let totalPrice = 0;
+            for (let i = 0; i < nights; i++) {
+                const currentDate = new Date(checkIn);
+                currentDate.setDate(currentDate.getDate() + i);
+                const dateStr = currentDate.toISOString().split('T')[0];
+                const dayPrice = getPriceForDate(currentBookingProperty.id, dateStr);
+                totalPrice += dayPrice;
+            }
+            
+            const averagePrice = Math.round(totalPrice / nights);
+
+            document.getElementById('summaryNights').textContent = nights;
+            document.getElementById('summaryPricePerNight').textContent = averagePrice.toLocaleString('it-IT');
+            document.getElementById('summaryTotal').textContent = totalPrice.toLocaleString('it-IT');
+        }
+
+        async function submitBooking(event) {
+            event.preventDefault();
+
+            // Verifica che EmailJS sia caricato
+            if (typeof emailjs === 'undefined') {
+                alert('❌ Errore: Libreria EmailJS non caricata. Per favore ricarica la pagina.');
+                console.error('EmailJS non è disponibile', typeof emailjs);
+                return;
+            }
+
+            if (!currentBookingProperty) {
+                alert('Errore: proprietà non trovata');
+                return;
+            }
+
+            const guestName = document.getElementById('guestName').value;
+            const guestEmail = document.getElementById('guestEmail').value;
+            const guestPhone = document.getElementById('guestPhone').value;
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            const guestCount = document.getElementById('guestCount').value;
+            const guestMessage = document.getElementById('guestMessage').value;
+
+            if (!guestName || !guestEmail || !guestPhone || !checkInDate || !checkOutDate || !guestCount) {
+                alert('Per favore, compila tutti i campi obbligatori');
+                return;
+            }
+
+            const checkIn = new Date(checkInDate);
+            const checkOut = new Date(checkOutDate);
+            if (checkOut <= checkIn) {
+                alert('La data di check-out deve essere successiva al check-in.');
+                return;
+            }
+            const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+            const minimumStay = currentBookingProperty.minimumStay || 3;
+            const maximumStay = currentBookingProperty.maximumStay || null;
+            if (nights < minimumStay) {
+                alert(`Il soggiorno minimo per questa struttura è di ${minimumStay} notti.`);
+                return;
+            }
+            if (maximumStay !== null && nights > maximumStay) {
+                alert(`Il soggiorno massimo per questa struttura è di ${maximumStay} notti.`);
+                return;
+            }
+
+            // Calcola il prezzo totale
+            let totalPrice = 0;
+            for (let i = 0; i < nights; i++) {
+                const currentDate = new Date(checkIn);
+                currentDate.setDate(currentDate.getDate() + i);
+                const dateStr = currentDate.toISOString().split('T')[0];
+                const dayPrice = getPriceForDate(currentBookingProperty.id, dateStr);
+                totalPrice += dayPrice;
+            }
+
+            // Prepara il messaggio email in HTML
+            const emailContent = `
+                <h2>Nuova Richiesta di Prenotazione</h2>
+                <h3>${currentBookingProperty.title}</h3>
+                
+                <h4>Dati Ospite</h4>
+                <p><strong>Nome:</strong> ${guestName}</p>
+                <p><strong>Email:</strong> ${guestEmail}</p>
+                <p><strong>Telefono:</strong> ${guestPhone}</p>
+                <p><strong>Numero Ospiti:</strong> ${guestCount}</p>
+                
+                <h4>Dettagli Soggiorno</h4>
+                <p><strong>Check-in:</strong> ${checkInDate}</p>
+                <p><strong>Check-out:</strong> ${checkOutDate}</p>
+                <p><strong>Notti:</strong> ${nights}</p>
+                
+                <h4>Riepilogo Prezzo</h4>
+                <p><strong>Totale:</strong> €${totalPrice.toLocaleString('it-IT')}</p>
+                
+                ${guestMessage ? `<h4>Messaggio Ospite</h4><p>${guestMessage}</p>` : ''}
+                
+                <hr>
+                <p>Contattare l'ospite per confermare la prenotazione.</p>
+            `;
+
+            try {
+                // Disabilita il pulsante durante l'invio
+                const submitBtn = document.querySelector('.btn-booking-submit');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Invio in corso...';
+
+                // Formatta le date in italiano (DD/MM/YYYY) - versione robusta
+                const formatDate = (dateStr) => {
+                    if (!dateStr) return '';
+                    const [year, month, day] = dateStr.split('-');
+                    return `${day}/${month}/${year}`;
+                };
+
+                // Prepara i parametri per EmailJS
+                const templateParams = {
+                    to_email: 'gianluca.collu95@gmail.com',
+                    from_name: guestName,
+                    guest_email: guestEmail,
+                    guest_phone: guestPhone,
+                    guest_count: guestCount,
+                    property_name: currentBookingProperty.title,
+                    check_in: formatDate(checkInDate),
+                    check_out: formatDate(checkOutDate),
+                    nights: nights,
+                    total_price: totalPrice.toLocaleString('it-IT'),
+                    guest_message: guestMessage
+                };
+
+                // DEBUG: Mostra i dati che stiamo inviando
+                console.log('📧 Dati email da inviare:', templateParams);
+
+                // Invia l'email
+                await emailjs.send('service_p5bmwef', 'template_tb0wosf', templateParams);
+
+                // Mostra messaggio di successo
+                alert('Richiesta inviata con successo. Riceverai un riscontro a ' + guestEmail + '. La prenotazione non è confermata finché non riceverai una mia conferma.');
+
+                // Chiudi il modal e resetta il form
+                closeBookingModal();
+                document.getElementById('bookingForm').reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Invia Richiesta';
+            } catch (error) {
+                console.error('Errore nell\'invio:', error);
+                alert('❌ Errore nell\'invio della prenotazione.\n\nPer favore contatta: gianluca.collu95@gmail.com\n\nErrore: ' + error.message);
+                const submitBtn = document.querySelector('.btn-booking-submit');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Invia Richiesta';
+            }
+        }
+
+
+        // Popola il page title
+        function populatePageTitle(pageTitle) {
+            if (pageTitle) {
+                document.title = pageTitle;
+            }
+        }
+
+        // Popola la navigation
+        function populateNavigation(headerData) {
+            if (!headerData || !headerData.navigation) return;
+            
+            const navbarMenu = document.getElementById('navbarMenu');
+            if (navbarMenu) {
+                navbarMenu.innerHTML = headerData.navigation.map(nav => `
+                    <li class="nav-item">
+                        <a class="nav-link" href="${nav.href}">${nav.label}</a>
+                    </li>
+                `).join('');
+            }
+        }
+
+        // Popola il footer
+        function populateFooter(footerData) {
+            if (!footerData) return;
+            
+            const footerCopyright = document.getElementById('footerCopyright');
+            if (footerCopyright) {
+                footerCopyright.textContent = `&copy; ${new Date().getFullYear()} ${footerData.company} - ${footerData.tagline}. Tutti i diritti riservati.`;
+            }
+        }
+
+        // Popola l'header/navbar
+        function populateHeader(headerData) {
+            if (!headerData) return;
+            
+            const brandName = document.querySelector('.navbar-brand');
+            if (brandName) {
+                brandName.textContent = '';
+                brandName.innerHTML = `${headerData.brandName.split(' ')[0]} <span>${headerData.brandName.split(' ')[1]}</span>`;
+            }
+        }
+
+        // Popola la hero section
+        function populateHero(heroData) {
+            if (!heroData) return;
+            
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.querySelector('h1').textContent = heroData.title || '';
+                heroContent.querySelector('p').textContent = heroData.subtitle || '';
+                const btn = heroContent.querySelector('a.btn-discover');
+                if (btn) {
+                    btn.textContent = heroData.buttonText || '';
+                    btn.href = heroData.buttonLink || '#';
+                }
+            }
+        }
+
+        // Popola la sezione Cases
+        function populateCasesSection(casesSectionData) {
+            if (!casesSectionData) return;
+            
+            const casesSection = document.querySelector('.case-section .section-title');
+            if (casesSection) {
+                casesSection.querySelector('h2').textContent = casesSectionData.title || '';
+                casesSection.querySelector('p').textContent = casesSectionData.subtitle || '';
+            }
+        }
+
+        // Popola la sezione Territorio
+        function populateTerritorySection(territoryData) {
+            if (!territoryData) return;
+            
+            // Popola l'immagine
+            const territoryImage = document.querySelector('.territory-image img');
+            if (territoryImage && territoryData.imageUrl) {
+                territoryImage.src = territoryData.imageUrl;
+                territoryImage.alt = territoryData.mainTitle || 'Paesaggio';
+            }
+            
+            // Popola titolo e descrizione
+            const territoryContent = document.querySelector('.territory-content');
+            if (territoryContent) {
+                const h3 = territoryContent.querySelector('h3');
+                if (h3) h3.textContent = territoryData.mainTitle || 'Cuore della Toscana';
+                
+                const p = territoryContent.querySelector('p');
+                if (p) p.textContent = territoryData.mainDescription || '';
+            }
+            
+            // Popola gli highlights dal JSON
+            const highlightsContainer = document.querySelector('.territory-highlights');
+            if (highlightsContainer && territoryData.highlights && territoryData.highlights.length > 0) {
+                highlightsContainer.innerHTML = territoryData.highlights.map(highlight => `
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="${highlight.icon}"></i>
+                        </div>
+                        <div class="highlight-text">
+                            <h4>${highlight.title}</h4>
+                            <p>${highlight.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Popola la sezione About
+        function populateAboutSection(aboutData) {
+            if (!aboutData) return;
+            
+            const aboutContent = document.querySelector('.about-content');
+            if (!aboutContent) return;
+            
+            // Popola il titolo principale
+            const titleElement = aboutContent.querySelector('h3');
+            if (titleElement) {
+                titleElement.textContent = aboutData.mainTitle || 'Una Passione per l\'Ospitalità';
+            }
+            
+            const paragraphsContainer = aboutContent.querySelector('.about-paragraphs');
+            if (paragraphsContainer && aboutData.paragraphs) {
+                paragraphsContainer.replaceChildren(...aboutData.paragraphs.map(text => {
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = text;
+                    return paragraph;
+                }));
+            }
+
+            const welcome = aboutContent.querySelector('.about-welcome');
+            if (welcome) welcome.textContent = aboutData.closing || '';
+            
+            // Popola l'immagine
+            const aboutImage = document.querySelector('.about-image img');
+            if (aboutImage && aboutData.imageUrl) {
+                aboutImage.src = aboutData.imageUrl;
+                aboutImage.alt = aboutData.mainTitle || 'Chi Sono';
+            }
+        }
+
+        // Popola la sezione Contact
+        function populateContactSection(contactData) {
+            if (!contactData) return;
+            
+            // Popola titolo e descrizione
+            const contactSection = document.querySelector('.contact-section');
+            if (contactSection) {
+                const h2 = contactSection.querySelector('h2');
+                if (h2) h2.textContent = contactData.title || 'Contattami';
+                
+                const p = contactSection.querySelector('.contact-content > p');
+                if (p) p.textContent = contactData.description || '';
+            }
+            
+            // Popola i metodi di contatto
+            const contactMethodsContainer = document.querySelector('.contact-methods');
+            if (contactMethodsContainer && contactData.methods && contactData.methods.length > 0) {
+                contactMethodsContainer.innerHTML = contactData.methods.map(method => `
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="${method.icon}"></i>
+                        </div>
+                        <h4>${method.title}</h4>
+                        <p>${method.value}</p>
+                    </div>
+                `).join('');
+            }
+            
+            // Popola il pulsante
+            const contactButton = document.querySelector('.btn-contact');
+            if (contactButton && contactData.buttonText) {
+                contactButton.textContent = contactData.buttonText;
+            }
+        }
+
+        // Popola i filtri
+        function populateFilters(filtersData) {
+            if (!filtersData) return;
+            
+            // Popola zone
+            const filterLocation = document.getElementById('filterLocation');
+            if (filterLocation && filtersData.locations) {
+                filterLocation.innerHTML = filtersData.locations.map(location => 
+                    `<option value="${location.value}">${location.label}</option>`
+                ).join('');
+            }
+            
+            // Popola ospiti
+            const filterGuests = document.getElementById('filterGuests');
+            if (filterGuests && filtersData.guests) {
+                filterGuests.innerHTML = filtersData.guests.map(guest => 
+                    `<option value="${guest.value}">${guest.label}</option>`
+                ).join('');
+            }
+            
+            // Popola range di prezzo
+            const filterPrice = document.getElementById('filterPrice');
+            if (filterPrice && filtersData.priceRange) {
+                filterPrice.min = filtersData.priceRange.min;
+                filterPrice.max = filtersData.priceRange.max;
+                filterPrice.step = filtersData.priceRange.step;
+                filterPrice.value = filtersData.priceRange.default;
+                
+                const priceValue = document.getElementById('priceValue');
+                if (priceValue) {
+                    priceValue.textContent = filtersData.priceRange.default;
+                }
+            }
+            
+            // Popola titolo dei filtri
+            const filtersModalTitle = document.querySelector('.filters-modal-header h2');
+            if (filtersModalTitle) {
+                filtersModalTitle.textContent = filtersData.title || 'Trova la tua casa ideale';
+            }
+        }
+
+        // Inizializza al caricamento della pagina
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProperties(allProperties);
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth scroll per i link interni
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
