@@ -1031,6 +1031,7 @@
             justify-content: center;
             background: rgba(0, 0, 0, 0.96);
             color: white;
+            touch-action: pan-y;
         }
 
         .image-lightbox.active {
@@ -1048,34 +1049,46 @@
 
         .lightbox-control {
             position: absolute;
+            z-index: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 48px;
             height: 56px;
             border: 0;
-            background: rgba(255, 255, 255, 0.14);
+            background: rgba(0, 0, 0, 0.72);
             color: white;
             font-size: 1.4rem;
             cursor: pointer;
+            touch-action: manipulation;
             transition: background 0.2s ease;
         }
 
         .lightbox-control:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox-control:focus-visible {
+            outline: 2px solid white;
+            outline-offset: 2px;
         }
 
         .lightbox-close {
             top: 18px;
             right: 18px;
+            z-index: 3;
         }
 
         .lightbox-previous {
-            left: 18px;
+            top: 50%;
+            left: 8px;
+            transform: translateY(-50%);
         }
 
         .lightbox-next {
-            right: 18px;
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
         }
 
         .lightbox-counter {
@@ -2032,6 +2045,8 @@
         let liveBookingData = null;
         let currentGalleryImages = [];
         let currentGalleryIndex = 0;
+        let lightboxImageLoadId = 0;
+        let lightboxTouchStartX = null;
 
         function localizeAndApplyLiveData(properties) {
             let localizedProperties = window.SaRuxiI18n.localizeProperties(properties);
@@ -2507,10 +2522,22 @@
             if (!currentGalleryImages.length) return;
             currentGalleryIndex = (index + currentGalleryImages.length) % currentGalleryImages.length;
             const image = document.getElementById('lightboxImage');
-            image.src = currentGalleryImages[currentGalleryIndex];
+            const imageSrc = currentGalleryImages[currentGalleryIndex];
+            const previewSrc = getThumbnailSource(imageSrc);
+            const displaySrc = getGalleryDisplaySource(imageSrc);
+            const loadId = ++lightboxImageLoadId;
+            image.src = previewSrc;
             image.alt = `${document.getElementById('modalTitle').textContent} - ${window.SaRuxiI18n.translate('ui.photoNumber', { number: currentGalleryIndex + 1 })}`;
             document.getElementById('lightboxCounter').textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
-            changeImage(currentGalleryImages[currentGalleryIndex], currentGalleryIndex);
+            changeImage(imageSrc, currentGalleryIndex);
+
+            if (displaySrc !== previewSrc) {
+                const displayImage = new Image();
+                displayImage.onload = () => {
+                    if (loadId === lightboxImageLoadId) image.src = displaySrc;
+                };
+                displayImage.src = displaySrc;
+            }
         }
 
         function openImageViewer(index = currentGalleryIndex) {
@@ -2532,6 +2559,17 @@
         document.getElementById('imageLightbox')?.addEventListener('click', function(event) {
             if (event.target === this) closeImageViewer();
         });
+
+        document.getElementById('imageLightbox')?.addEventListener('touchstart', function(event) {
+            if (event.touches.length === 1) lightboxTouchStartX = event.touches[0].clientX;
+        }, { passive: true });
+
+        document.getElementById('imageLightbox')?.addEventListener('touchend', function(event) {
+            if (lightboxTouchStartX === null || !event.changedTouches.length) return;
+            const swipeDistance = event.changedTouches[0].clientX - lightboxTouchStartX;
+            lightboxTouchStartX = null;
+            if (Math.abs(swipeDistance) >= 48) navigateImageViewer(swipeDistance < 0 ? 1 : -1);
+        }, { passive: true });
 
         document.addEventListener('keydown', function(event) {
             if (!document.getElementById('imageLightbox').classList.contains('active')) return;
