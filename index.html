@@ -142,7 +142,7 @@
         .hero {
             height: 100vh;
             background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%), 
-                        url('fotos/website/015A9095 - Copia.jpg') center/cover;
+                        url('fotos/website/hero-desktop.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -613,6 +613,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                background-image: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%),
+                    url('fotos/website/hero-mobile.jpg');
+            }
+
+            .contact-section {
+                background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.8) 100%),
+                    url('fotos/website/contact-mobile.jpg');
+            }
+
             .navbar > .container {
                 flex-wrap: wrap;
             }
@@ -782,7 +792,7 @@
         .contact-section {
             padding: 6rem 0;
             background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.8) 100%),
-                        url('fotos/website/_45A3516-Migliorato-NR-Modifica.jpg') center/cover;
+                        url('fotos/website/contact-desktop.jpg') center/cover;
             color: white;
             text-align: center;
         }
@@ -2171,6 +2181,15 @@
             return imageSrc;
         }
 
+        function getGalleryDisplaySource(imageSrc) {
+            const lastSlash = imageSrc.lastIndexOf('/');
+            const directory = imageSrc.slice(0, lastSlash);
+            if (directory.startsWith('fotos/') && /\.jpe?g$/i.test(imageSrc)) {
+                return `${directory}/gallery/${imageSrc.slice(lastSlash + 1)}`;
+            }
+            return imageSrc;
+        }
+
         function renderProperties(properties) {
             const grid = document.getElementById('propertiesGrid');
             const resultsInfo = document.getElementById('resultsInfo');
@@ -2272,7 +2291,7 @@
             // Gallery
             currentGalleryImages = property.gallery || [property.image];
             currentGalleryIndex = 0;
-            document.getElementById('mainImage').src = currentGalleryImages[0];
+            document.getElementById('mainImage').src = getGalleryDisplaySource(currentGalleryImages[0]);
             const thumbsContainer = document.getElementById('galleryThumbs');
             thumbsContainer.innerHTML = '';
             currentGalleryImages.forEach((img, index) => {
@@ -2471,7 +2490,7 @@
         // Cambia immagine nella gallery
         function changeImage(imageSrc, index) {
             currentGalleryIndex = index;
-            document.getElementById('mainImage').src = imageSrc;
+            document.getElementById('mainImage').src = getGalleryDisplaySource(imageSrc);
             
             // Aggiorna active thumbnail
             const thumbs = document.querySelectorAll('.gallery-thumb');
