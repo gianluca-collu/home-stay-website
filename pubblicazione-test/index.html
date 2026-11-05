@@ -1,0 +1,2998 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.3.2/css/flag-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- EmailJS - File locale (non CDN) -->
+    <script src="emailjs.min.js"></script>
+    
+    <script>
+        // Inizializzazione EmailJS - semplice e diretta
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init('L2r4GhyRqoDYST8bA');
+            console.log('✅ EmailJS inizializzato con successo');
+        } else {
+            console.error('❌ EmailJS non caricato - verifica che emailjs.min.js esista');
+        }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #1a1a1a !important;
+            letter-spacing: 2px;
+        }
+        
+        .navbar-brand span {
+            color: #c9a961;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-left: 0.75rem;
+        }
+
+        .language-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            min-width: 42px;
+            height: 36px;
+            padding: 0 0.35rem;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background: transparent;
+            color: #333;
+            font: inherit;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .language-button:hover,
+        .language-button:focus-visible {
+            border-color: #c9a961;
+            outline: none;
+        }
+
+        .language-button.is-active {
+            border-color: #c9a961;
+            background: #f7f2e7;
+        }
+
+        .language-flag.fi {
+            width: 1.2rem;
+            height: 0.9rem;
+            font-size: 1rem;
+            line-height: 1;
+        }
+        
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-left: 2rem;
+            color: #333 !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #c9a961;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%), 
+                        url('fotos/website/015A9095 - Copia.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: -70px;
+            padding-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            letter-spacing: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+        
+        .btn-discover {
+            background: #c9a961;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .btn-discover:hover {
+            background: #b8954a;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        /* ===== CASE SECTION ===== */
+        .case-section {
+            padding: 6rem 0;
+            background: #fafafa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .section-title h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #c9a961;
+        }
+        
+        .property-card {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .property-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background: #eee;
+        }
+        
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .property-card:hover .property-image img {
+            transform: scale(1.08);
+        }
+        
+        .property-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #c9a961;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .property-info {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .property-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        
+        .property-location {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .property-desc {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .property-features {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: #c9a961;
+            margin-bottom: 0.3rem;
+        }
+        
+        .feature-value {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+        }
+        
+        .property-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #c9a961;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-view {
+            background: transparent;
+            color: #c9a961;
+            border: 2px solid #c9a961;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        .btn-view:hover {
+            background: #c9a961;
+            color: white;
+        }
+        
+        /* ===== FILTERS SECTION ===== */
+        .filter-button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            gap: 2rem;
+        }
+
+        .btn-filters-toggle {
+            background: white;
+            border: 2px solid #c9a961;
+            color: #c9a961;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            box-shadow: 0 2px 8px rgba(201, 169, 97, 0.1);
+        }
+
+        .btn-filters-toggle:hover {
+            background: #c9a961;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
+        }
+
+        .results-info-top {
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        .results-info-top span {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* Filters Modal */
+        .filters-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2500;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .filters-modal-overlay.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 2rem;
+            overflow-y: auto;
+        }
+
+        .filters-modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 700px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.4s ease-out;
+            position: relative;
+        }
+
+        .filters-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .filters-modal-header h2 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .filters-modal-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #999;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .filters-modal-close:hover {
+            color: #c9a961;
+            transform: rotate(90deg);
+        }
+
+        .filters-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .filter-group label i {
+            color: #c9a961;
+            font-size: 1.1rem;
+            width: 18px;
+            text-align: center;
+        }
+
+        .filter-group select,
+        .filter-group input[type="range"] {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .filter-group select:hover,
+        .filter-group select:focus {
+            border-color: #c9a961;
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+            outline: none;
+        }
+
+        .filter-group select {
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .filter-group input[type="range"] {
+            padding: 0;
+            cursor: pointer;
+            height: 6px;
+        }
+
+        .filter-group input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #c9a961;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .filter-group input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #c9a961;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .price-display {
+            margin-top: 0.7rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #c9a961;
+        }
+
+        .filters-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-filter,
+        .btn-filter-reset {
+            padding: 0.9rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-filter {
+            background: #c9a961;
+            color: white;
+        }
+
+        .btn-filter:hover {
+            background: #b8954a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
+        }
+
+        .btn-filter-reset {
+            background: transparent;
+            color: #999;
+            border: 1px solid #ddd;
+        }
+
+        .btn-filter-reset:hover {
+            background: #fafafa;
+            border-color: #c9a961;
+            color: #c9a961;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar > .container {
+                flex-wrap: wrap;
+            }
+
+            .navbar-brand {
+                order: 0;
+                font-size: 1.45rem;
+                letter-spacing: 1px;
+            }
+
+            .navbar-toggler {
+                order: 1;
+                margin-left: auto;
+            }
+
+            .language-switcher {
+                order: 2;
+                flex: 1 0 100%;
+                justify-content: flex-end;
+                margin-left: 0;
+                padding-top: 0.35rem;
+            }
+
+            .navbar-collapse {
+                order: 3;
+                flex-basis: 100%;
+            }
+
+            .filter-button-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-filters-toggle {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .filters-modal-content {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .filters-body {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .filters-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== TERRITORY SECTION ===== */
+        .territory-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .territory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .territory-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            height: 500px;
+        }
+        
+        .territory-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .territory-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+        
+        .territory-content p {
+            font-size: 1.05rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .territory-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .highlight-item {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .highlight-icon {
+            font-size: 2rem;
+            color: #c9a961;
+            flex-shrink: 0;
+        }
+        
+        .highlight-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        
+        .highlight-text p {
+            font-size: 0.95rem;
+            color: #999;
+            margin: 0;
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            padding: 6rem 0;
+            background: #fafafa;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            height: 500px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .about-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+        
+        .about-content p {
+            font-size: 1.05rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .about-welcome { margin-top: 2rem; color: #1a1a1a !important; font-weight: 700; }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.8) 100%),
+                        url('fotos/website/_45A3516-Migliorato-NR-Modifica.jpg') center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: #ddd;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-method {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #c9a961;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-method h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .contact-method p {
+            font-size: 1rem;
+            color: #bbb;
+            margin: 0;
+        }
+        
+        .btn-contact {
+            background: #c9a961;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            border: none;
+            margin-top: 2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        .btn-contact:hover {
+            background: #b8954a;
+            transform: translateY(-3px);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a1a;
+            color: #bbb;
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-privacy-link,
+        .privacy-consent a {
+            color: #d7bd82;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer-privacy-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+        }
+        
+        /* ===== MODAL DETTAGLI CASA ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease-out;
+            overflow-y: auto;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.4s ease-out;
+            position: relative;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+        }
+        
+        .modal-header h2 {
+            font-size: 2rem;
+            margin: 0;
+            color: #1a1a1a;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            color: #c9a961;
+            transform: scale(1.1);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        /* Gallery */
+        .gallery-section {
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-main {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: #eee;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: fadeIn 0.4s ease-out;
+            cursor: zoom-in;
+        }
+
+        .gallery-fullscreen-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 1;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            background: rgba(0, 0, 0, 0.65);
+            color: white;
+            cursor: pointer;
+        }
+
+        .gallery-fullscreen-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .image-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.96);
+            color: white;
+        }
+
+        .image-lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-image {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 92vw;
+            max-height: 88vh;
+            object-fit: contain;
+        }
+
+        .lightbox-control {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 56px;
+            border: 0;
+            background: rgba(255, 255, 255, 0.14);
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .lightbox-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-close {
+            top: 18px;
+            right: 18px;
+        }
+
+        .lightbox-previous {
+            left: 18px;
+        }
+
+        .lightbox-next {
+            right: 18px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.95rem;
+        }
+        
+        .gallery-thumbs {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        
+        .gallery-thumb {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #eee;
+        }
+        
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-thumb:hover {
+            border-color: #c9a961;
+            transform: scale(1.05);
+        }
+        
+        .gallery-thumb.active {
+            border-color: #c9a961;
+        }
+        
+        .gallery-thumb img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Description Section */
+        .description-section {
+            margin-bottom: 3rem;
+        }
+        
+        .description-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .description-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description-collapsed {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+            line-clamp: 5;
+            overflow: hidden;
+        }
+
+        .description-toggle {
+            padding: 0;
+            border: 0;
+            background: none;
+            color: #806735;
+            font: inherit;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+        }
+        
+        /* Full Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #fafafa;
+            border-radius: 4px;
+        }
+        
+        .feature-item {
+            text-align: center;
+        }
+        
+        .feature-item-icon {
+            font-size: 2.5rem;
+            color: #c9a961;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-item-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.3rem;
+        }
+        
+        .feature-item-value {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Map Section */
+        .map-section {
+            margin: 3rem 0;
+        }
+        
+        .map-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #eee;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Pricing & CTA */
+        .modal-pricing {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+            border-radius: 0 0 8px 8px;
+            gap: 2rem;
+        }
+        
+        .price-info h4 {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #c9a961;
+        }
+        
+        .price-amount span {
+            font-size: 0.6em;
+            font-weight: 400;
+        }
+        
+        .btn-booking {
+            background: #c9a961;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+        
+        .btn-booking:hover {
+            background: #b8954a;
+            transform: translateY(-2px);
+        }
+
+        /* ===== BOOKING FORM STYLES ===== */
+        .booking-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-form-group label {
+            display: block;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .booking-form-group input,
+        .booking-form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .booking-form-group input:focus,
+        .booking-form-group textarea:focus {
+            outline: none;
+            border-color: #c9a961;
+            box-shadow: 0 0 5px rgba(201, 169, 97, 0.3);
+        }
+
+        .privacy-consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            margin: 1.25rem 0;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .privacy-consent input {
+            flex: 0 0 18px;
+            width: 18px;
+            height: 18px;
+            margin-top: 0.15rem;
+            accent-color: #c9a961;
+        }
+
+        .privacy-consent label {
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .privacy-helper {
+            margin: -0.75rem 0 1.5rem;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .booking-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .booking-summary {
+            background: #f9f7f4;
+            padding: 1.5rem;
+            border-left: 4px solid #c9a961;
+            border-radius: 4px;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .booking-summary h4 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-size: 1.1rem;
+        }
+
+        .booking-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .booking-summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0.8rem;
+            border-top: 1px solid #ddd;
+            font-weight: 700;
+            color: #c9a961;
+            font-size: 1.2rem;
+        }
+
+        .btn-booking-submit {
+            width: 100%;
+            background: #c9a961;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-booking-submit:hover {
+            background: #b8954a;
+        }
+
+        /* ===== AVAILABILITY CALENDAR ===== */
+        .availability-section {
+            padding: 2.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .availability-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .calendar-container {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #c9a961;
+        }
+
+        .calendar-header h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .calendar-nav-btn {
+            background: #c9a961;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-nav-btn:hover {
+            background: #b8954a;
+            transform: scale(1.1);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            color: #666;
+            padding: 0.8rem 0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            border: 1px solid #f0f0f0;
+            cursor: default;
+            position: relative;
+            background: white;
+        }
+
+        .calendar-day.empty {
+            background: #fafafa;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.available {
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .calendar-day.available::after {
+            content: '✓';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            color: #c9a961;
+            font-size: 0.7rem;
+        }
+
+        .calendar-day.booked {
+            background: #efefef;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .availability-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #666;
+        }
+
+        .info-item span:last-child {
+            color: #c9a961;
+            font-weight: 700;
+        }
+
+        .calendar-legend {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .legend-color.available {
+            background: #e8f5e9;
+            border-color: #2e7d32;
+        }
+
+        .legend-color.booked {
+            background: #efefef;
+            border-color: #999;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .territory-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .territory-image,
+            .about-image {
+                height: 300px;
+            }
+            
+            .territory-content h3,
+            .about-content h3 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-link {
+                margin-left: 1rem;
+            }
+            
+            .modal-header {
+                padding: 1.5rem;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-main {
+                height: 300px;
+            }
+            
+            .modal-pricing {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn-booking {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#home">Sa Ruxi Stay</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto" id="navbarMenu">
+                    </ul>
+                </div>
+                <div class="language-switcher" role="group" aria-label="Lingua" data-i18n-aria-label="ui.language">
+                    <button class="language-button" type="button" data-locale="it" aria-label="Italiano" title="Italiano"><span class="language-flag fi fi-it" aria-hidden="true"></span><span>IT</span></button>
+                    <button class="language-button" type="button" data-locale="en" aria-label="English" title="English"><span class="language-flag fi fi-gb" aria-hidden="true"></span><span>EN</span></button>
+                    <button class="language-button" type="button" data-locale="fr" aria-label="Français" title="Français"><span class="language-flag fi fi-fr" aria-hidden="true"></span><span>FR</span></button>
+                    <button class="language-button" type="button" data-locale="de" aria-label="Deutsch" title="Deutsch"><span class="language-flag fi fi-de" aria-hidden="true"></span><span>DE</span></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1></h1>
+            <p></p>
+            <a href="#case" class="btn btn-discover"></a>
+        </div>
+    </section>
+
+    <!-- CASE SECTION -->
+    <section class="case-section" id="case">
+        <div class="container">
+            <div class="section-title">
+                <h2></h2>
+                <p></p>
+            </div>
+
+            <!-- Filter Button -->
+            <div class="filter-button-container">
+                <button class="btn-filters-toggle" onclick="openFiltersModal()">
+                    <i class="fas fa-sliders-h"></i>
+                    <span data-i18n="ui.filters">Filtri</span>
+                </button>
+                <div class="results-info-top">
+                    <p id="resultsInfo"></p>
+                </div>
+            </div>
+
+            <div class="row" id="propertiesGrid">
+                <!-- Properties inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TERRITORIO SECTION -->
+    <section class="territory-section" id="territorio">
+        <div class="container">
+            <div class="section-title">
+                <h2></h2>
+                <p></p>
+            </div>
+
+            <div class="territory-grid">
+                <div class="territory-image">
+                    <img src="" alt="">
+                </div>
+                <div class="territory-content">
+                    <h3></h3>
+                    <p></p>
+                    <div class="territory-highlights"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2></h2>
+                <p></p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3></h3>
+                    <div class="about-paragraphs"></div>
+                    <p class="about-welcome"></p>
+                </div>
+                <div class="about-image">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contatti">
+        <div class="container">
+            <div class="contact-content">
+                <h2></h2>
+                <p></p>
+                <div class="contact-methods"></div>
+                <a class="btn btn-contact" href="#case"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTERS MODAL -->
+    <div class="filters-modal-overlay" id="filtersModal">
+        <div class="filters-modal-content">
+            <div class="filters-modal-header">
+                <h2></h2>
+                <button class="filters-modal-close" onclick="closeFiltersModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="filters-body">
+                <div class="filter-group">
+                    <label for="filterLocation"><i class="fas fa-map-marker-alt"></i> <span data-i18n="ui.zone">Zona</span></label>
+                    <select id="filterLocation"></select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterGuests"><i class="fas fa-users"></i> <span data-i18n="ui.guests">Ospiti</span></label>
+                    <select id="filterGuests"></select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterPrice"><i class="fas fa-euro-sign"></i> <span data-i18n="ui.price">Prezzo a notte</span></label>
+                    <input type="range" id="filterPrice">
+                    <div class="price-display">
+                        <span>€</span><span id="priceValue"></span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterBedrooms"><i class="fas fa-bed"></i> <span data-i18n="ui.bedrooms">Camere</span></label>
+                    <select id="filterBedrooms">
+                        <option value="" data-i18n="ui.anyBedrooms">Qualsiasi numero</option>
+                        <option value="3" data-i18n="ui.threeBedrooms">3 camere</option>
+                        <option value="4" data-i18n="ui.fourBedrooms">4+ camere</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filters-actions">
+                <button class="btn-filter" onclick="applyFilters()">
+                    <i class="fas fa-search"></i> <span data-i18n="ui.search">Cerca</span>
+                </button>
+                <button class="btn-filter-reset" onclick="resetFilters()">
+                    <i class="fas fa-redo"></i> <span data-i18n="ui.reset">Reset</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROPERTY DETAILS MODAL -->
+    <div class="modal-overlay" id="propertyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" aria-label="Chiudi" data-i18n-aria-label="ui.close" onclick="closePropertyModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Gallery -->
+                <div class="gallery-section">
+                    <div class="gallery-main">
+                        <img id="mainImage" src="" alt="" decoding="async" onclick="openImageViewer()">
+                        <button class="gallery-fullscreen-btn" type="button" aria-label="Apri la foto a schermo intero" data-i18n-aria-label="ui.openFullPhoto" data-i18n-title="ui.openFullPhoto" title="Apri a schermo intero" onclick="openImageViewer()">
+                            <i class="fas fa-expand" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="gallery-thumbs" id="galleryThumbs">
+                        <!-- Thumbnails inserted here by JS -->
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <div class="description-section">
+                    <h3 data-i18n="ui.description">Descrizione</h3>
+                    <p id="modalDescription" class="modal-description-collapsed"></p>
+                    <button id="descriptionToggle" class="description-toggle" type="button" aria-expanded="false" onclick="toggleModalDescription()">Leggi tutto</button>
+                </div>
+                
+                <!-- Features -->
+                <div class="features-grid" id="modalFeatures">
+                    <!-- Features inserted here by JS -->
+                </div>
+                
+                <!-- Location Info -->
+                <div class="description-section">
+                    <h3 data-i18n="ui.locationInfo">Informazioni sulla posizione</h3>
+                    <p id="modalLocationInfo"></p>
+                </div>
+                
+                <!-- Map -->
+                <div class="map-section">
+                    <h3 data-i18n="ui.map">Localizzazione</h3>
+                    <div class="map-container">
+                        <iframe id="modalMap" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <!-- Availability Calendar -->
+                <div class="availability-section">
+                    <h3><i class="fas fa-calendar-alt"></i> <span data-i18n="ui.availability">Disponibilità</span></h3>
+                    <p id="calendarDataStatus" class="availability-info" role="status" aria-live="polite"></p>
+                    
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button onclick="prevMonth()" class="calendar-nav-btn">&larr;</button>
+                            <h4 id="calendarMonth"></h4>
+                            <button onclick="nextMonth()" class="calendar-nav-btn">&rarr;</button>
+                        </div>
+                        
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Calendar inserted by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="availability-info">
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="ui.minStay">Soggiorno minimo:</span>
+                            <span id="minimumStayInfo">3 notti</span>
+                        </div>
+                        <div class="calendar-legend">
+                            <div class="legend-item">
+                                <span class="legend-color available"></span>
+                                <span data-i18n="ui.available">Disponibile</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color booked"></span>
+                                <span data-i18n="ui.occupied">Occupato</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pricing & CTA -->
+            <div class="modal-pricing">
+                <div class="price-info">
+                    <h4 data-i18n="ui.pricePerNight">Prezzo per notte</h4>
+                    <div class="price-amount">€<span id="modalPrice">0</span></div>
+                </div>
+                <button class="btn-booking" data-i18n="ui.bookNow" onclick="bookingAction()">Invia richiesta</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Visualizzatore foto" data-i18n-aria-label="ui.photoViewer" tabindex="-1">
+        <button class="lightbox-control lightbox-close" type="button" aria-label="Chiudi foto" data-i18n-aria-label="ui.closePhoto" onclick="closeImageViewer()">
+            <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        <button class="lightbox-control lightbox-previous" type="button" aria-label="Foto precedente" data-i18n-aria-label="ui.previousPhoto" onclick="navigateImageViewer(-1)">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <img class="lightbox-image" id="lightboxImage" src="" alt="">
+        <button class="lightbox-control lightbox-next" type="button" aria-label="Foto successiva" data-i18n-aria-label="ui.nextPhoto" onclick="navigateImageViewer(1)">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </button>
+        <span class="lightbox-counter" id="lightboxCounter" aria-live="polite"></span>
+    </div>
+
+    <!-- BOOKING MODAL -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><span data-i18n="ui.bookingTitle">Richiesta di soggiorno</span> <span id="bookingPropertyName"></span></h2>
+                <button class="modal-close" aria-label="Chiudi" data-i18n-aria-label="ui.close" onclick="closeBookingModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="bookingForm" onsubmit="submitBooking(event)">
+                    <!-- Guest Info -->
+                    <div class="booking-form-group">
+                        <label for="guestName" data-i18n="ui.guestName">Nome e cognome *</label>
+                        <input type="text" id="guestName" name="guestName" required placeholder="Es. Marco Rossi" data-i18n-placeholder="ui.namePlaceholder">
+                    </div>
+
+                    <div class="booking-form-row">
+                        <div class="booking-form-group">
+                            <label for="guestEmail" data-i18n="ui.email">Email *</label>
+                            <input type="email" id="guestEmail" name="guestEmail" required placeholder="email@example.com">
+                        </div>
+                        <div class="booking-form-group">
+                            <label for="guestPhone" data-i18n="ui.phone">Telefono *</label>
+                            <input type="tel" id="guestPhone" name="guestPhone" required placeholder="+39 123 456 7890">
+                        </div>
+                    </div>
+
+                    <!-- Dates & Guests -->
+                    <div class="booking-form-row">
+                        <div class="booking-form-group">
+                            <label for="checkInDate" data-i18n="ui.arrival">Data di arrivo *</label>
+                            <input type="date" id="checkInDate" name="checkInDate" required onchange="updateBookingSummary()">
+                        </div>
+                        <div class="booking-form-group">
+                            <label for="checkOutDate" data-i18n="ui.departure">Data di partenza *</label>
+                            <input type="date" id="checkOutDate" name="checkOutDate" required onchange="updateBookingSummary()">
+                        </div>
+                    </div>
+
+                    <div class="booking-form-group">
+                        <label for="guestCount" data-i18n="ui.guestCount">Numero di ospiti *</label>
+                        <input type="number" id="guestCount" name="guestCount" min="1" required placeholder="Es. 4" data-i18n-placeholder="ui.guestsPlaceholder">
+                    </div>
+
+                    <div class="booking-form-group">
+                        <label for="guestMessage" data-i18n="ui.message">Messaggio (facoltativo)</label>
+                        <textarea id="guestMessage" name="guestMessage" placeholder="Scrivi un messaggio per l'host..." data-i18n-placeholder="ui.messagePlaceholder" rows="3"></textarea>
+                    </div>
+                    <p class="privacy-helper" data-i18n="ui.noSensitive">Non inserire dati sanitari o altre informazioni sensibili nel messaggio.</p>
+
+                    <!-- Booking Summary -->
+                    <div class="booking-summary">
+                        <h4 data-i18n="ui.summary">Riepilogo richiesta</h4>
+                        <div class="booking-summary-item">
+                            <span data-i18n="ui.property">Alloggio:</span>
+                            <strong id="summaryProperty">-</strong>
+                        </div>
+                        <div class="booking-summary-item">
+                            <span data-i18n="ui.checkIn">Arrivo:</span>
+                            <strong id="summaryCheckIn">-</strong>
+                        </div>
+                        <div class="booking-summary-item">
+                            <span data-i18n="ui.checkOut">Partenza:</span>
+                            <strong id="summaryCheckOut">-</strong>
+                        </div>
+                        <div class="booking-summary-item">
+                            <span data-i18n="ui.totalNights">Notti:</span>
+                            <strong id="summaryNights">-</strong>
+                        </div>
+                        <div class="booking-summary-item">
+                            <span data-i18n="ui.averageNight">Prezzo medio per notte:</span>
+                            <strong>€<span id="summaryPricePerNight">0</span></strong>
+                        </div>
+                        <div class="booking-summary-total">
+                            <span data-i18n="ui.total">Totale:</span>
+                            <span>€<span id="summaryTotal">0</span></span>
+                        </div>
+                    </div>
+
+                    <div class="privacy-consent">
+                        <input type="checkbox" id="privacyAcknowledged" name="privacyAcknowledged" required>
+                        <span><label for="privacyAcknowledged" data-i18n="ui.readPrivacy">Dichiaro di aver letto l’</label><a href="privacy.html" target="_blank" rel="noopener" data-i18n="ui.privacy">informativa privacy</a>.</span>
+                    </div>
+
+                    <button type="submit" class="btn-booking-submit">
+                        <i class="fas fa-check"></i> <span data-i18n="ui.sendRequest">Invia richiesta</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p id="footerCopyright"></p>
+            <a class="footer-privacy-link" href="privacy.html" data-i18n="ui.privacyFooter">Informativa privacy</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-public.js"></script>
+    <script src="i18n.js"></script>
+    
+    <script>
+        window.SaRuxiI18n.applyStaticTranslations();
+        window.SaRuxiI18n.initLanguageSelector();
+
+        // FILTERS MODAL FUNCTIONS
+        function openFiltersModal() {
+            const modal = document.getElementById('filtersModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFiltersModal() {
+            const modal = document.getElementById('filtersModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Chiudi modal cliccando sul overlay
+        document.getElementById('filtersModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFiltersModal();
+            }
+        });
+
+        // Update prezzo display in tempo reale
+        document.getElementById('filterPrice')?.addEventListener('input', function() {
+            document.getElementById('priceValue').textContent = this.value;
+        });
+
+        // Carica le proprietà dal file JSON
+        let allProperties = [];
+        let sourceProperties = [];
+        let sourceContent = null;
+        let propertiesLoadFailed = false;
+        let allPrices = [];
+        let liveBookingData = null;
+        let currentGalleryImages = [];
+        let currentGalleryIndex = 0;
+
+        function localizeAndApplyLiveData(properties) {
+            let localizedProperties = window.SaRuxiI18n.localizeProperties(properties);
+            if (liveBookingData?.properties) {
+                localizedProperties = localizedProperties.map(property => {
+                    const bookingProperty = liveBookingData.properties.find(item => item.id === property.id);
+                    return bookingProperty ? {
+                        ...property,
+                        price: bookingProperty.base_nightly_price,
+                        minimumStay: bookingProperty.minimum_stay,
+                        maximumStay: bookingProperty.maximum_stay
+                    } : property;
+                });
+            }
+            return localizedProperties;
+        }
+
+        function populateLocalizedContent(preserveFilters = false) {
+            if (!sourceContent) return;
+            const previousFilters = preserveFilters ? {
+                location: document.getElementById('filterLocation').value,
+                guests: document.getElementById('filterGuests').value,
+                price: document.getElementById('filterPrice').value,
+                bedrooms: document.getElementById('filterBedrooms').value
+            } : null;
+            const data = window.SaRuxiI18n.localizeContent(sourceContent);
+            populatePageTitle(data.pageTitle);
+            populateNavigation(data.header);
+            populateHeader(data.header);
+            populateHero(data.hero);
+            populateCasesSection(data.casesSection);
+            populateTerritorySection(data.territory);
+            populateAboutSection(data.about);
+            populateContactSection(data.contact);
+            populateFilters(data.filters);
+            populateFooter(data.footer);
+
+            if (previousFilters) {
+                document.getElementById('filterLocation').value = previousFilters.location;
+                document.getElementById('filterGuests').value = previousFilters.guests;
+                document.getElementById('filterPrice').value = previousFilters.price;
+                document.getElementById('filterBedrooms').value = previousFilters.bedrooms;
+                document.getElementById('priceValue').textContent = previousFilters.price;
+            }
+        }
+
+        window.addEventListener('sa-ruxi-locale-change', () => {
+            populateLocalizedContent(true);
+            if (sourceProperties.length) {
+                allProperties = localizeAndApplyLiveData(sourceProperties);
+                applyFilters();
+            }
+            if (propertiesLoadFailed) {
+                const emptyTitle = document.querySelector('#propertiesGrid .empty-state h3');
+                const emptyMessage = document.querySelector('#propertiesGrid .empty-state p');
+                if (emptyTitle) emptyTitle.textContent = window.SaRuxiI18n.translate('ui.loadError');
+                if (emptyMessage) emptyMessage.textContent = window.SaRuxiI18n.translate('ui.loadErrorHelp');
+            }
+            if (currentPropertyCalendar && document.getElementById('propertyModal').classList.contains('active')) {
+                openPropertyModal(currentPropertyCalendar.id);
+            }
+            if (currentBookingProperty) {
+                currentBookingProperty = allProperties.find(property => property.id === currentBookingProperty.id) || currentBookingProperty;
+                document.getElementById('bookingPropertyName').textContent = currentBookingProperty.title;
+                document.getElementById('summaryProperty').textContent = currentBookingProperty.title;
+                updateBookingSummary();
+            }
+        });
+        
+        // Carica il contenuto statico (Chi siamo, Territorio, etc)
+        fetch('content.json')
+            .then(response => response.json())
+            .then(sourceData => {
+                sourceContent = sourceData;
+                populateLocalizedContent();
+            })
+            .catch(error => console.error('Errore nel caricamento del contenuto:', error));
+
+        fetch('properties.json')
+            .then(response => response.json())
+            .then(async data => {
+                sourceProperties = data.properties;
+                liveBookingData = await window.loadSupabaseBookingData();
+                allProperties = localizeAndApplyLiveData(sourceProperties);
+                renderProperties(allProperties);
+            })
+            .catch(error => {
+                console.error('Errore nel caricamento delle proprietà:', error);
+                propertiesLoadFailed = true;
+                renderProperties([]);
+                const emptyTitle = document.querySelector('#propertiesGrid .empty-state h3');
+                const emptyMessage = document.querySelector('#propertiesGrid .empty-state p');
+                if (emptyTitle) emptyTitle.textContent = window.SaRuxiI18n.translate('ui.loadError');
+                if (emptyMessage) emptyMessage.textContent = window.SaRuxiI18n.translate('ui.loadErrorHelp');
+            }
+        );
+
+        // Carica i prezzi stagionali
+        fetch('prices.json')
+            .then(response => response.json())
+            .then(data => {
+                allPrices = data.prices;
+            })
+            .catch(error => console.error('Errore nel caricamento dei prezzi:', error));
+
+        // Funzione per ottenere il prezzo per una data specifica
+        function getPriceForDate(propertyId, date) {
+            if (liveBookingData?.configured) {
+                if (!liveBookingData.properties) {
+                    const property = allProperties.find(item => item.id === propertyId);
+                    return property ? property.price : 0;
+                }
+                const dateString = typeof date === 'string' ? date : date.toISOString().slice(0, 10);
+                const nightlyPrice = liveBookingData.dailyPrices.find(item =>
+                    item.property_id === propertyId &&
+                    item.night_date === dateString
+                );
+                if (nightlyPrice) return nightlyPrice.nightly_price;
+                const property = allProperties.find(item => item.id === propertyId);
+                return property ? property.price : 0;
+            }
+
+            const priceData = allPrices.find(p => p.propertyId === propertyId);
+            if (!priceData) {
+                // Fallback al prezzo di base dalla proprietà
+                const property = allProperties.find(p => p.id === propertyId);
+                return property ? property.price : 0;
+            }
+
+            const dateObj = new Date(date);
+            const seasonalPrice = priceData.seasonalPrices.find(season => {
+                const startDate = new Date(season.startDate);
+                const endDate = new Date(season.endDate);
+                return dateObj >= startDate && dateObj <= endDate;
+            });
+
+            return seasonalPrice ? seasonalPrice.pricePerNight : priceData.seasonalPrices[0].pricePerNight;
+        }
+
+        // Funzione per renderizzare le proprietà
+        function getThumbnailSource(imageSrc) {
+            const lastSlash = imageSrc.lastIndexOf('/');
+            const directory = imageSrc.slice(0, lastSlash);
+            if (directory.startsWith('fotos/') && /\.jpe?g$/i.test(imageSrc)) {
+                return `${directory}/thumbnails/${imageSrc.slice(lastSlash + 1)}`;
+            }
+            return imageSrc;
+        }
+
+        function renderProperties(properties) {
+            const grid = document.getElementById('propertiesGrid');
+            const resultsInfo = document.getElementById('resultsInfo');
+            resultsInfo.textContent = window.SaRuxiI18n.translate(properties.length === 1 ? 'ui.resultOne' : 'ui.results', { count: properties.length });
+            
+            if (properties.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                        <div class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <h3>${window.SaRuxiI18n.translate('ui.noProperties')}</h3>
+                            <p>${window.SaRuxiI18n.translate('ui.noPropertiesHelp')}</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = properties.map(prop => `
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card" onclick="openPropertyModal('${prop.id}')">
+                        <div class="property-image">
+                            <img src="${getThumbnailSource(prop.image)}" alt="${prop.title}" loading="lazy" decoding="async">
+                            <span class="property-badge">${prop.badge}</span>
+                        </div>
+                        <div class="property-info">
+                            <h3 class="property-name">${prop.title}</h3>
+                            <div class="property-location">
+                                <i class="fas fa-map-marker-alt"></i> ${prop.location}
+                            </div>
+                            <p class="property-desc">${prop.summary || prop.description}</p>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <div class="feature-icon"><i class="fas fa-bed"></i></div>
+                                    <div class="feature-value">${window.SaRuxiI18n.translate(prop.bedrooms === 1 ? 'ui.cardBedroom' : 'ui.cardBedrooms', { count: prop.bedrooms })}</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                                    <div class="feature-value">${window.SaRuxiI18n.translate(prop.guests === 1 ? 'ui.cardGuest' : 'ui.cardGuests', { count: prop.guests })}</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon"><i class="fas fa-bath"></i></div>
+                                    <div class="feature-value">${window.SaRuxiI18n.translate(prop.bathrooms === 1 ? 'ui.cardBathroom' : 'ui.cardBathrooms', { count: prop.bathrooms })}</div>
+                                </div>
+                            </div>
+                            <div class="property-price">${window.SaRuxiI18n.formatNumber(prop.price, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })}<span style="font-size: 0.6em; font-weight: 400;">/${window.SaRuxiI18n.translate('ui.nightUnit')}</span></div>
+                            <button class="btn btn-view" onclick="openModalWithoutPropagation(event, '${prop.id}')">${window.SaRuxiI18n.translate('ui.details')}</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+        }
+
+        // Funzione di filtraggio
+        function applyFilters() {
+            const location = document.getElementById('filterLocation').value;
+            const guests = parseInt(document.getElementById('filterGuests').value) || 0;
+            const maxPrice = parseInt(document.getElementById('filterPrice').value);
+            const bedrooms = parseInt(document.getElementById('filterBedrooms').value) || 0;
+
+            const filtered = allProperties.filter(prop => {
+                const locationMatch = !location || prop.region === location;
+                const guestsMatch = guests === 0 || prop.guests >= guests;
+                const priceMatch = prop.price <= maxPrice;
+                const bedroomsMatch = bedrooms === 0 || prop.bedrooms >= bedrooms;
+
+                return locationMatch && guestsMatch && priceMatch && bedroomsMatch;
+            });
+
+            renderProperties(filtered);
+        }
+
+        // Reset filtri
+        function resetFilters() {
+            document.getElementById('filterLocation').value = '';
+            document.getElementById('filterGuests').value = '';
+            document.getElementById('filterPrice').value = '3000';
+            document.getElementById('filterBedrooms').value = '';
+            document.getElementById('priceValue').textContent = '3000';
+            renderProperties(allProperties);
+        }
+
+        // Update prezzo display in tempo reale
+        document.getElementById('filterPrice')?.addEventListener('input', function() {
+            document.getElementById('priceValue').textContent = this.value;
+        });
+
+        // Apri modal con i dettagli della casa
+        function openPropertyModal(propertyId) {
+            const property = allProperties.find(p => p.id === propertyId);
+            if (!property) return;
+            
+            const modal = document.getElementById('propertyModal');
+            
+            // Header
+            document.getElementById('modalTitle').textContent = property.title;
+            
+            // Gallery
+            currentGalleryImages = property.gallery || [property.image];
+            currentGalleryIndex = 0;
+            document.getElementById('mainImage').src = currentGalleryImages[0];
+            const thumbsContainer = document.getElementById('galleryThumbs');
+            thumbsContainer.innerHTML = '';
+            currentGalleryImages.forEach((img, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = `gallery-thumb ${index === 0 ? 'active' : ''}`;
+                thumb.innerHTML = `<img src="${getThumbnailSource(img)}" alt="${window.SaRuxiI18n.translate('ui.photoNumber', { number: index + 1 })}" loading="lazy" decoding="async">`;
+                thumb.onclick = () => changeImage(img, index);
+                thumbsContainer.appendChild(thumb);
+            });
+            
+            // Description
+            const modalDescription = document.getElementById('modalDescription');
+            const descriptionToggle = document.getElementById('descriptionToggle');
+            modalDescription.textContent = property.description;
+            modalDescription.classList.add('modal-description-collapsed');
+            descriptionToggle.hidden = property.description.length <= 280;
+            descriptionToggle.textContent = window.SaRuxiI18n.translate('ui.readMore');
+            descriptionToggle.setAttribute('aria-expanded', 'false');
+            
+            // Location Info
+            document.getElementById('modalLocationInfo').textContent = property.locationInfo;
+            
+            // Features Grid
+            const featuresContainer = document.getElementById('modalFeatures');
+            featuresContainer.innerHTML = '';
+            property.features.forEach(feature => {
+                const featureDiv = document.createElement('div');
+                featureDiv.className = 'feature-item';
+                featureDiv.innerHTML = `
+                    <div class="feature-item-icon"><i class="${feature.icon}"></i></div>
+                    <div class="feature-item-title">${feature.title}</div>
+                    <div class="feature-item-value">${feature.value}</div>
+                `;
+                featuresContainer.appendChild(featureDiv);
+            });
+            
+            // Map
+            const mapIframe = document.getElementById('modalMap');
+            const coords = property.coordinates.split(',');
+            const mapParams = new URLSearchParams({
+                q: `${coords[0].trim()},${coords[1].trim()}`,
+                z: '15',
+                output: 'embed'
+            });
+            mapIframe.src = `https://www.google.com/maps?${mapParams.toString()}`;
+            
+            // Price
+            document.getElementById('modalPrice').textContent = window.SaRuxiI18n.formatNumber(property.price);
+            
+            // Minimum Stay
+            document.getElementById('minimumStayInfo').textContent = `${property.minimumStay || 3} ${window.SaRuxiI18n.translate('ui.nights')}`;
+            
+            // Calendar
+            currentPropertyCalendar = property;
+            currentCalendarMonth = new Date();
+            updateCalendarDataStatus();
+            renderCalendar();
+            
+            // Mostra modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function toggleModalDescription() {
+            const modalDescription = document.getElementById('modalDescription');
+            const descriptionToggle = document.getElementById('descriptionToggle');
+            const isExpanded = descriptionToggle.getAttribute('aria-expanded') === 'true';
+
+            modalDescription.classList.toggle('modal-description-collapsed', isExpanded);
+            descriptionToggle.setAttribute('aria-expanded', String(!isExpanded));
+            descriptionToggle.textContent = window.SaRuxiI18n.translate(isExpanded ? 'ui.readMore' : 'ui.showLess');
+        }
+
+        // CALENDAR VARIABLES & FUNCTIONS
+        let currentPropertyCalendar = null;
+        let currentCalendarMonth = new Date();
+        function isDateInAvailablePeriods(date, availablePeriods) {
+            if (!availablePeriods) return false;
+            return availablePeriods.some(period => {
+                const startDate = new Date(period.startDate);
+                const endDate = new Date(period.endDate);
+                return date >= startDate && date <= endDate;
+            });
+        }
+
+        function formatLocalDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        function isDateAvailableFromSupabase(dateString, propertyId) {
+            const isUnavailable = (liveBookingData?.unavailable || []).some(period =>
+                period.property_id === propertyId &&
+                dateString >= period.start_date &&
+                dateString < period.end_date
+            );
+            return !isUnavailable;
+        }
+
+        function updateCalendarDataStatus() {
+            const status = document.getElementById('calendarDataStatus');
+            if (!liveBookingData?.configured) {
+                status.textContent = '';
+                return;
+            }
+
+            if (liveBookingData.stale) {
+                const cachedAt = liveBookingData.updatedAt
+                    ? new Date(liveBookingData.updatedAt).toLocaleString('it-IT')
+                    : null;
+                status.textContent = cachedAt
+                    ? window.SaRuxiI18n.translate('ui.calendarUnavailable', { date: cachedAt })
+                    : window.SaRuxiI18n.translate('ui.calendarUnavailableNoCache');
+                return;
+            }
+
+            status.textContent = window.SaRuxiI18n.translate('ui.calendarUpdated', {
+                date: new Date(liveBookingData.updatedAt).toLocaleString(window.SaRuxiI18n.locale)
+            });
+        }
+
+        function renderCalendar() {
+            if (!currentPropertyCalendar) return;
+
+            const year = currentCalendarMonth.getFullYear();
+            const month = currentCalendarMonth.getMonth();
+            
+            // Update header
+            const monthName = new Intl.DateTimeFormat(window.SaRuxiI18n.locale, { month: 'long' })
+                .format(new Date(year, month, 1));
+            document.getElementById('calendarMonth').textContent = `${monthName} ${year}`;
+            
+            // Get first day and number of days in month
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            // Render calendar grid
+            const calendarGrid = document.getElementById('calendarGrid');
+            calendarGrid.innerHTML = '';
+            
+            // Day headers
+            const dayHeaders = Array.from({ length: 7 }, (_, index) =>
+                new Intl.DateTimeFormat(window.SaRuxiI18n.locale, { weekday: 'short' })
+                    .format(new Date(2025, 0, 6 + index))
+            );
+            dayHeaders.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.textContent = day;
+                calendarGrid.appendChild(header);
+            });
+            
+            // Empty cells for days before month starts
+            const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1; // Adjust for Monday start
+            for (let i = 0; i < adjustedFirstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day empty';
+                calendarGrid.appendChild(emptyDay);
+            }
+            
+            // Days of month
+            const availablePeriods = currentPropertyCalendar.availablePeriods || [];
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'calendar-day';
+                dayCell.textContent = day;
+                
+                const currentDate = new Date(year, month, day);
+                const dateString = formatLocalDate(currentDate);
+                const isAvailable = liveBookingData?.configured
+                    ? isDateAvailableFromSupabase(dateString, currentPropertyCalendar.id)
+                    : isDateInAvailablePeriods(currentDate, availablePeriods);
+
+                if (isAvailable) {
+                    dayCell.classList.add('available');
+                } else {
+                    dayCell.classList.add('booked');
+                }
+                
+                calendarGrid.appendChild(dayCell);
+            }
+        }
+
+        function prevMonth() {
+            currentCalendarMonth.setMonth(currentCalendarMonth.getMonth() - 1);
+            renderCalendar();
+        }
+
+        function nextMonth() {
+            currentCalendarMonth.setMonth(currentCalendarMonth.getMonth() + 1);
+            renderCalendar();
+        }
+
+        // Cambia immagine nella gallery
+        function changeImage(imageSrc, index) {
+            currentGalleryIndex = index;
+            document.getElementById('mainImage').src = imageSrc;
+            
+            // Aggiorna active thumbnail
+            const thumbs = document.querySelectorAll('.gallery-thumb');
+            thumbs.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        function showLightboxImage(index) {
+            if (!currentGalleryImages.length) return;
+            currentGalleryIndex = (index + currentGalleryImages.length) % currentGalleryImages.length;
+            const image = document.getElementById('lightboxImage');
+            image.src = currentGalleryImages[currentGalleryIndex];
+            image.alt = `${document.getElementById('modalTitle').textContent} - ${window.SaRuxiI18n.translate('ui.photoNumber', { number: currentGalleryIndex + 1 })}`;
+            document.getElementById('lightboxCounter').textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+            changeImage(currentGalleryImages[currentGalleryIndex], currentGalleryIndex);
+        }
+
+        function openImageViewer(index = currentGalleryIndex) {
+            if (!currentGalleryImages.length) return;
+            showLightboxImage(index);
+            const lightbox = document.getElementById('imageLightbox');
+            lightbox.classList.add('active');
+            lightbox.focus();
+        }
+
+        function navigateImageViewer(direction) {
+            showLightboxImage(currentGalleryIndex + direction);
+        }
+
+        function closeImageViewer() {
+            document.getElementById('imageLightbox').classList.remove('active');
+        }
+
+        document.getElementById('imageLightbox')?.addEventListener('click', function(event) {
+            if (event.target === this) closeImageViewer();
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (!document.getElementById('imageLightbox').classList.contains('active')) return;
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                navigateImageViewer(-1);
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                navigateImageViewer(1);
+            } else if (event.key === 'Escape') {
+                closeImageViewer();
+            }
+        });
+
+        // Apri modal senza propagare il click
+        function openModalWithoutPropagation(e, propId) {
+            e.stopPropagation();
+            openPropertyModal(propId);
+        }
+
+        // Chiudi modal
+        function closePropertyModal() {
+            const modal = document.getElementById('propertyModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Chiudi modal cliccando su overlay
+        document.getElementById('propertyModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePropertyModal();
+            }
+        });
+
+        // Booking action
+        let currentBookingProperty = null;
+
+        function bookingAction() {
+            const modalTitle = document.getElementById('modalTitle').textContent;
+            const property = allProperties.find(p => p.title === modalTitle);
+            
+            if (property) {
+                openBookingModal(property);
+            }
+        }
+
+        function openBookingModal(property) {
+            currentBookingProperty = property;
+            
+            // Popola il nome della proprietà
+            document.getElementById('bookingPropertyName').textContent = property.title;
+            document.getElementById('summaryProperty').textContent = property.title;
+            
+            // Imposta il minimo di date (oggi)
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkInDate').min = today;
+            document.getElementById('checkOutDate').min = today;
+            
+            // Reset form
+            document.getElementById('bookingForm').reset();
+            document.getElementById('summaryNights').textContent = '-';
+            document.getElementById('summaryPricePerNight').textContent = '0';
+            document.getElementById('summaryTotal').textContent = '0';
+            document.getElementById('summaryCheckIn').textContent = '-';
+            document.getElementById('summaryCheckOut').textContent = '-';
+            
+            // Mostra il modal
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentBookingProperty = null;
+        }
+
+        // Chiudi modal cliccando su overlay
+        document.getElementById('bookingModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
+            }
+        });
+
+        function updateBookingSummary() {
+            if (!currentBookingProperty) return;
+
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            
+            document.getElementById('summaryCheckIn').textContent = window.SaRuxiI18n.formatDate(checkInDate) || '-';
+            document.getElementById('summaryCheckOut').textContent = window.SaRuxiI18n.formatDate(checkOutDate) || '-';
+
+            if (!checkInDate || !checkOutDate) {
+                document.getElementById('summaryNights').textContent = '-';
+                document.getElementById('summaryPricePerNight').textContent = '0';
+                document.getElementById('summaryTotal').textContent = '0';
+                return;
+            }
+
+            const checkIn = new Date(checkInDate);
+            const checkOut = new Date(checkOutDate);
+
+            if (checkOut <= checkIn) {
+                document.getElementById('summaryNights').textContent = '-';
+                document.getElementById('summaryPricePerNight').textContent = '0';
+                document.getElementById('summaryTotal').textContent = '0';
+                return;
+            }
+
+            // Calcola le notti
+            const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+            
+            // Calcola il prezzo medio per notte considerando le variazioni stagionali
+            let totalPrice = 0;
+            for (let i = 0; i < nights; i++) {
+                const currentDate = new Date(checkIn);
+                currentDate.setDate(currentDate.getDate() + i);
+                const dateStr = currentDate.toISOString().split('T')[0];
+                const dayPrice = getPriceForDate(currentBookingProperty.id, dateStr);
+                totalPrice += dayPrice;
+            }
+            
+            const averagePrice = Math.round(totalPrice / nights);
+
+            document.getElementById('summaryNights').textContent = nights;
+            document.getElementById('summaryPricePerNight').textContent = window.SaRuxiI18n.formatNumber(averagePrice);
+            document.getElementById('summaryTotal').textContent = window.SaRuxiI18n.formatNumber(totalPrice);
+        }
+
+        async function submitBooking(event) {
+            event.preventDefault();
+
+            // Verifica che EmailJS sia caricato
+            if (typeof emailjs === 'undefined') {
+                alert(window.SaRuxiI18n.translate('ui.emailUnavailable'));
+                console.error('EmailJS non è disponibile', typeof emailjs);
+                return;
+            }
+
+            if (!currentBookingProperty) {
+                alert(window.SaRuxiI18n.translate('ui.propertyUnavailable'));
+                return;
+            }
+
+            const guestName = document.getElementById('guestName').value;
+            const guestEmail = document.getElementById('guestEmail').value;
+            const guestPhone = document.getElementById('guestPhone').value;
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            const guestCount = document.getElementById('guestCount').value;
+            const guestMessage = document.getElementById('guestMessage').value;
+
+            if (!guestName || !guestEmail || !guestPhone || !checkInDate || !checkOutDate || !guestCount) {
+                alert(window.SaRuxiI18n.translate('ui.requiredFields'));
+                return;
+            }
+
+            const checkIn = new Date(checkInDate);
+            const checkOut = new Date(checkOutDate);
+            if (checkOut <= checkIn) {
+                alert(window.SaRuxiI18n.translate('ui.invalidDates'));
+                return;
+            }
+            const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+            const minimumStay = currentBookingProperty.minimumStay || 3;
+            const maximumStay = currentBookingProperty.maximumStay || null;
+            if (nights < minimumStay) {
+                alert(window.SaRuxiI18n.translate('ui.minStayError', { count: minimumStay }));
+                return;
+            }
+            if (maximumStay !== null && nights > maximumStay) {
+                alert(window.SaRuxiI18n.translate('ui.maxStayError', { count: maximumStay }));
+                return;
+            }
+
+            // Calcola il prezzo totale
+            let totalPrice = 0;
+            for (let i = 0; i < nights; i++) {
+                const currentDate = new Date(checkIn);
+                currentDate.setDate(currentDate.getDate() + i);
+                const dateStr = currentDate.toISOString().split('T')[0];
+                const dayPrice = getPriceForDate(currentBookingProperty.id, dateStr);
+                totalPrice += dayPrice;
+            }
+
+            try {
+                // Disabilita il pulsante durante l'invio
+                const submitBtn = document.querySelector('.btn-booking-submit');
+                submitBtn.disabled = true;
+                submitBtn.textContent = window.SaRuxiI18n.translate('ui.sending');
+
+                // Prepara i parametri per EmailJS
+                const templateParams = {
+                    to_email: 'gianluca.collu95@gmail.com',
+                    from_name: guestName,
+                    guest_email: guestEmail,
+                    guest_phone: guestPhone,
+                    guest_count: guestCount,
+                    property_name: currentBookingProperty.title,
+                    check_in: window.SaRuxiI18n.formatDate(checkInDate),
+                    check_out: window.SaRuxiI18n.formatDate(checkOutDate),
+                    nights: nights,
+                    total_price: window.SaRuxiI18n.formatNumber(totalPrice, { style: 'currency', currency: 'EUR' }),
+                    guest_message: guestMessage
+                };
+
+                // Invia l'email
+                await emailjs.send('service_p5bmwef', 'template_tb0wosf', templateParams);
+
+                // Mostra messaggio di successo
+                alert(window.SaRuxiI18n.translate('ui.requestSent', { email: guestEmail }));
+
+                // Chiudi il modal e resetta il form
+                closeBookingModal();
+                document.getElementById('bookingForm').reset();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fas fa-check"></i> <span>${window.SaRuxiI18n.translate('ui.sendRequest')}</span>`;
+            } catch (error) {
+                console.error('Errore nell\'invio:', error);
+                alert(window.SaRuxiI18n.translate('ui.requestError', { email: 'gianluca.collu95@gmail.com' }));
+                const submitBtn = document.querySelector('.btn-booking-submit');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fas fa-check"></i> <span>${window.SaRuxiI18n.translate('ui.sendRequest')}</span>`;
+            }
+        }
+
+
+        // Popola il page title
+        function populatePageTitle(pageTitle) {
+            if (pageTitle) {
+                document.title = pageTitle;
+            }
+        }
+
+        // Popola la navigation
+        function populateNavigation(headerData) {
+            if (!headerData || !headerData.navigation) return;
+            
+            const navbarMenu = document.getElementById('navbarMenu');
+            if (navbarMenu) {
+                navbarMenu.innerHTML = headerData.navigation.map(nav => `
+                    <li class="nav-item">
+                        <a class="nav-link" href="${nav.href}">${nav.label}</a>
+                    </li>
+                `).join('');
+            }
+        }
+
+        // Popola il footer
+        function populateFooter(footerData) {
+            if (!footerData) return;
+            
+            const footerCopyright = document.getElementById('footerCopyright');
+            if (footerCopyright) {
+                footerCopyright.textContent = `© ${new Date().getFullYear()} ${footerData.company} - ${footerData.tagline}. ${window.SaRuxiI18n.translate('ui.rightsReserved')}`;
+            }
+        }
+
+        // Popola l'header/navbar
+        function populateHeader(headerData) {
+            if (!headerData) return;
+            
+            const brandName = document.querySelector('.navbar-brand');
+            if (brandName) {
+                brandName.textContent = '';
+                brandName.innerHTML = `${headerData.brandName.split(' ')[0]} <span>${headerData.brandName.split(' ')[1]}</span>`;
+            }
+        }
+
+        // Popola la hero section
+        function populateHero(heroData) {
+            if (!heroData) return;
+            
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.querySelector('h1').textContent = heroData.title || '';
+                heroContent.querySelector('p').textContent = heroData.subtitle || '';
+                const btn = heroContent.querySelector('a.btn-discover');
+                if (btn) {
+                    btn.textContent = heroData.buttonText || '';
+                    btn.href = heroData.buttonLink || '#';
+                }
+            }
+        }
+
+        // Popola la sezione Cases
+        function populateCasesSection(casesSectionData) {
+            if (!casesSectionData) return;
+            
+            const casesSection = document.querySelector('.case-section .section-title');
+            if (casesSection) {
+                casesSection.querySelector('h2').textContent = casesSectionData.title || '';
+                casesSection.querySelector('p').textContent = casesSectionData.subtitle || '';
+            }
+        }
+
+        // Popola la sezione Territorio
+        function populateTerritorySection(territoryData) {
+            if (!territoryData) return;
+
+            const sectionTitle = document.querySelector('.territory-section .section-title');
+            if (sectionTitle) {
+                sectionTitle.querySelector('h2').textContent = territoryData.title || '';
+                const subtitle = sectionTitle.querySelector('p');
+                subtitle.textContent = territoryData.description || '';
+                subtitle.hidden = !territoryData.description;
+            }
+            
+            // Popola l'immagine
+            const territoryImage = document.querySelector('.territory-image img');
+            if (territoryImage && territoryData.imageUrl) {
+                territoryImage.src = territoryData.imageUrl;
+                territoryImage.alt = territoryData.mainTitle || 'Paesaggio';
+            }
+            
+            // Popola titolo e descrizione
+            const territoryContent = document.querySelector('.territory-content');
+            if (territoryContent) {
+                const h3 = territoryContent.querySelector('h3');
+                if (h3) h3.textContent = territoryData.mainTitle || 'Alla scoperta del territorio';
+                
+                const p = territoryContent.querySelector('p');
+                if (p) p.textContent = territoryData.mainDescription || '';
+            }
+            
+            // Popola gli highlights dal JSON
+            const highlightsContainer = document.querySelector('.territory-highlights');
+            if (highlightsContainer && territoryData.highlights && territoryData.highlights.length > 0) {
+                highlightsContainer.innerHTML = territoryData.highlights.map(highlight => `
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="${highlight.icon}"></i>
+                        </div>
+                        <div class="highlight-text">
+                            <h4>${highlight.title}</h4>
+                            <p>${highlight.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Popola la sezione About
+        function populateAboutSection(aboutData) {
+            if (!aboutData) return;
+
+            const sectionTitle = document.querySelector('.about-section .section-title');
+            if (sectionTitle) {
+                sectionTitle.querySelector('h2').textContent = aboutData.title || '';
+                sectionTitle.querySelector('p').textContent = aboutData.subtitle || '';
+            }
+            
+            const aboutContent = document.querySelector('.about-content');
+            if (!aboutContent) return;
+            
+            // Popola il titolo principale
+            const titleElement = aboutContent.querySelector('h3');
+            if (titleElement) {
+                titleElement.textContent = aboutData.mainTitle || 'Una Passione per l\'Ospitalità';
+            }
+            
+            const paragraphsContainer = aboutContent.querySelector('.about-paragraphs');
+            if (paragraphsContainer && aboutData.paragraphs) {
+                paragraphsContainer.replaceChildren(...aboutData.paragraphs.map(text => {
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = text;
+                    return paragraph;
+                }));
+            }
+
+            const welcome = aboutContent.querySelector('.about-welcome');
+            if (welcome) welcome.textContent = aboutData.closing || '';
+            
+            // Popola l'immagine
+            const aboutImage = document.querySelector('.about-image img');
+            if (aboutImage && aboutData.imageUrl) {
+                aboutImage.src = aboutData.imageUrl;
+                aboutImage.alt = aboutData.mainTitle || 'Chi Sono';
+            }
+        }
+
+        // Popola la sezione Contact
+        function populateContactSection(contactData) {
+            if (!contactData) return;
+            
+            // Popola titolo e descrizione
+            const contactSection = document.querySelector('.contact-section');
+            if (contactSection) {
+                const h2 = contactSection.querySelector('h2');
+                if (h2) h2.textContent = contactData.title || 'Contattami';
+                
+                const p = contactSection.querySelector('.contact-content > p');
+                if (p) p.textContent = contactData.description || '';
+            }
+            
+            // Popola i metodi di contatto
+            const contactMethodsContainer = document.querySelector('.contact-methods');
+            if (contactMethodsContainer && contactData.methods && contactData.methods.length > 0) {
+                contactMethodsContainer.innerHTML = contactData.methods.map(method => `
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="${method.icon}"></i>
+                        </div>
+                        <h4>${method.title}</h4>
+                        <p>${method.value}</p>
+                    </div>
+                `).join('');
+            }
+            
+            // Popola il pulsante
+            const contactButton = document.querySelector('.btn-contact');
+            if (contactButton && contactData.buttonText) {
+                contactButton.textContent = contactData.buttonText;
+            }
+        }
+
+        // Popola i filtri
+        function populateFilters(filtersData) {
+            if (!filtersData) return;
+            
+            // Popola zone
+            const filterLocation = document.getElementById('filterLocation');
+            if (filterLocation && filtersData.locations) {
+                filterLocation.innerHTML = filtersData.locations.map(location => 
+                    `<option value="${location.value}">${location.label}</option>`
+                ).join('');
+            }
+            
+            // Popola ospiti
+            const filterGuests = document.getElementById('filterGuests');
+            if (filterGuests && filtersData.guests) {
+                filterGuests.innerHTML = filtersData.guests.map(guest => 
+                    `<option value="${guest.value}">${guest.label}</option>`
+                ).join('');
+            }
+            
+            // Popola range di prezzo
+            const filterPrice = document.getElementById('filterPrice');
+            if (filterPrice && filtersData.priceRange) {
+                filterPrice.min = filtersData.priceRange.min;
+                filterPrice.max = filtersData.priceRange.max;
+                filterPrice.step = filtersData.priceRange.step;
+                filterPrice.value = filtersData.priceRange.default;
+                
+                const priceValue = document.getElementById('priceValue');
+                if (priceValue) {
+                    priceValue.textContent = filtersData.priceRange.default;
+                }
+            }
+            
+            // Popola titolo dei filtri
+            const filtersModalTitle = document.querySelector('.filters-modal-header h2');
+            if (filtersModalTitle) {
+                filtersModalTitle.textContent = filtersData.title || 'Trova la tua casa ideale';
+            }
+        }
+
+        // Inizializza al caricamento della pagina
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProperties(allProperties);
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth scroll per i link interni
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

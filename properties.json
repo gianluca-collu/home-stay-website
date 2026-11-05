@@ -4,47 +4,28 @@
       "id": "Villa Karla",
       "title": "Villa Karla ",
       "badge": "Esclusiva",
-      "description": "Villa Karla numero 1",
+      "summary": "Villetta su tre livelli a Porto Sa Ruxi, con veranda vista mare e giardino privato. La spiaggia si raggiunge a piedi in pochi minuti.",
+      "description": "Villetta su tre livelli nella zona collinare di Porto Sa Ruxi, a circa 6 km da Villasimius, in un residence tranquillo affacciato su spiagge di sabbia bianca e rocce di granito. Ospita fino a cinque persone in tre camere da letto con quattro letti. Al piano superiore ci sono due camere con ventilatori a soffitto e aria condizionata, oltre a un bagno con doccia; al piano inferiore si trova la terza camera, con ventilatore a soffitto, e un secondo bagno senza doccia. Completano la casa una veranda coperta e ventilata con vista mare, un giardino privato recintato con zona pranzo, barbecue a carbonella e doccia esterna. La spiaggia di Porto Sa Ruxi si raggiunge a piedi in pochi minuti attraverso un sottopassaggio. Per raggiungere le altre spiagge, i market e i ristoranti della zona è necessaria l'auto. Per la presenza di scale, la casa non è consigliata a bambini sotto i 3 anni o a persone con difficoltà di deambulazione. Il residence dispone anche di un campo da tennis utilizzabile con un piccolo pagamento.",
       "location": "Porto Sa Ruxi",
       "region":"Villasimius",
-      "locationInfo": "Situata a porto sa ruxi.",
-      "coordinates": "43.1400,-11.9500",
+      "locationInfo": "Porto Sa Ruxi è una località costiera nell'area marina protetta di Villasimius, con spiagge di sabbia bianca, rocce di granito e calette dal mare limpido. La spiaggia più vicina si raggiunge a piedi tramite un sottopassaggio; per le altre spiagge e i servizi è necessaria l'auto.",
+      "coordinates": "39.13104295460187, 9.459034809463743",
       "price": 2500,
-      "bedrooms": 4,
-      "guests": 8,
-      "bathrooms": 3,
+      "bedrooms": 3,
+      "beds": 4,
+      "guests": 5,
+      "bathrooms": 2,
       "image": "fotos/villa karla/_MG_7854.jpg",
       "features": [
-        {
-          "icon": "fas fa-swimming-pool",
-          "title": "Piscina Privata",
-          "value": "12x6 m"
-        },
-        {
-          "icon": "fas fa-wifi",
-          "title": "Wi-Fi Veloce",
-          "value": "Fibra ottica"
-        },
-        {
-          "icon": "fas fa-utensils",
-          "title": "Cucina Attrezzata",
-          "value": "Completa"
-        },
-        {
-          "icon": "fas fa-car",
-          "title": "Parcheggio",
-          "value": "Privato"
-        },
-        {
-          "icon": "fas fa-sun",
-          "title": "Terrazza",
-          "value": "Panoramica"
-        },
-        {
-          "icon": "fas fa-wind",
-          "title": "Aria Condizionata",
-          "value": "In tutte le camere"
-        }
+        { "icon": "fas fa-water", "title": "Vista sulla baia", "value": "Vista mare" },
+        { "icon": "fas fa-umbrella-beach", "title": "Accesso alla spiaggia", "value": "A pochi minuti a piedi" },
+        { "icon": "fas fa-utensils", "title": "Cucina", "value": "Disponibile" },
+        { "icon": "fas fa-wifi", "title": "Wi-Fi", "value": "Disponibile" },
+        { "icon": "fas fa-tree", "title": "Giardino privato", "value": "Recintato" },
+        { "icon": "fas fa-shower", "title": "Doccia esterna", "value": "Disponibile" },
+        { "icon": "fas fa-sun", "title": "Veranda", "value": "Coperta e ventilata" },
+        { "icon": "fas fa-fire", "title": "Barbecue", "value": "A carbonella" },
+        { "icon": "fas fa-table-tennis-paddle-ball", "title": "Campo da tennis", "value": "Accesso con piccolo pagamento" }
       ],
       "gallery": [
         "fotos/villa karla/015A9095 - Copia.jpg",
@@ -84,47 +65,27 @@
       "id": "Cagliari",
       "title": "Oltre Mare",
       "badge": "Vista Mare",
-      "description": "Suggestiva casa con terrazza con vista mozzafiato sul mare della Costiera Amalfitana. Accesso privato alla spiaggia, architettura tipica della costa con dettagli in stile mediterraneo. Perfetto per chi desidera una vacanza romantica con il suono delle onde come sottofondo e tramonti indimenticabili.",
+      "summary": "Attico nel quartiere Fiera di Cagliari, con terrazza privata vista mare. Centro e Poetto sono raggiungibili facilmente.",
+      "description": "Attico di 40 m² al quinto piano di un palazzo residenziale nel quartiere Fiera di Cagliari. Può ospitare fino a quattro persone: ha una camera luminosa con letto, scrivania, TV e armadio, e un soggiorno con ampie vetrate vista mare, angolo cottura e divano letto per due. Sono presenti un bagno con doccia, lavatrice, Wi-Fi, spazio di lavoro e una grande terrazza privata panoramica, adatta anche per mangiare all'aperto. L'ascensore arriva al quarto piano; per raggiungere l'attico al quinto occorre salire un'ultima rampa di scale. Il check-in è tra le 14:00 e le 19:00 con cassetta delle chiavi; il check-out è entro le 10:00.",
       "location": "Cagliari",
       "region": "Sud Sardegna",
-      "locationInfo": "Situata sulla celebre Cagliari, la casa è a pochi passi da Positano e Amalfi. Accesso diretto a una spiaggia privata. Nelle vicinanze troverai ristoranti di pesce fresco, boutique locali e i borghi più romantici della costa campana.",
-      "coordinates": "40.6297,14.6034",
+      "locationInfo": "L'attico si trova nel quartiere Fiera, una zona residenziale tranquilla. La Fiera dista circa 50 m, lo stadio 1,2 km e il centro città circa 2,3 km. La spiaggia del Poetto è raggiungibile con gli autobus PF e PQ, che fermano vicino all'ingresso. Il CRAI è a circa 300 m e il Conad City a 500 m; nelle vicinanze si trovano anche piccoli market, fruttivendoli, gastronomie e macellerie. Al check-in è indicato il pagamento della tassa di soggiorno comunale di 1,50 € a persona per notte.",
+      "coordinates": "39.206150150732135, 9.13295602480996",
       "price": 1800,
-      "bedrooms": 3,
-      "guests": 6,
-      "bathrooms": 2,
+      "bedrooms": 1,
+      "beds": 1,
+      "guests": 4,
+      "bathrooms": 1,
       "image": "fotos/oltreMare/_45A3513-Migliorato-NR-Modifica.jpg",
       "features": [
-        {
-          "icon": "fas fa-water",
-          "title": "Vista Mare",
-          "value": "Panoramica"
-        },
-        {
-          "icon": "fas fa-umbrella-beach",
-          "title": "Spiaggia Privata",
-          "value": "Accesso diretto"
-        },
-        {
-          "icon": "fas fa-sun",
-          "title": "Terrazza",
-          "value": "30 mq"
-        },
-        {
-          "icon": "fas fa-wine-glass-alt",
-          "title": "Mini Bar",
-          "value": "Fornito"
-        },
-        {
-          "icon": "fas fa-bath",
-          "title": "Jacuzzi",
-          "value": "Su terrazza"
-        },
-        {
-          "icon": "fas fa-binoculars",
-          "title": "Telescopio",
-          "value": "Per osservare le stelle"
-        }
+        { "icon": "fas fa-sun", "title": "Terrazza privata", "value": "Vista mare e zona pranzo" },
+        { "icon": "fas fa-utensils", "title": "Cucina", "value": "Angolo cottura" },
+        { "icon": "fas fa-wifi", "title": "Wi-Fi", "value": "Disponibile" },
+        { "icon": "fas fa-car", "title": "Parcheggio", "value": "Gratuito in loco" },
+        { "icon": "fas fa-laptop", "title": "Spazio lavoro", "value": "Scrivania in camera" },
+        { "icon": "fas fa-shirt", "title": "Lavatrice", "value": "Disponibile" },
+        { "icon": "fas fa-tv", "title": "TV", "value": "In camera" },
+        { "icon": "fas fa-key", "title": "Self check-in", "value": "Cassetta di sicurezza" }
       ],
       "gallery": [
         "fotos/oltreMare/_45A3513-Migliorato-NR-Modifica.jpg",
@@ -150,64 +111,6 @@
       "availability": "available",
       "availablePeriods": [
         {"startDate": "2025-05-01", "endDate": "2025-10-31"}
-      ]
-    },
-    {
-      "id": "casale_umbro",
-      "title": "Casale Umbro",
-      "badge": "Romantica",
-      "description": "Incantevole casale ristrutturato con cura, immerso nella campagna umbra caratterizzata da colline morbide e boschi. Ideale per coppie e piccoli gruppi in cerca di intimità e contatto con la natura. Gli interni mantengono lo stile rustico toscano con arredi d'epoca e comfort moderni.",
-      "location": "Umbria",
-      "region": "umbria",
-      "locationInfo": "Il Casale è situato nel cuore verde dell'Umbria, circondata da boschi di lecci e querce. Perfetto per escursioni a piedi e in mountain bike. Nelle vicinanze: Perugia, Assisi, e i bellissimi laghi umbri. Un luogo ideale per rigenerarsi.",
-      "coordinates": "43.1083,12.3883",
-      "price": 1200,
-      "bedrooms": 2,
-      "guests": 4,
-      "bathrooms": 1,
-      "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&h=400&fit=crop",
-      "features": [
-        {
-          "icon": "fas fa-tree",
-          "title": "Giardino",
-          "value": "1500 mq"
-        },
-        {
-          "icon": "fas fa-fire",
-          "title": "Camino",
-          "value": "Funzionante"
-        },
-        {
-          "icon": "fas fa-book",
-          "title": "Libreria",
-          "value": "Con libri"
-        },
-        {
-          "icon": "fas fa-binoculars",
-          "title": "Osservazione Natura",
-          "value": "Perfetta"
-        },
-        {
-          "icon": "fas fa-dumbbell",
-          "title": "Zona Relax",
-          "value": "Esterna"
-        },
-        {
-          "icon": "fas fa-bicycle",
-          "title": "Biciclette",
-          "value": "Fornite"
-        }
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1570129477492-45c003cedd20?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-      ],
-      "minimumStay": 2,
-      "availability": "available",
-      "availablePeriods": [
-        {"startDate": "2025-01-01", "endDate": "2025-12-31"}
       ]
     }
   ]

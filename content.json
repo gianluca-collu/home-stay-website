@@ -1,14 +1,14 @@
 {
-  "pageTitle": "Dimore Collu | Soggiorni tra mare e colline",
+  "pageTitle": "Sa Ruxi Stay | Soggiorni tra mare e colline",
   "header": {
-    "brandName": "Dimore Collu",
+    "brandName": "Sa Ruxi Stay",
     "navigation": [
       {
         "label": "Home",
         "href": "#home"
       },
       {
-        "label": "Le Dimore",
+        "label": "Alloggi",
         "href": "#case"
       },
       {
@@ -28,11 +28,11 @@
   "hero": {
     "title": "Scopri la vacanza ideale per te",
     "subtitle": "Case esclusive immerse nella bellezza della natura con vista sul mare",
-    "buttonText": "Scopri le Dimore",
+    "buttonText": "Scopri gli alloggi",
     "buttonLink": "#case"
   },
   "casesSection": {
-    "title": "Le Dimore",
+    "title": "Alloggi",
     "subtitle": "Selezionate con cura per offrire il massimo del comfort e dell'eleganza"
   },
   "about": {
@@ -42,8 +42,8 @@
     "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
     "paragraphs": [
       "La Sardegna è una terra unica: conserva un'anima autentica, fatta di paesaggi straordinari, tradizioni profonde e un ritmo di vita che invita a riscoprire il piacere delle cose semplici.",
-      "Da questo legame nasce il mio progetto: offrire dimore accoglienti e un'ospitalità attenta, che mette al centro gli ospiti e rispetta i luoghi e i ritmi dell'isola.",
-      "Il mio impegno è aiutare chi sceglie una delle mie dimore a scoprire la Sardegna oltre le spiagge: i paesaggi naturali, le tradizioni e i suoi sapori. Vivo l'isola tutto l'anno e consiglio ai miei ospiti luoghi e indirizzi che conosco bene, anche al di fuori degli itinerari più conosciuti.",
+      "Da questo legame nasce il mio progetto: offrire alloggi accoglienti e un'ospitalità attenta, che mette al centro gli ospiti e rispetta i luoghi e i ritmi dell'isola.",
+      "Il mio impegno è aiutare chi sceglie uno dei miei alloggi a scoprire la Sardegna oltre le spiagge: i paesaggi naturali, le tradizioni e i suoi sapori. Vivo l'isola tutto l'anno e consiglio ai miei ospiti luoghi e indirizzi che conosco bene, anche al di fuori degli itinerari più conosciuti.",
       "Ogni soggiorno dovrebbe essere un'occasione per rallentare, lasciarsi alle spalle la quotidianità e ritrovare il proprio tempo. Senza fretta, senza programmi obbligati, con la libertà di sentirsi semplicemente nel posto giusto.",
       "Perché, in fondo, il vero lusso non è soltanto il luogo in cui soggiorniamo, ma il sentirsi a casa."
     ],
@@ -51,7 +51,7 @@
   },
   "territory": {
     "title": "Il Sud Sardegna, tra Cagliari e Villasimius",
-    "description": "Le mie dimore si trovano nel Sud Sardegna, tra Cagliari e le spiagge di Villasimius.",
+    "description": "",
     "imageUrl": "fotos/website/DJI_20260615150747_0090_D.jpg",
     "mainTitle": "Tramonti sul mare indimenticabili",
     "mainDescription": "Il mare di Villasimius e del Sud Sardegna come filo conduttore:  tutti gli alloggi godono di una fantastica vista che si affaccia sul mare. Oltre alle bellissime spiegge di Villasimius, puoi scoprire Cagliari e la sua antica storia archelogico culturale, un'escursione culturale, una cena tipica in agriturismo o chiudere la giornata con una passeggiata al tramonto.",
@@ -87,7 +87,7 @@
   },
   "contact": {
     "title": "Contattami",
-    "description": "Per informazioni sulle dimore, disponibilità e tariffe puoi contattarmi al telefono o via email.",
+    "description": "Per informazioni sugli alloggi, disponibilità e tariffe puoi contattarmi al telefono o via email.",
     "methods": [
       {
         "icon": "fas fa-phone-alt",
@@ -100,7 +100,7 @@
         "value": "gianluca.collu95@gmail.com"
       }
     ],
-    "buttonText": "Scopri le Dimore"
+    "buttonText": "Scopri gli alloggi"
   },
   "filters": {
     "title": "Trova la tua casa ideale",
@@ -110,16 +110,12 @@
         "value": ""
       },
       {
-        "label": "Toscana",
-        "value": "toscana"
+        "label": "Sud Sardegna",
+        "value": "Sud Sardegna"
       },
       {
-        "label": "Costiera Amalfitana",
-        "value": "campania"
-      },
-      {
-        "label": "Umbria",
-        "value": "umbria"
+        "label": "Villasimius",
+        "value": "Villasimius"
       }
     ],
     "guests": [
@@ -153,7 +149,7 @@
     }
   },
   "footer": {
-    "company": "Dimore Collu",
+    "company": "Sa Ruxi Stay",
     "tagline": "Tre luoghi, un progetto di Gianluca Collu",
     "contact": {
       "email": "gianluca.collu95@gmail.com",

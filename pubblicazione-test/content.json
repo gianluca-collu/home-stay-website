@@ -1,0 +1,162 @@
+{
+  "pageTitle": "Sa Ruxi Stay | Soggiorni tra mare e colline",
+  "header": {
+    "brandName": "Sa Ruxi Stay",
+    "navigation": [
+      {
+        "label": "Home",
+        "href": "#home"
+      },
+      {
+        "label": "Alloggi",
+        "href": "#case"
+      },
+      {
+        "label": "Territorio",
+        "href": "#territorio"
+      },
+      {
+        "label": "Chi Sono",
+        "href": "#about"
+      },
+      {
+        "label": "Contatti",
+        "href": "#contatti"
+      }
+    ]
+  },
+  "hero": {
+    "title": "Scopri la vacanza ideale per te",
+    "subtitle": "Case esclusive immerse nella bellezza della natura con vista sul mare",
+    "buttonText": "Scopri gli alloggi",
+    "buttonLink": "#case"
+  },
+  "casesSection": {
+    "title": "Alloggi",
+    "subtitle": "Selezionate con cura per offrire il massimo del comfort e dell'eleganza"
+  },
+  "about": {
+    "title": "Chi Sono",
+    "subtitle": "Un progetto di Gianluca Collu",
+    "mainTitle": "Un'idea di ospitalità",
+    "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
+    "paragraphs": [
+      "La Sardegna è una terra unica: conserva un'anima autentica, fatta di paesaggi straordinari, tradizioni profonde e un ritmo di vita che invita a riscoprire il piacere delle cose semplici.",
+      "Da questo legame nasce il mio progetto: offrire alloggi accoglienti e un'ospitalità attenta, che mette al centro gli ospiti e rispetta i luoghi e i ritmi dell'isola.",
+      "Il mio impegno è aiutare chi sceglie uno dei miei alloggi a scoprire la Sardegna oltre le spiagge: i paesaggi naturali, le tradizioni e i suoi sapori. Vivo l'isola tutto l'anno e consiglio ai miei ospiti luoghi e indirizzi che conosco bene, anche al di fuori degli itinerari più conosciuti.",
+      "Ogni soggiorno dovrebbe essere un'occasione per rallentare, lasciarsi alle spalle la quotidianità e ritrovare il proprio tempo. Senza fretta, senza programmi obbligati, con la libertà di sentirsi semplicemente nel posto giusto.",
+      "Perché, in fondo, il vero lusso non è soltanto il luogo in cui soggiorniamo, ma il sentirsi a casa."
+    ],
+    "closing": "Benvenuti in Sardegna."
+  },
+  "territory": {
+    "title": "Il Sud Sardegna, tra Cagliari e Villasimius",
+    "description": "",
+    "imageUrl": "fotos/website/DJI_20260615150747_0090_D.jpg",
+    "mainTitle": "Tramonti sul mare indimenticabili",
+    "mainDescription": "Il mare di Villasimius e del Sud Sardegna come filo conduttore:  tutti gli alloggi godono di una fantastica vista che si affaccia sul mare. Oltre alle bellissime spiegge di Villasimius, puoi scoprire Cagliari e la sua antica storia archelogico culturale, un'escursione culturale, una cena tipica in agriturismo o chiudere la giornata con una passeggiata al tramonto.",
+    "highlights": [
+      {
+        "icon": "fas fa-water",
+        "title": "Vicino al mare",
+        "description": "Tutti gli alloggi hanno una terrazza che si affaccia sul bellissimo litorale del Sud Sardegna."
+      },
+      {
+        "icon": "fas fa-city",
+        "title": "Cagliari",
+        "description": "Una visita al centro storico, una passeggiata al porto o una cena in città."
+      },
+      {
+        "icon": "fas fa-umbrella-beach",
+        "title": "Le spiagge di Villasimius",
+        "description": "Le Calette e spiagge tra le più rinomate al mondo, diverse tra loro e da scoprire lungo la costa."
+      },
+      {
+        "icon": "fas fa-sun",
+        "title": "Enogastronomia",
+        "description": "Scopri gli agriturismi dove puoi assaggiare la cucina tradizionale sarda e i vini locali; a Cagliari, lasciati tentare dalle specialità di mare e dai piatti seafood."
+      }
+    ],
+    "regions": [
+      {
+        "name": "Sud Sardegna",
+        "description": "Tra Cagliari e Villasimius trovi spiagge, calette e tanti angoli di costa da esplorare.",
+        "highlights": ["Cagliari", "Villasimius", "Torre delle Stelle"]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contattami",
+    "description": "Per informazioni sugli alloggi, disponibilità e tariffe puoi contattarmi al telefono o via email.",
+    "methods": [
+      {
+        "icon": "fas fa-phone-alt",
+        "title": "Telefono",
+        "value": "+39 339 882 5146"
+      },
+      {
+        "icon": "fas fa-envelope",
+        "title": "Email",
+        "value": "gianluca.collu95@gmail.com"
+      }
+    ],
+    "buttonText": "Scopri gli alloggi"
+  },
+  "filters": {
+    "title": "Trova la tua casa ideale",
+    "locations": [
+      {
+        "label": "Tutte le zone",
+        "value": ""
+      },
+      {
+        "label": "Sud Sardegna",
+        "value": "Sud Sardegna"
+      },
+      {
+        "label": "Villasimius",
+        "value": "Villasimius"
+      }
+    ],
+    "guests": [
+      {
+        "label": "Qualsiasi numero",
+        "value": ""
+      },
+      {
+        "label": "2 ospiti",
+        "value": "2"
+      },
+      {
+        "label": "4 ospiti",
+        "value": "4"
+      },
+      {
+        "label": "6 ospiti",
+        "value": "6"
+      },
+      {
+        "label": "8+ ospiti",
+        "value": "8"
+      }
+    ],
+    "priceRange": {
+      "min": 0,
+      "max": 3000,
+      "step": 100,
+      "default": 3000,
+      "label": "Prezzo a notte"
+    }
+  },
+  "footer": {
+    "company": "Sa Ruxi Stay",
+    "tagline": "Tre luoghi, un progetto di Gianluca Collu",
+    "contact": {
+      "email": "gianluca.collu95@gmail.com",
+      "phone": "+39 339 882 5146"
+    },
+    "address": "Italia"
+  }
+}
+
+

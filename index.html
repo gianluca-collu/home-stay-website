@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.3.2/css/flag-icons.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- EmailJS - File locale (non CDN) -->
@@ -64,6 +65,50 @@
         
         .navbar-brand span {
             color: #c9a961;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-left: 0.75rem;
+        }
+
+        .language-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            min-width: 42px;
+            height: 36px;
+            padding: 0 0.35rem;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background: transparent;
+            color: #333;
+            font: inherit;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .language-button:hover,
+        .language-button:focus-visible {
+            border-color: #c9a961;
+            outline: none;
+        }
+
+        .language-button.is-active {
+            border-color: #c9a961;
+            background: #f7f2e7;
+        }
+
+        .language-flag.fi {
+            width: 1.2rem;
+            height: 0.9rem;
+            font-size: 1rem;
+            line-height: 1;
         }
         
         .nav-link {
@@ -565,6 +610,34 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .navbar > .container {
+                flex-wrap: wrap;
+            }
+
+            .navbar-brand {
+                order: 0;
+                font-size: 1.45rem;
+                letter-spacing: 1px;
+            }
+
+            .navbar-toggler {
+                order: 1;
+                margin-left: auto;
+            }
+
+            .language-switcher {
+                order: 2;
+                flex: 1 0 100%;
+                justify-content: flex-end;
+                margin-left: 0;
+                padding-top: 0.35rem;
+            }
+
+            .navbar-collapse {
+                order: 3;
+                flex-basis: 100%;
+            }
+
             .filter-button-container {
                 flex-direction: column;
                 align-items: stretch;
@@ -790,6 +863,18 @@
         footer p {
             margin: 0.5rem 0;
             font-size: 0.95rem;
+        }
+
+        .footer-privacy-link,
+        .privacy-consent a {
+            color: #d7bd82;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer-privacy-link {
+            display: inline-block;
+            margin-top: 0.75rem;
         }
         
         /* ===== MODAL DETTAGLI CASA ===== */
@@ -1042,6 +1127,26 @@
             line-height: 1.8;
             margin-bottom: 1rem;
         }
+
+        .modal-description-collapsed {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+            line-clamp: 5;
+            overflow: hidden;
+        }
+
+        .description-toggle {
+            padding: 0;
+            border: 0;
+            background: none;
+            color: #806735;
+            font: inherit;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+        }
         
         /* Full Features */
         .features-grid {
@@ -1177,6 +1282,35 @@
             outline: none;
             border-color: #c9a961;
             box-shadow: 0 0 5px rgba(201, 169, 97, 0.3);
+        }
+
+        .privacy-consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            margin: 1.25rem 0;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .privacy-consent input {
+            flex: 0 0 18px;
+            width: 18px;
+            height: 18px;
+            margin-top: 0.15rem;
+            accent-color: #c9a961;
+        }
+
+        .privacy-consent label {
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .privacy-helper {
+            margin: -0.75rem 0 1.5rem;
+            color: #666;
+            font-size: 0.85rem;
         }
 
         .booking-form-row {
@@ -1471,13 +1605,19 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="#home">Dimore Collu</a>
+                <a class="navbar-brand" href="#home">Sa Ruxi Stay</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto" id="navbarMenu">
                     </ul>
+                </div>
+                <div class="language-switcher" role="group" aria-label="Lingua" data-i18n-aria-label="ui.language">
+                    <button class="language-button" type="button" data-locale="it" aria-label="Italiano" title="Italiano"><span class="language-flag fi fi-it" aria-hidden="true"></span><span>IT</span></button>
+                    <button class="language-button" type="button" data-locale="en" aria-label="English" title="English"><span class="language-flag fi fi-gb" aria-hidden="true"></span><span>EN</span></button>
+                    <button class="language-button" type="button" data-locale="fr" aria-label="Français" title="Français"><span class="language-flag fi fi-fr" aria-hidden="true"></span><span>FR</span></button>
+                    <button class="language-button" type="button" data-locale="de" aria-label="Deutsch" title="Deutsch"><span class="language-flag fi fi-de" aria-hidden="true"></span><span>DE</span></button>
                 </div>
             </div>
         </nav>
@@ -1504,10 +1644,10 @@
             <div class="filter-button-container">
                 <button class="btn-filters-toggle" onclick="openFiltersModal()">
                     <i class="fas fa-sliders-h"></i>
-                    <span></span>
+                    <span data-i18n="ui.filters">Filtri</span>
                 </button>
                 <div class="results-info-top">
-                    <p>Mostrando <span id="resultsCount">3</span> proprietà</p>
+                    <p id="resultsInfo"></p>
                 </div>
             </div>
 
@@ -1583,17 +1723,17 @@
             
             <div class="filters-body">
                 <div class="filter-group">
-                    <label for="filterLocation"><i class="fas fa-map-marker-alt"></i> Zona</label>
+                    <label for="filterLocation"><i class="fas fa-map-marker-alt"></i> <span data-i18n="ui.zone">Zona</span></label>
                     <select id="filterLocation"></select>
                 </div>
 
                 <div class="filter-group">
-                    <label for="filterGuests"><i class="fas fa-users"></i> Ospiti</label>
+                    <label for="filterGuests"><i class="fas fa-users"></i> <span data-i18n="ui.guests">Ospiti</span></label>
                     <select id="filterGuests"></select>
                 </div>
 
                 <div class="filter-group">
-                    <label for="filterPrice"><i class="fas fa-euro-sign"></i> Prezzo a notte</label>
+                    <label for="filterPrice"><i class="fas fa-euro-sign"></i> <span data-i18n="ui.price">Prezzo a notte</span></label>
                     <input type="range" id="filterPrice">
                     <div class="price-display">
                         <span>€</span><span id="priceValue"></span>
@@ -1601,20 +1741,21 @@
                 </div>
 
                 <div class="filter-group">
-                    <label for="filterBedrooms"><i class="fas fa-bed"></i> Camere</label>
-                    <select id="filterBedrooms"></select>
-                        <option value="3">3 camere</option>
-                        <option value="4">4+ camere</option>
+                    <label for="filterBedrooms"><i class="fas fa-bed"></i> <span data-i18n="ui.bedrooms">Camere</span></label>
+                    <select id="filterBedrooms">
+                        <option value="" data-i18n="ui.anyBedrooms">Qualsiasi numero</option>
+                        <option value="3" data-i18n="ui.threeBedrooms">3 camere</option>
+                        <option value="4" data-i18n="ui.fourBedrooms">4+ camere</option>
                     </select>
                 </div>
             </div>
 
             <div class="filters-actions">
                 <button class="btn-filter" onclick="applyFilters()">
-                    <i class="fas fa-search"></i> Cerca
+                    <i class="fas fa-search"></i> <span data-i18n="ui.search">Cerca</span>
                 </button>
                 <button class="btn-filter-reset" onclick="resetFilters()">
-                    <i class="fas fa-redo"></i> Reset
+                    <i class="fas fa-redo"></i> <span data-i18n="ui.reset">Reset</span>
                 </button>
             </div>
         </div>
@@ -1624,8 +1765,8 @@
     <div class="modal-overlay" id="propertyModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">Titolo Casa</h2>
-                <button class="modal-close" onclick="closePropertyModal()">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" aria-label="Chiudi" data-i18n-aria-label="ui.close" onclick="closePropertyModal()">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -1634,8 +1775,8 @@
                 <!-- Gallery -->
                 <div class="gallery-section">
                     <div class="gallery-main">
-                        <img id="mainImage" src="" alt="Property main image" decoding="async" onclick="openImageViewer()">
-                        <button class="gallery-fullscreen-btn" type="button" aria-label="Apri la foto a schermo intero" title="Apri a schermo intero" onclick="openImageViewer()">
+                        <img id="mainImage" src="" alt="" decoding="async" onclick="openImageViewer()">
+                        <button class="gallery-fullscreen-btn" type="button" aria-label="Apri la foto a schermo intero" data-i18n-aria-label="ui.openFullPhoto" data-i18n-title="ui.openFullPhoto" title="Apri a schermo intero" onclick="openImageViewer()">
                             <i class="fas fa-expand" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -1646,8 +1787,9 @@
                 
                 <!-- Description -->
                 <div class="description-section">
-                    <h3>Descrizione</h3>
-                    <p id="modalDescription"></p>
+                    <h3 data-i18n="ui.description">Descrizione</h3>
+                    <p id="modalDescription" class="modal-description-collapsed"></p>
+                    <button id="descriptionToggle" class="description-toggle" type="button" aria-expanded="false" onclick="toggleModalDescription()">Leggi tutto</button>
                 </div>
                 
                 <!-- Features -->
@@ -1657,13 +1799,13 @@
                 
                 <!-- Location Info -->
                 <div class="description-section">
-                    <h3>Informazioni sulla Posizione</h3>
+                    <h3 data-i18n="ui.locationInfo">Informazioni sulla posizione</h3>
                     <p id="modalLocationInfo"></p>
                 </div>
                 
                 <!-- Map -->
                 <div class="map-section">
-                    <h3>Localizzazione</h3>
+                    <h3 data-i18n="ui.map">Localizzazione</h3>
                     <div class="map-container">
                         <iframe id="modalMap" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
@@ -1671,13 +1813,13 @@
 
                 <!-- Availability Calendar -->
                 <div class="availability-section">
-                    <h3><i class="fas fa-calendar-alt"></i> Disponibilità</h3>
+                    <h3><i class="fas fa-calendar-alt"></i> <span data-i18n="ui.availability">Disponibilità</span></h3>
                     <p id="calendarDataStatus" class="availability-info" role="status" aria-live="polite"></p>
                     
                     <div class="calendar-container">
                         <div class="calendar-header">
                             <button onclick="prevMonth()" class="calendar-nav-btn">&larr;</button>
-                            <h4 id="calendarMonth">Gennaio 2025</h4>
+                            <h4 id="calendarMonth"></h4>
                             <button onclick="nextMonth()" class="calendar-nav-btn">&rarr;</button>
                         </div>
                         
@@ -1688,17 +1830,17 @@
                     
                     <div class="availability-info">
                         <div class="info-item">
-                            <span class="info-label">Soggiorno minimo:</span>
+                            <span class="info-label" data-i18n="ui.minStay">Soggiorno minimo:</span>
                             <span id="minimumStayInfo">3 notti</span>
                         </div>
                         <div class="calendar-legend">
                             <div class="legend-item">
                                 <span class="legend-color available"></span>
-                                <span>Disponibile</span>
+                                <span data-i18n="ui.available">Disponibile</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-color booked"></span>
-                                <span>Occupato</span>
+                                <span data-i18n="ui.occupied">Occupato</span>
                             </div>
                         </div>
                     </div>
@@ -1708,23 +1850,23 @@
             <!-- Pricing & CTA -->
             <div class="modal-pricing">
                 <div class="price-info">
-                    <h4>Prezzo per notte</h4>
+                    <h4 data-i18n="ui.pricePerNight">Prezzo per notte</h4>
                     <div class="price-amount">€<span id="modalPrice">0</span></div>
                 </div>
-                <button class="btn-booking" onclick="bookingAction()">Prenota Ora</button>
+                <button class="btn-booking" data-i18n="ui.bookNow" onclick="bookingAction()">Invia richiesta</button>
             </div>
         </div>
     </div>
 
-    <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Visualizzatore foto" tabindex="-1">
-        <button class="lightbox-control lightbox-close" type="button" aria-label="Chiudi foto" onclick="closeImageViewer()">
+    <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Visualizzatore foto" data-i18n-aria-label="ui.photoViewer" tabindex="-1">
+        <button class="lightbox-control lightbox-close" type="button" aria-label="Chiudi foto" data-i18n-aria-label="ui.closePhoto" onclick="closeImageViewer()">
             <i class="fas fa-times" aria-hidden="true"></i>
         </button>
-        <button class="lightbox-control lightbox-previous" type="button" aria-label="Foto precedente" onclick="navigateImageViewer(-1)">
+        <button class="lightbox-control lightbox-previous" type="button" aria-label="Foto precedente" data-i18n-aria-label="ui.previousPhoto" onclick="navigateImageViewer(-1)">
             <i class="fas fa-chevron-left" aria-hidden="true"></i>
         </button>
         <img class="lightbox-image" id="lightboxImage" src="" alt="">
-        <button class="lightbox-control lightbox-next" type="button" aria-label="Foto successiva" onclick="navigateImageViewer(1)">
+        <button class="lightbox-control lightbox-next" type="button" aria-label="Foto successiva" data-i18n-aria-label="ui.nextPhoto" onclick="navigateImageViewer(1)">
             <i class="fas fa-chevron-right" aria-hidden="true"></i>
         </button>
         <span class="lightbox-counter" id="lightboxCounter" aria-live="polite"></span>
@@ -1734,8 +1876,8 @@
     <div class="modal-overlay" id="bookingModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Prenota <span id="bookingPropertyName"></span></h2>
-                <button class="modal-close" onclick="closeBookingModal()">
+                <h2><span data-i18n="ui.bookingTitle">Richiesta di soggiorno</span> <span id="bookingPropertyName"></span></h2>
+                <button class="modal-close" aria-label="Chiudi" data-i18n-aria-label="ui.close" onclick="closeBookingModal()">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -1744,17 +1886,17 @@
                 <form id="bookingForm" onsubmit="submitBooking(event)">
                     <!-- Guest Info -->
                     <div class="booking-form-group">
-                        <label for="guestName">Nome e Cognome *</label>
-                        <input type="text" id="guestName" name="guestName" required placeholder="Es. Marco Rossi">
+                        <label for="guestName" data-i18n="ui.guestName">Nome e cognome *</label>
+                        <input type="text" id="guestName" name="guestName" required placeholder="Es. Marco Rossi" data-i18n-placeholder="ui.namePlaceholder">
                     </div>
 
                     <div class="booking-form-row">
                         <div class="booking-form-group">
-                            <label for="guestEmail">Email *</label>
+                            <label for="guestEmail" data-i18n="ui.email">Email *</label>
                             <input type="email" id="guestEmail" name="guestEmail" required placeholder="email@example.com">
                         </div>
                         <div class="booking-form-group">
-                            <label for="guestPhone">Telefono *</label>
+                            <label for="guestPhone" data-i18n="ui.phone">Telefono *</label>
                             <input type="tel" id="guestPhone" name="guestPhone" required placeholder="+39 123 456 7890">
                         </div>
                     </div>
@@ -1762,56 +1904,62 @@
                     <!-- Dates & Guests -->
                     <div class="booking-form-row">
                         <div class="booking-form-group">
-                            <label for="checkInDate">Data Arrivo *</label>
+                            <label for="checkInDate" data-i18n="ui.arrival">Data di arrivo *</label>
                             <input type="date" id="checkInDate" name="checkInDate" required onchange="updateBookingSummary()">
                         </div>
                         <div class="booking-form-group">
-                            <label for="checkOutDate">Data Partenza *</label>
+                            <label for="checkOutDate" data-i18n="ui.departure">Data di partenza *</label>
                             <input type="date" id="checkOutDate" name="checkOutDate" required onchange="updateBookingSummary()">
                         </div>
                     </div>
 
                     <div class="booking-form-group">
-                        <label for="guestCount">Numero Ospiti *</label>
-                        <input type="number" id="guestCount" name="guestCount" min="1" required placeholder="Es. 4">
+                        <label for="guestCount" data-i18n="ui.guestCount">Numero di ospiti *</label>
+                        <input type="number" id="guestCount" name="guestCount" min="1" required placeholder="Es. 4" data-i18n-placeholder="ui.guestsPlaceholder">
                     </div>
 
                     <div class="booking-form-group">
-                        <label for="guestMessage">Messaggio Speciale (Opzionale)</label>
-                        <textarea id="guestMessage" name="guestMessage" placeholder="Raccontaci dei tuoi desideri per il soggiorno..." rows="3"></textarea>
+                        <label for="guestMessage" data-i18n="ui.message">Messaggio (facoltativo)</label>
+                        <textarea id="guestMessage" name="guestMessage" placeholder="Scrivi un messaggio per l'host..." data-i18n-placeholder="ui.messagePlaceholder" rows="3"></textarea>
                     </div>
+                    <p class="privacy-helper" data-i18n="ui.noSensitive">Non inserire dati sanitari o altre informazioni sensibili nel messaggio.</p>
 
                     <!-- Booking Summary -->
                     <div class="booking-summary">
-                        <h4>Riepilogo Prenotazione</h4>
+                        <h4 data-i18n="ui.summary">Riepilogo richiesta</h4>
                         <div class="booking-summary-item">
-                            <span>Proprietà:</span>
+                            <span data-i18n="ui.property">Alloggio:</span>
                             <strong id="summaryProperty">-</strong>
                         </div>
                         <div class="booking-summary-item">
-                            <span>Check-in:</span>
+                            <span data-i18n="ui.checkIn">Arrivo:</span>
                             <strong id="summaryCheckIn">-</strong>
                         </div>
                         <div class="booking-summary-item">
-                            <span>Check-out:</span>
+                            <span data-i18n="ui.checkOut">Partenza:</span>
                             <strong id="summaryCheckOut">-</strong>
                         </div>
                         <div class="booking-summary-item">
-                            <span>Notti:</span>
+                            <span data-i18n="ui.totalNights">Notti:</span>
                             <strong id="summaryNights">-</strong>
                         </div>
                         <div class="booking-summary-item">
-                            <span>Prezzo medio/notte:</span>
+                            <span data-i18n="ui.averageNight">Prezzo medio per notte:</span>
                             <strong>€<span id="summaryPricePerNight">0</span></strong>
                         </div>
                         <div class="booking-summary-total">
-                            <span>Totale:</span>
+                            <span data-i18n="ui.total">Totale:</span>
                             <span>€<span id="summaryTotal">0</span></span>
                         </div>
                     </div>
 
+                    <div class="privacy-consent">
+                        <input type="checkbox" id="privacyAcknowledged" name="privacyAcknowledged" required>
+                        <span><label for="privacyAcknowledged" data-i18n="ui.readPrivacy">Dichiaro di aver letto l’</label><a href="privacy.html" target="_blank" rel="noopener" data-i18n="ui.privacy">informativa privacy</a>.</span>
+                    </div>
+
                     <button type="submit" class="btn-booking-submit">
-                        <i class="fas fa-check"></i> Invia Richiesta
+                        <i class="fas fa-check"></i> <span data-i18n="ui.sendRequest">Invia richiesta</span>
                     </button>
                 </form>
             </div>
@@ -1822,6 +1970,7 @@
     <footer>
         <div class="container">
             <p id="footerCopyright"></p>
+            <a class="footer-privacy-link" href="privacy.html" data-i18n="ui.privacyFooter">Informativa privacy</a>
         </div>
     </footer>
 
@@ -1830,8 +1979,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
     <script src="supabase-public.js"></script>
+    <script src="i18n.js"></script>
     
     <script>
+        window.SaRuxiI18n.applyStaticTranslations();
+        window.SaRuxiI18n.initLanguageSelector();
+
         // FILTERS MODAL FUNCTIONS
         function openFiltersModal() {
             const modal = document.getElementById('filtersModal');
@@ -1859,153 +2012,107 @@
 
         // Carica le proprietà dal file JSON
         let allProperties = [];
+        let sourceProperties = [];
+        let sourceContent = null;
+        let propertiesLoadFailed = false;
         let allPrices = [];
         let liveBookingData = null;
         let currentGalleryImages = [];
         let currentGalleryIndex = 0;
+
+        function localizeAndApplyLiveData(properties) {
+            let localizedProperties = window.SaRuxiI18n.localizeProperties(properties);
+            if (liveBookingData?.properties) {
+                localizedProperties = localizedProperties.map(property => {
+                    const bookingProperty = liveBookingData.properties.find(item => item.id === property.id);
+                    return bookingProperty ? {
+                        ...property,
+                        price: bookingProperty.base_nightly_price,
+                        minimumStay: bookingProperty.minimum_stay,
+                        maximumStay: bookingProperty.maximum_stay
+                    } : property;
+                });
+            }
+            return localizedProperties;
+        }
+
+        function populateLocalizedContent(preserveFilters = false) {
+            if (!sourceContent) return;
+            const previousFilters = preserveFilters ? {
+                location: document.getElementById('filterLocation').value,
+                guests: document.getElementById('filterGuests').value,
+                price: document.getElementById('filterPrice').value,
+                bedrooms: document.getElementById('filterBedrooms').value
+            } : null;
+            const data = window.SaRuxiI18n.localizeContent(sourceContent);
+            populatePageTitle(data.pageTitle);
+            populateNavigation(data.header);
+            populateHeader(data.header);
+            populateHero(data.hero);
+            populateCasesSection(data.casesSection);
+            populateTerritorySection(data.territory);
+            populateAboutSection(data.about);
+            populateContactSection(data.contact);
+            populateFilters(data.filters);
+            populateFooter(data.footer);
+
+            if (previousFilters) {
+                document.getElementById('filterLocation').value = previousFilters.location;
+                document.getElementById('filterGuests').value = previousFilters.guests;
+                document.getElementById('filterPrice').value = previousFilters.price;
+                document.getElementById('filterBedrooms').value = previousFilters.bedrooms;
+                document.getElementById('priceValue').textContent = previousFilters.price;
+            }
+        }
+
+        window.addEventListener('sa-ruxi-locale-change', () => {
+            populateLocalizedContent(true);
+            if (sourceProperties.length) {
+                allProperties = localizeAndApplyLiveData(sourceProperties);
+                applyFilters();
+            }
+            if (propertiesLoadFailed) {
+                const emptyTitle = document.querySelector('#propertiesGrid .empty-state h3');
+                const emptyMessage = document.querySelector('#propertiesGrid .empty-state p');
+                if (emptyTitle) emptyTitle.textContent = window.SaRuxiI18n.translate('ui.loadError');
+                if (emptyMessage) emptyMessage.textContent = window.SaRuxiI18n.translate('ui.loadErrorHelp');
+            }
+            if (currentPropertyCalendar && document.getElementById('propertyModal').classList.contains('active')) {
+                openPropertyModal(currentPropertyCalendar.id);
+            }
+            if (currentBookingProperty) {
+                currentBookingProperty = allProperties.find(property => property.id === currentBookingProperty.id) || currentBookingProperty;
+                document.getElementById('bookingPropertyName').textContent = currentBookingProperty.title;
+                document.getElementById('summaryProperty').textContent = currentBookingProperty.title;
+                updateBookingSummary();
+            }
+        });
         
         // Carica il contenuto statico (Chi siamo, Territorio, etc)
         fetch('content.json')
             .then(response => response.json())
-            .then(data => {
-                populatePageTitle(data.pageTitle);
-                populateNavigation(data.header);
-                populateHeader(data.header);
-                populateHero(data.hero);
-                populateCasesSection(data.casesSection);
-                populateTerritorySection(data.territory);
-                populateAboutSection(data.about);
-                populateContactSection(data.contact);
-                populateFilters(data.filters);
-                populateFooter(data.footer);
+            .then(sourceData => {
+                sourceContent = sourceData;
+                populateLocalizedContent();
             })
             .catch(error => console.error('Errore nel caricamento del contenuto:', error));
 
         fetch('properties.json')
             .then(response => response.json())
             .then(async data => {
-                allProperties = data.properties;
+                sourceProperties = data.properties;
                 liveBookingData = await window.loadSupabaseBookingData();
-                if (liveBookingData.properties) {
-                    allProperties = allProperties.map(property => {
-                        const bookingProperty = liveBookingData.properties.find(item => item.id === property.id);
-                        return bookingProperty ? {
-                            ...property,
-                            price: bookingProperty.base_nightly_price,
-                            minimumStay: bookingProperty.minimum_stay,
-                            maximumStay: bookingProperty.maximum_stay
-                        } : property;
-                    });
-                }
+                allProperties = localizeAndApplyLiveData(sourceProperties);
                 renderProperties(allProperties);
             })
             .catch(error => {
                 console.error('Errore nel caricamento delle proprietà:', error);
-                // Fallback ai dati hardcoded se il JSON non carica
-                allProperties = [
-            {
-                id: 'villa_toscana',
-                title: "Villa Toscana",
-                badge: "Esclusiva",
-                description: "Affascinante villa con piscina privata, circondata da vigneti e colline toscane. Una struttura esclusiva immersa nella tranquillità della campagna, perfetta per famiglie e coppie in cerca di lusso e tranquillità. La villa dispone di ampi spazi comuni, una cucina completamente attrezzata, e terrazza panoramica con vista sui vigneti.",
-                location: "Val d'Orcia, Toscana",
-                region: "toscana",
-                locationInfo: "La Villa Toscana è situata nel cuore di Val d'Orcia, uno dei paesaggi più affascinanti d'Italia. Circondato da vigneti storici e fattorie biologiche, il luogo offre un'esperienza autentica della Toscana. A pochi km troverai borghi medievali, cantine di vini rinomati e ristoranti stellati.",
-                coordinates: "43.1400,-11.9500",
-                price: 2500,
-                bedrooms: 4,
-                guests: 8,
-                bathrooms: 3,
-                image: "https://images.unsplash.com/photo-1570129477492-45c003cedd20?w=500&h=400&fit=crop",
-                features: [
-                    { icon: "fas fa-swimming-pool", title: "Piscina Privata", value: "12x6 m" },
-                    { icon: "fas fa-wifi", title: "Wi-Fi Veloce", value: "Fibra ottica" },
-                    { icon: "fas fa-utensils", title: "Cucina Attrezzata", value: "Completa" },
-                    { icon: "fas fa-car", title: "Parcheggio", value: "Privato" },
-                    { icon: "fas fa-sun", title: "Terrazza", value: "Panoramica" },
-                    { icon: "fas fa-wind", title: "Aria Condizionata", value: "In tutte le camere" }
-                ],
-                gallery: [
-                    "https://images.unsplash.com/photo-1570129477492-45c003cedd20?w=800&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1512217736312-44ca42025862?w=800&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop"
-                ]
-            },
-            {
-                id: 'casa_amalfitana',
-                title: "Oltre Mare",
-                badge: "Vista Mare",
-                description: "Suggestiva casa con terrazza con vista mozzafiato sul mare della Costiera Amalfitana. Accesso privato alla spiaggia, architettura tipica della costa con dettagli in stile mediterraneo. Perfetto per chi desidera una vacanza romantica con il suono delle onde come sottofondo e tramonti indimenticabili.",
-                location: "Costiera Amalfitana",
-                region: "campania",
-                locationInfo: "Situata sulla celebre Costiera Amalfitana, la casa è a pochi passi da Positano e Amalfi. Accesso diretto a una spiaggia privata. Nelle vicinanze troverai ristoranti di pesce fresco, boutique locali e i borghi più romantici della costa campana.",
-                coordinates: "40.6297,14.6034",
-                price: 1800,
-                bedrooms: 3,
-                guests: 6,
-                bathrooms: 2,
-                image: "fotos/oltreMare/_45A3513-Migliorato-NR-Modifica.jpg",
-                features: [
-                    { icon: "fas fa-water", title: "Vista Mare", value: "Panoramica" },
-                    { icon: "fas fa-umbrella-beach", title: "Spiaggia Privata", value: "Accesso diretto" },
-                    { icon: "fas fa-sun", title: "Terrazza", value: "30 mq" },
-                    { icon: "fas fa-wine-glass-alt", title: "Mini Bar", value: "Fornito" },
-                    { icon: "fas fa-bath", title: "Jacuzzi", value: "Su terrazza" },
-                    { icon: "fas fa-binoculars", title: "Telescopio", value: "Per osservare le stelle" }
-                ],
-                gallery: [
-                    "fotos/oltreMare/_45A3513-Migliorato-NR-Modifica.jpg",
-                    "fotos/oltreMare/015A3051-Migliorato-NR.jpg",
-                    "fotos/oltreMare/015A3064-Migliorato-NR.jpg",
-                    "fotos/oltreMare/015A3686-Migliorato-NR.jpg",
-                    "fotos/oltreMare/01645A3412-Migliorato-NR-Modifica.jpg",
-                    "fotos/oltreMare/0165A3426-Migliorato-NR-Modifica.jpg",
-                    "fotos/oltreMare/41bfb14a-55c4-44ba-8ca3-a99f974557d3.webp",
-                    "fotos/oltreMare/6afeaa8c-1ac5-43e2-bcae-1ef87a95ec92.avif",
-                    "fotos/oltreMare/_45A3516-Migliorato-NR-Modifica.jpg",
-                    "fotos/oltreMare/_45A3522-Migliorato-NR-Modifica.jpg",
-                    "fotos/oltreMare/_45A3529-Migliorato-NR-Modifica.jpg",
-                    "fotos/oltreMare/_45A3552-Migliorato-NR-Modifica-Modifica-Modifica.jpg",
-                    "fotos/oltreMare/_45A3558-Migliorato-NR-Modifica-Modifica.jpg",
-                    "fotos/oltreMare/_45A3570-Migliorato-NR-Modifica.jpg",
-                    "fotos/oltreMare/_45A3573-Migliorato-NR-Modifica.jpg",
-                    "fotos/oltreMare/_45A3612-Migliorato-NR.jpg",
-                    "fotos/oltreMare/_45A3615-Migliorato-NR.jpg",
-                    "fotos/oltreMare/_45A3625-Migliorato-NR-Modifica.jpg"
-                ]
-            },
-            {
-                id: 'casale_umbro',
-                title: "Casale Umbro",
-                badge: "Romantica",
-                description: "Incantevole casale ristrutturato con cura, immerso nella campagna umbra caratterizzata da colline morbide e boschi. Ideale per coppie e piccoli gruppi in cerca di intimità e contatto con la natura. Gli interni mantengono lo stile rustico toscano con arredi d'epoca e comfort moderni.",
-                location: "Umbria",
-                region: "umbria",
-                locationInfo: "Il Casale è situato nel cuore verde dell'Umbria, circondata da boschi di lecci e querce. Perfetto per escursioni a piedi e in mountain bike. Nelle vicinanze: Perugia, Assisi, e i bellissimi laghi umbri. Un luogo ideale per rigenerarsi.",
-                coordinates: "43.1083,12.3883",
-                price: 1200,
-                bedrooms: 2,
-                guests: 4,
-                bathrooms: 1,
-                image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&h=400&fit=crop",
-                features: [
-                    { icon: "fas fa-tree", title: "Giardino", value: "1500 mq" },
-                    { icon: "fas fa-fire", title: "Camino", value: "Funzionante" },
-                    { icon: "fas fa-book", title: "Libreria", value: "Con libri" },
-                    { icon: "fas fa-binoculars", title: "Osservazione Natura", value: "Perfetta" },
-                    { icon: "fas fa-dumbbell", title: "Zona Relax", value: "Esterna" },
-                    { icon: "fas fa-bicycle", title: "Biciclette", value: "Fornite" }
-                ],
-                gallery: [
-                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1570129477492-45c003cedd20?w=800&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-                ]
-            }
-        ];
-                renderProperties(allProperties);
+                propertiesLoadFailed = true;
+                renderProperties([]);
+                const emptyTitle = document.querySelector('#propertiesGrid .empty-state h3');
+                const emptyMessage = document.querySelector('#propertiesGrid .empty-state p');
+                if (emptyTitle) emptyTitle.textContent = window.SaRuxiI18n.translate('ui.loadError');
+                if (emptyMessage) emptyMessage.textContent = window.SaRuxiI18n.translate('ui.loadErrorHelp');
             }
         );
 
@@ -2063,19 +2170,19 @@
 
         function renderProperties(properties) {
             const grid = document.getElementById('propertiesGrid');
-            const resultCount = document.getElementById('resultsCount');
+            const resultsInfo = document.getElementById('resultsInfo');
+            resultsInfo.textContent = window.SaRuxiI18n.translate(properties.length === 1 ? 'ui.resultOne' : 'ui.results', { count: properties.length });
             
             if (properties.length === 0) {
                 grid.innerHTML = `
                     <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
                         <div class="empty-state">
                             <i class="fas fa-search"></i>
-                            <h3>Nessuna proprietà trovata</h3>
-                            <p>Prova a modificare i filtri per trovare la casa perfetta per te</p>
+                            <h3>${window.SaRuxiI18n.translate('ui.noProperties')}</h3>
+                            <p>${window.SaRuxiI18n.translate('ui.noPropertiesHelp')}</p>
                         </div>
                     </div>
                 `;
-                resultCount.textContent = '0';
                 return;
             }
             
@@ -2091,29 +2198,28 @@
                             <div class="property-location">
                                 <i class="fas fa-map-marker-alt"></i> ${prop.location}
                             </div>
-                            <p class="property-desc">${prop.description}</p>
+                            <p class="property-desc">${prop.summary || prop.description}</p>
                             <div class="property-features">
                                 <div class="feature">
                                     <div class="feature-icon"><i class="fas fa-bed"></i></div>
-                                    <div class="feature-value">${prop.bedrooms} Camere</div>
+                                    <div class="feature-value">${window.SaRuxiI18n.translate(prop.bedrooms === 1 ? 'ui.cardBedroom' : 'ui.cardBedrooms', { count: prop.bedrooms })}</div>
                                 </div>
                                 <div class="feature">
                                     <div class="feature-icon"><i class="fas fa-users"></i></div>
-                                    <div class="feature-value">${prop.guests} Ospiti</div>
+                                    <div class="feature-value">${window.SaRuxiI18n.translate(prop.guests === 1 ? 'ui.cardGuest' : 'ui.cardGuests', { count: prop.guests })}</div>
                                 </div>
                                 <div class="feature">
                                     <div class="feature-icon"><i class="fas fa-bath"></i></div>
-                                    <div class="feature-value">${prop.bathrooms} Bagni</div>
+                                    <div class="feature-value">${window.SaRuxiI18n.translate(prop.bathrooms === 1 ? 'ui.cardBathroom' : 'ui.cardBathrooms', { count: prop.bathrooms })}</div>
                                 </div>
                             </div>
-                            <div class="property-price">€${prop.price.toLocaleString('it-IT')}<span style="font-size: 0.6em; font-weight: 400;">/notte</span></div>
-                            <button class="btn btn-view" onclick="openModalWithoutPropagation(event, '${prop.id}')">Scopri Dettagli</button>
+                            <div class="property-price">${window.SaRuxiI18n.formatNumber(prop.price, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })}<span style="font-size: 0.6em; font-weight: 400;">/${window.SaRuxiI18n.translate('ui.nightUnit')}</span></div>
+                            <button class="btn btn-view" onclick="openModalWithoutPropagation(event, '${prop.id}')">${window.SaRuxiI18n.translate('ui.details')}</button>
                         </div>
                     </div>
                 </div>
             `).join('');
             
-            resultCount.textContent = properties.length;
         }
 
         // Funzione di filtraggio
@@ -2169,13 +2275,19 @@
             currentGalleryImages.forEach((img, index) => {
                 const thumb = document.createElement('div');
                 thumb.className = `gallery-thumb ${index === 0 ? 'active' : ''}`;
-                thumb.innerHTML = `<img src="${getThumbnailSource(img)}" alt="Foto ${index + 1}" loading="lazy" decoding="async">`;
+                thumb.innerHTML = `<img src="${getThumbnailSource(img)}" alt="${window.SaRuxiI18n.translate('ui.photoNumber', { number: index + 1 })}" loading="lazy" decoding="async">`;
                 thumb.onclick = () => changeImage(img, index);
                 thumbsContainer.appendChild(thumb);
             });
             
             // Description
-            document.getElementById('modalDescription').textContent = property.description;
+            const modalDescription = document.getElementById('modalDescription');
+            const descriptionToggle = document.getElementById('descriptionToggle');
+            modalDescription.textContent = property.description;
+            modalDescription.classList.add('modal-description-collapsed');
+            descriptionToggle.hidden = property.description.length <= 280;
+            descriptionToggle.textContent = window.SaRuxiI18n.translate('ui.readMore');
+            descriptionToggle.setAttribute('aria-expanded', 'false');
             
             // Location Info
             document.getElementById('modalLocationInfo').textContent = property.locationInfo;
@@ -2197,13 +2309,18 @@
             // Map
             const mapIframe = document.getElementById('modalMap');
             const coords = property.coordinates.split(',');
-            mapIframe.src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d${coords[1]}!3d${coords[0]}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2z${coords[0]},${coords[1]}!5e0!3m2!1sit!2sit!4v`;
+            const mapParams = new URLSearchParams({
+                q: `${coords[0].trim()},${coords[1].trim()}`,
+                z: '15',
+                output: 'embed'
+            });
+            mapIframe.src = `https://www.google.com/maps?${mapParams.toString()}`;
             
             // Price
-            document.getElementById('modalPrice').textContent = property.price.toLocaleString('it-IT');
+            document.getElementById('modalPrice').textContent = window.SaRuxiI18n.formatNumber(property.price);
             
             // Minimum Stay
-            document.getElementById('minimumStayInfo').textContent = (property.minimumStay || 3) + ' notti';
+            document.getElementById('minimumStayInfo').textContent = `${property.minimumStay || 3} ${window.SaRuxiI18n.translate('ui.nights')}`;
             
             // Calendar
             currentPropertyCalendar = property;
@@ -2214,6 +2331,16 @@
             // Mostra modal
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+        }
+
+        function toggleModalDescription() {
+            const modalDescription = document.getElementById('modalDescription');
+            const descriptionToggle = document.getElementById('descriptionToggle');
+            const isExpanded = descriptionToggle.getAttribute('aria-expanded') === 'true';
+
+            modalDescription.classList.toggle('modal-description-collapsed', isExpanded);
+            descriptionToggle.setAttribute('aria-expanded', String(!isExpanded));
+            descriptionToggle.textContent = window.SaRuxiI18n.translate(isExpanded ? 'ui.readMore' : 'ui.showLess');
         }
 
         // CALENDAR VARIABLES & FUNCTIONS
@@ -2256,12 +2383,14 @@
                     ? new Date(liveBookingData.updatedAt).toLocaleString('it-IT')
                     : null;
                 status.textContent = cachedAt
-                    ? `Connessione al calendario non disponibile. Mostriamo l'ultima copia salvata (${cachedAt}); verifica la disponibilità prima di confermare.`
-                    : 'Connessione al calendario non disponibile. Le date mostrate non sono aggiornate: verifica manualmente la disponibilità.';
+                    ? window.SaRuxiI18n.translate('ui.calendarUnavailable', { date: cachedAt })
+                    : window.SaRuxiI18n.translate('ui.calendarUnavailableNoCache');
                 return;
             }
 
-            status.textContent = `Disponibilità e tariffe aggiornate: ${new Date(liveBookingData.updatedAt).toLocaleString('it-IT')}.`;
+            status.textContent = window.SaRuxiI18n.translate('ui.calendarUpdated', {
+                date: new Date(liveBookingData.updatedAt).toLocaleString(window.SaRuxiI18n.locale)
+            });
         }
 
         function renderCalendar() {
@@ -2271,9 +2400,9 @@
             const month = currentCalendarMonth.getMonth();
             
             // Update header
-            const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
-                              'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
-            document.getElementById('calendarMonth').textContent = `${monthNames[month]} ${year}`;
+            const monthName = new Intl.DateTimeFormat(window.SaRuxiI18n.locale, { month: 'long' })
+                .format(new Date(year, month, 1));
+            document.getElementById('calendarMonth').textContent = `${monthName} ${year}`;
             
             // Get first day and number of days in month
             const firstDay = new Date(year, month, 1).getDay();
@@ -2284,7 +2413,10 @@
             calendarGrid.innerHTML = '';
             
             // Day headers
-            const dayHeaders = ['L', 'M', 'M', 'G', 'V', 'S', 'D'];
+            const dayHeaders = Array.from({ length: 7 }, (_, index) =>
+                new Intl.DateTimeFormat(window.SaRuxiI18n.locale, { weekday: 'short' })
+                    .format(new Date(2025, 0, 6 + index))
+            );
             dayHeaders.forEach(day => {
                 const header = document.createElement('div');
                 header.className = 'calendar-day-header';
@@ -2354,7 +2486,7 @@
             currentGalleryIndex = (index + currentGalleryImages.length) % currentGalleryImages.length;
             const image = document.getElementById('lightboxImage');
             image.src = currentGalleryImages[currentGalleryIndex];
-            image.alt = `${document.getElementById('modalTitle').textContent} - Foto ${currentGalleryIndex + 1}`;
+            image.alt = `${document.getElementById('modalTitle').textContent} - ${window.SaRuxiI18n.translate('ui.photoNumber', { number: currentGalleryIndex + 1 })}`;
             document.getElementById('lightboxCounter').textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
             changeImage(currentGalleryImages[currentGalleryIndex], currentGalleryIndex);
         }
@@ -2470,8 +2602,8 @@
             const checkInDate = document.getElementById('checkInDate').value;
             const checkOutDate = document.getElementById('checkOutDate').value;
             
-            document.getElementById('summaryCheckIn').textContent = checkInDate || '-';
-            document.getElementById('summaryCheckOut').textContent = checkOutDate || '-';
+            document.getElementById('summaryCheckIn').textContent = window.SaRuxiI18n.formatDate(checkInDate) || '-';
+            document.getElementById('summaryCheckOut').textContent = window.SaRuxiI18n.formatDate(checkOutDate) || '-';
 
             if (!checkInDate || !checkOutDate) {
                 document.getElementById('summaryNights').textContent = '-';
@@ -2506,8 +2638,8 @@
             const averagePrice = Math.round(totalPrice / nights);
 
             document.getElementById('summaryNights').textContent = nights;
-            document.getElementById('summaryPricePerNight').textContent = averagePrice.toLocaleString('it-IT');
-            document.getElementById('summaryTotal').textContent = totalPrice.toLocaleString('it-IT');
+            document.getElementById('summaryPricePerNight').textContent = window.SaRuxiI18n.formatNumber(averagePrice);
+            document.getElementById('summaryTotal').textContent = window.SaRuxiI18n.formatNumber(totalPrice);
         }
 
         async function submitBooking(event) {
@@ -2515,13 +2647,13 @@
 
             // Verifica che EmailJS sia caricato
             if (typeof emailjs === 'undefined') {
-                alert('❌ Errore: Libreria EmailJS non caricata. Per favore ricarica la pagina.');
+                alert(window.SaRuxiI18n.translate('ui.emailUnavailable'));
                 console.error('EmailJS non è disponibile', typeof emailjs);
                 return;
             }
 
             if (!currentBookingProperty) {
-                alert('Errore: proprietà non trovata');
+                alert(window.SaRuxiI18n.translate('ui.propertyUnavailable'));
                 return;
             }
 
@@ -2534,25 +2666,25 @@
             const guestMessage = document.getElementById('guestMessage').value;
 
             if (!guestName || !guestEmail || !guestPhone || !checkInDate || !checkOutDate || !guestCount) {
-                alert('Per favore, compila tutti i campi obbligatori');
+                alert(window.SaRuxiI18n.translate('ui.requiredFields'));
                 return;
             }
 
             const checkIn = new Date(checkInDate);
             const checkOut = new Date(checkOutDate);
             if (checkOut <= checkIn) {
-                alert('La data di check-out deve essere successiva al check-in.');
+                alert(window.SaRuxiI18n.translate('ui.invalidDates'));
                 return;
             }
             const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
             const minimumStay = currentBookingProperty.minimumStay || 3;
             const maximumStay = currentBookingProperty.maximumStay || null;
             if (nights < minimumStay) {
-                alert(`Il soggiorno minimo per questa struttura è di ${minimumStay} notti.`);
+                alert(window.SaRuxiI18n.translate('ui.minStayError', { count: minimumStay }));
                 return;
             }
             if (maximumStay !== null && nights > maximumStay) {
-                alert(`Il soggiorno massimo per questa struttura è di ${maximumStay} notti.`);
+                alert(window.SaRuxiI18n.translate('ui.maxStayError', { count: maximumStay }));
                 return;
             }
 
@@ -2566,43 +2698,11 @@
                 totalPrice += dayPrice;
             }
 
-            // Prepara il messaggio email in HTML
-            const emailContent = `
-                <h2>Nuova Richiesta di Prenotazione</h2>
-                <h3>${currentBookingProperty.title}</h3>
-                
-                <h4>Dati Ospite</h4>
-                <p><strong>Nome:</strong> ${guestName}</p>
-                <p><strong>Email:</strong> ${guestEmail}</p>
-                <p><strong>Telefono:</strong> ${guestPhone}</p>
-                <p><strong>Numero Ospiti:</strong> ${guestCount}</p>
-                
-                <h4>Dettagli Soggiorno</h4>
-                <p><strong>Check-in:</strong> ${checkInDate}</p>
-                <p><strong>Check-out:</strong> ${checkOutDate}</p>
-                <p><strong>Notti:</strong> ${nights}</p>
-                
-                <h4>Riepilogo Prezzo</h4>
-                <p><strong>Totale:</strong> €${totalPrice.toLocaleString('it-IT')}</p>
-                
-                ${guestMessage ? `<h4>Messaggio Ospite</h4><p>${guestMessage}</p>` : ''}
-                
-                <hr>
-                <p>Contattare l'ospite per confermare la prenotazione.</p>
-            `;
-
             try {
                 // Disabilita il pulsante durante l'invio
                 const submitBtn = document.querySelector('.btn-booking-submit');
                 submitBtn.disabled = true;
-                submitBtn.textContent = 'Invio in corso...';
-
-                // Formatta le date in italiano (DD/MM/YYYY) - versione robusta
-                const formatDate = (dateStr) => {
-                    if (!dateStr) return '';
-                    const [year, month, day] = dateStr.split('-');
-                    return `${day}/${month}/${year}`;
-                };
+                submitBtn.textContent = window.SaRuxiI18n.translate('ui.sending');
 
                 // Prepara i parametri per EmailJS
                 const templateParams = {
@@ -2612,33 +2712,30 @@
                     guest_phone: guestPhone,
                     guest_count: guestCount,
                     property_name: currentBookingProperty.title,
-                    check_in: formatDate(checkInDate),
-                    check_out: formatDate(checkOutDate),
+                    check_in: window.SaRuxiI18n.formatDate(checkInDate),
+                    check_out: window.SaRuxiI18n.formatDate(checkOutDate),
                     nights: nights,
-                    total_price: totalPrice.toLocaleString('it-IT'),
+                    total_price: window.SaRuxiI18n.formatNumber(totalPrice, { style: 'currency', currency: 'EUR' }),
                     guest_message: guestMessage
                 };
-
-                // DEBUG: Mostra i dati che stiamo inviando
-                console.log('📧 Dati email da inviare:', templateParams);
 
                 // Invia l'email
                 await emailjs.send('service_p5bmwef', 'template_tb0wosf', templateParams);
 
                 // Mostra messaggio di successo
-                alert('Richiesta inviata con successo. Riceverai un riscontro a ' + guestEmail + '. La prenotazione non è confermata finché non riceverai una mia conferma.');
+                alert(window.SaRuxiI18n.translate('ui.requestSent', { email: guestEmail }));
 
                 // Chiudi il modal e resetta il form
                 closeBookingModal();
                 document.getElementById('bookingForm').reset();
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Invia Richiesta';
+                submitBtn.innerHTML = `<i class="fas fa-check"></i> <span>${window.SaRuxiI18n.translate('ui.sendRequest')}</span>`;
             } catch (error) {
                 console.error('Errore nell\'invio:', error);
-                alert('❌ Errore nell\'invio della prenotazione.\n\nPer favore contatta: gianluca.collu95@gmail.com\n\nErrore: ' + error.message);
+                alert(window.SaRuxiI18n.translate('ui.requestError', { email: 'gianluca.collu95@gmail.com' }));
                 const submitBtn = document.querySelector('.btn-booking-submit');
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Invia Richiesta';
+                submitBtn.innerHTML = `<i class="fas fa-check"></i> <span>${window.SaRuxiI18n.translate('ui.sendRequest')}</span>`;
             }
         }
 
@@ -2670,7 +2767,7 @@
             
             const footerCopyright = document.getElementById('footerCopyright');
             if (footerCopyright) {
-                footerCopyright.textContent = `&copy; ${new Date().getFullYear()} ${footerData.company} - ${footerData.tagline}. Tutti i diritti riservati.`;
+                footerCopyright.textContent = `© ${new Date().getFullYear()} ${footerData.company} - ${footerData.tagline}. ${window.SaRuxiI18n.translate('ui.rightsReserved')}`;
             }
         }
 
@@ -2715,6 +2812,14 @@
         // Popola la sezione Territorio
         function populateTerritorySection(territoryData) {
             if (!territoryData) return;
+
+            const sectionTitle = document.querySelector('.territory-section .section-title');
+            if (sectionTitle) {
+                sectionTitle.querySelector('h2').textContent = territoryData.title || '';
+                const subtitle = sectionTitle.querySelector('p');
+                subtitle.textContent = territoryData.description || '';
+                subtitle.hidden = !territoryData.description;
+            }
             
             // Popola l'immagine
             const territoryImage = document.querySelector('.territory-image img');
@@ -2727,7 +2832,7 @@
             const territoryContent = document.querySelector('.territory-content');
             if (territoryContent) {
                 const h3 = territoryContent.querySelector('h3');
-                if (h3) h3.textContent = territoryData.mainTitle || 'Cuore della Toscana';
+                if (h3) h3.textContent = territoryData.mainTitle || 'Alla scoperta del territorio';
                 
                 const p = territoryContent.querySelector('p');
                 if (p) p.textContent = territoryData.mainDescription || '';
@@ -2753,6 +2858,12 @@
         // Popola la sezione About
         function populateAboutSection(aboutData) {
             if (!aboutData) return;
+
+            const sectionTitle = document.querySelector('.about-section .section-title');
+            if (sectionTitle) {
+                sectionTitle.querySelector('h2').textContent = aboutData.title || '';
+                sectionTitle.querySelector('p').textContent = aboutData.subtitle || '';
+            }
             
             const aboutContent = document.querySelector('.about-content');
             if (!aboutContent) return;

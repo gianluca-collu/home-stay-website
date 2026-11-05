@@ -11,8 +11,7 @@ create table if not exists public.booking_properties (
 insert into public.booking_properties (id, title, base_nightly_price, minimum_stay)
 values
     ('Villa Karla', 'Villa Karla', 2500, 3),
-    ('casa_amalfitana', 'Oltre Mare', 1800, 4),
-    ('casale_umbro', 'Casale Umbro', 1200, 2)
+    ('casa_amalfitana', 'Oltre Mare', 1800, 4)
 on conflict (id) do update
 set title = excluded.title;
 
