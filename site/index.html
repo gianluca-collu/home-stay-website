@@ -1457,7 +1457,7 @@
 
         .calendar-grid {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            grid-template-columns: repeat(7, minmax(0, 1fr));
             gap: 0;
             margin-bottom: 1.5rem;
         }
@@ -1473,15 +1473,29 @@
         }
 
         .calendar-day {
+            min-width: 0;
             aspect-ratio: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 3px;
             font-size: 0.95rem;
             border: 1px solid #f0f0f0;
             cursor: default;
             position: relative;
             background: white;
+        }
+
+        .calendar-day-number { line-height: 1; }
+
+        .calendar-day-price {
+            max-width: 100%;
+            color: #5b5140;
+            font-size: 0.68rem;
+            font-weight: 600;
+            line-height: 1;
+            white-space: nowrap;
         }
 
         .calendar-day.empty {
@@ -1507,7 +1521,14 @@
         .calendar-day.booked {
             background: #efefef;
             color: #999;
-            text-decoration: line-through;
+        }
+
+        .calendar-day.booked .calendar-day-number { text-decoration: line-through; }
+
+        @media (max-width: 420px) {
+            .calendar-container { padding: 0.75rem; }
+            .calendar-day-header { font-size: 0.75rem; }
+            .calendar-day-price { font-size: 0.52rem; }
         }
 
         .availability-info {
@@ -2149,6 +2170,7 @@
             .then(response => response.json())
             .then(data => {
                 allPrices = data.prices;
+                if (currentPropertyCalendar) renderCalendar();
             })
             .catch(error => console.error('Errore nel caricamento dei prezzi:', error));
 
@@ -2474,10 +2496,23 @@
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayCell = document.createElement('div');
                 dayCell.className = 'calendar-day';
-                dayCell.textContent = day;
-                
                 const currentDate = new Date(year, month, day);
                 const dateString = formatLocalDate(currentDate);
+                const dayNumber = document.createElement('span');
+                dayNumber.className = 'calendar-day-number';
+                dayNumber.textContent = day;
+                const price = getPriceForDate(currentPropertyCalendar.id, dateString);
+                const formattedPrice = window.SaRuxiI18n.formatNumber(price, {
+                    style: 'currency',
+                    currency: 'EUR',
+                    maximumFractionDigits: 0
+                });
+                const dayPrice = document.createElement('span');
+                dayPrice.className = 'calendar-day-price';
+                dayPrice.textContent = formattedPrice;
+                dayPrice.title = `${window.SaRuxiI18n.translate('ui.pricePerNight')}: ${formattedPrice}`;
+                dayCell.append(dayNumber, dayPrice);
+
                 const isAvailable = liveBookingData?.configured
                     ? isDateAvailableFromSupabase(dateString, currentPropertyCalendar.id)
                     : isDateInAvailablePeriods(currentDate, availablePeriods);
