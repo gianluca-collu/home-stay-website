@@ -38,14 +38,14 @@
   "about": {
     "title": "Chi Sono",
     "subtitle": "Un progetto di Gianluca Collu",
-    "mainTitle": "Un'idea di ospitalità",
+    "mainTitle": "La mia idea di ospitalità",
     "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
     "paragraphs": [
       "La Sardegna è una terra unica: conserva un'anima autentica, fatta di paesaggi straordinari, tradizioni profonde e un ritmo di vita che invita a riscoprire il piacere delle cose semplici.",
-      "Da questo legame nasce il mio progetto: offrire alloggi accoglienti e un'ospitalità attenta, che mette al centro gli ospiti e rispetta i luoghi e i ritmi dell'isola.",
-      "Il mio impegno è aiutare chi sceglie uno dei miei alloggi a scoprire la Sardegna oltre le spiagge: i paesaggi naturali, le tradizioni e i suoi sapori. Vivo l'isola tutto l'anno e consiglio ai miei ospiti luoghi e indirizzi che conosco bene, anche al di fuori degli itinerari più conosciuti.",
+      "Da questo legame nasce il mio progetto: offrire alloggi accoglienti e un'ospitalità attenta, che metta al centro gli ospiti e rispetti i luoghi e i ritmi dell'isola.",
+      "Il mio impegno è aiutare chi sceglie i miei alloggi a scoprire la Sardegna oltre le spiagge: i paesaggi naturali, le tradizioni e i suoi sapori. Vivo l'isola tutto l'anno e consiglio ai miei ospiti luoghi e attrazioni selezionate personalmente, anche al di fuori degli itinerari più conosciuti.",
       "Ogni soggiorno dovrebbe essere un'occasione per rallentare, lasciarsi alle spalle la quotidianità e ritrovare il proprio tempo. Senza fretta, senza programmi obbligati, con la libertà di sentirsi semplicemente nel posto giusto.",
-      "Perché, in fondo, il vero lusso non è soltanto il luogo in cui soggiorniamo, ma il sentirsi a casa."
+      "Perché, in fondo, il vero lusso non è soltanto il luogo in cui soggiorniamo, ma il calore di sentirsi a casa."
     ],
     "closing": "Benvenuti in Sardegna."
   },
@@ -74,7 +74,7 @@
       {
         "icon": "fas fa-sun",
         "title": "Enogastronomia",
-        "description": "Scopri gli agriturismi dove puoi assaggiare la cucina tradizionale sarda e i vini locali; a Cagliari, lasciati tentare dalle specialità di mare e dai piatti seafood."
+        "description": "Scopri gli agriturismi dove puoi assaporare la cucina tradizionale sarda e i vini locali; a Cagliari, lasciati tentare dalle specialità di mare e dai piatti seafood."
       }
     ],
     "regions": [
@@ -150,7 +150,7 @@
   },
   "footer": {
     "company": "Sa Ruxi Stay",
-    "tagline": "Tre luoghi, un progetto di Gianluca Collu",
+    "tagline": "Un progetto di Gianluca Collu",
     "contact": {
       "email": "gianluca.collu95@gmail.com",
       "phone": "+39 339 882 5146"
