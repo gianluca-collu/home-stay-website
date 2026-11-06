@@ -16,7 +16,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- EmailJS - File locale (non CDN) -->
-    <script src="emailjs.min.js"></script>
+    <script src="assets/js/emailjs.min.js"></script>
     
     <script>
         // Inizializzazione EmailJS - semplice e diretta
@@ -2003,9 +2003,9 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase-config.js"></script>
-    <script src="supabase-public.js"></script>
-    <script src="i18n.js"></script>
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/supabase-public.js"></script>
+    <script src="assets/js/i18n.js"></script>
     
     <script>
         window.SaRuxiI18n.applyStaticTranslations();
@@ -2117,7 +2117,7 @@
         });
         
         // Carica il contenuto statico (Chi siamo, Territorio, etc)
-        fetch('content.json')
+        fetch('data/content.json')
             .then(response => response.json())
             .then(sourceData => {
                 sourceContent = sourceData;
@@ -2125,7 +2125,7 @@
             })
             .catch(error => console.error('Errore nel caricamento del contenuto:', error));
 
-        fetch('properties.json')
+        fetch('data/properties.json')
             .then(response => response.json())
             .then(async data => {
                 sourceProperties = data.properties;
@@ -2145,7 +2145,7 @@
         );
 
         // Carica i prezzi stagionali
-        fetch('prices.json')
+        fetch('data/prices.json')
             .then(response => response.json())
             .then(data => {
                 allPrices = data.prices;

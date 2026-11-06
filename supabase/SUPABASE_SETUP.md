@@ -26,13 +26,13 @@ Only users listed in `site_admins` can make administrative changes. The admin pa
 
 ## 4. Configure the website
 
-In `supabase-config.js`, set `url` to the project's **Project URL** and `publishableKey` to its **Publishable key**. If the Dashboard only shows the legacy API keys, use the `anon` key. Never put the `service_role` or `secret` key in this website.
+In `site/assets/js/supabase-config.js`, set `url` to the project's **Project URL** and `publishableKey` to its **Publishable key**. If the Dashboard only shows the legacy API keys, use the `anon` key. Never put the `service_role` or `secret` key in this website.
 
 The public key is expected to be visible in browser code. Database access is protected by the row-level security policies in `supabase-schema.sql`.
 
 ## 5. Enter dates and rates
 
-Open `admin.html`, sign in, and configure each property's open periods and seasonal prices. The calendar is closed by default until an open period is entered. A blank maximum-stay setting means no upper limit.
+Open `site/admin/admin.html`, sign in, and configure each property's open periods and seasonal prices. The calendar is closed by default until an open period is entered. A blank maximum-stay setting means no upper limit.
 
 ## Current fallback behavior
 
