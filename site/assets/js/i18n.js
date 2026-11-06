@@ -21,9 +21,9 @@
                 photoViewer: 'Visualizzatore foto', closePhoto: 'Chiudi foto', previousPhoto: 'Foto precedente', nextPhoto: 'Foto successiva', privacyFooter: 'Informativa privacy', backToSite: 'Torna al sito',
                 or: 'o', referenceLinks: 'Approfondisci:', emailjsPolicy: 'privacy policy di EmailJS', emailjsDpa: 'accordo sul trattamento', googlePolicy: 'privacy policy di Google', supabasePolicy: 'privacy policy', supabaseDpa: 'accordo sul trattamento'
             },
-            content: {},
-            properties: {},
-            privacy: {}
+                content: {},
+                properties: {},
+                privacy: {}
         },
         en: {
             ui: {
@@ -295,7 +295,7 @@
     function localizeProperties(properties) {
         const propertyTranslations = translations[currentLocale].properties || {};
         return properties.map(property => {
-            const translation = propertyTranslations[property.id];
+            const translation = propertyTranslations[property.id] || propertyTranslations[property.location];
             if (!translation) return property;
             const localized = { ...property, ...translation };
             localized.region = property.region;
